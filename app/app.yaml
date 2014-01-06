@@ -17,12 +17,8 @@ handlers:
 - url: /images
   static_dir: images
 
-- url: /index
-  script: main.app
-
 - url: /.*
-  static_files: index.html
-  upload: index.html
+  script: main.app
 
 libraries:
 - name: jinja2

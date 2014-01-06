@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Riepas</h1>
+<div class="filter-list">
+  <span class="vieglo-filter">Vieglais auto</span>
+  <span class="smago-filter">Kravas auto</span>
+  <span class="lietots-filter">Lietotas</span>
+</div>
+
+{% if Tyres %}
+<div id="tire-list">
+  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
+
+  <ul class="list">
+  {% for tyre in Tyres %}
+  <li>
+  <span class="size">{{ tyre.size }}</span>
+  {{ tyre }}
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% endblock %}
+
+

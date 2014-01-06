@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Riepazzz</h1>
+Edit them here. Admin only.
+
+<div class="filter-list">
+  <span class="vieglo-filter">Vieglais auto</span>
+  <span class="smago-filter">Kravas auto</span>
+  <span class="lietots-filter">Lietotas</span>
+</div>
+
+{% if Tyres %}
+<div id="tire-list">
+  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
+
+  <ul class="list">
+  {% for tyre in Tyres %}
+  <li>
+  <a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/40/40" alt="Tires"></a>
+  <span class="size">{{ tyre.size }}</span>
+  {{ tyre }}
+  <form method="get" action="/manage/riepas/{{ pathDict[tyre._get_kind()] }}/{{ tyre.key.id() }}">
+    <input type="submit" value="Labot">
+  </form>
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<hr>
+
+<h2>Pievienot jaunu</h2>
+<form action="" method="POST">
+  <label for="size">Izmers:</label>
+  <input type="text" name="size" id="size" value="" />
+
+  <label for="brand">Razotajs</label>
+  <input type="text" name="brand" id="brand" value="" />
+
+  <label for="model">Modelis</label>
+  <input type="text" name="model" id="model" value="" />
+
+  <label for="price">Cena</label>
+  <input type="text" name="price" id="price" value="" />
+
+  <label for="season">Sezona:</label>
+  <select name="season" id="season">
+    <option value="summer">Vasaras</option>
+    <option value="winter">Ziemas</option>
+    <option value="non-studded">Ziemas (radzejama)</option>
+    <option value="studded">Ziemas (ar radzeem)</option>
+  </select>
+
+  <label for="isUsed">Lietota?</label>
+  <input type="checkbox" name="isUsed" id="isNew" />
+
+  <label for="tread">Protektora atlikums</label>
+  <input type="text" name="tread" id="tread" value="" />
+
+  <label for="isTruckTyre">Kravas auto riepa?</label>
+  <input type="checkbox" name="isTruckTyre" id="isTruckTyre" />
+
+  <label for="axle">Ass:</label>
+  <select name="axle" id="axle">
+    <option value="front">Sturejoshaa</option>
+    <option value="drive">Velkoshaa</option>
+    <option value="trailer">Piekabes</option>
+    <option value="any">Jebkura</option>
+  </select>
+  <br />
+
+  <label for="loadIndexPaired">Kravnesibas indekss saparotai riepai</label>
+  <input type="text" name="loadIndexPaired" id="loadIndexPaired" value="" />
+
+  <label for="loadIndex">Kravnesibas indekss 1 riepai</label>
+  <input type="text" name="loadIndex" id="loadIndex" value="" />
+
+  <label for="speedIndex">Atruma indekss:</label>
+  <input type="text" name="speedIndex" id="speedIndex" value="" />
+
+  <input type="submit" class="submit btn" value="Pievienot" />
+</form>
+
+
+{% endblock %}
+
+

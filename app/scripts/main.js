@@ -46,7 +46,13 @@ require(["app", "domReady", "listJs", "jquery","responsiveSlides", "fuzzySearch"
 
 		var options = {
 			valueNames: ['size', 'index', 'brand', 'model', 'kind', 'price', 'notes'],
-			plugins: [ fuzzySearch() ]
+      // listClass: "list",
+      // searchClass: "search",
+      // sortClass: "sort",
+      // indexAsync: "false",
+      // page: 200,
+			plugins: [ fuzzySearch() ],
+
 		};
 
 		var tireList = new List('tire-list', options);

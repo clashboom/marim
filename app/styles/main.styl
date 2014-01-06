@@ -1,14 +1,14 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
-::-moz-selection
-    background #FF6726
-    color #272727
-    text-shadow none
-
-::selection
-    background #FF6726
-    color #272727
-    text-shadow none
+// ::-moz-selection
+//     background c1
+//     color #272727
+//     text-shadow none
+//
+// ::selection
+//     background c1
+//     color #272727
+//     text-shadow none
 
 
 /*
@@ -348,7 +348,14 @@ invisible()
     display inline
     width 40px
     height 40px
-    margin-right 1em
+    margin-right 0.625em
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+    @font-face
+        font-family 'CardoRegular'
+        src url('../fonts/Cardo104s-webfont.svg#CardoRegular') format('svg')
+
+
 
 
 // Tables
@@ -463,13 +470,13 @@ h1
         ul
             padding-left 0
         a
-            color c6
+            color c3
             padding-left 1.875em
             &:focus,
             &:active,
             &:hover
                 color c5
-                background-color c6
+                background-color c3
         li.active
             a
                 color c1
@@ -618,7 +625,20 @@ footer ul
 .flag
     display inline-block
 
-input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea
         display block
         font-size 0.77778rem
         margin 0 0 0.88889rem 0
@@ -646,6 +666,28 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 textarea
     height 4rem
+
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select
+        margin 0 0 0.88889rem 0
+
+select
+    background #f2f2f2
+    border 1px solid #cccccc
+    padding 0.44444rem
+    font-size 0.77778rem
+    -webkit-border-radius 0
+    border-radius 0
+    width 100%
+
+label
+    font-size 0.77778rem
+    cursor pointer
+    display block
+    font-weight normal
+    margin-bottom 0.44444rem
 
 .btn
     background-color c6
