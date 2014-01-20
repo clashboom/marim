@@ -1,3 +1,4 @@
+# Happy Violence!
 import jinja2
 import logging
 import os
@@ -15,27 +16,53 @@ JINJA_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader(TEMPLATE_DIR), autoescape=True)
 
 
-class Service(ndb.Model):
-    name = ndb.StringProperty('n', required=True)
-    category = ndb.StringProperty('cat', required=True)
-    price = ndb.StringProperty('p', required=True)
+class BaseService(ndb.Model):
+    name = ndb.StringProperty(required=True)
+    lastModified = ndb.DateTimeProperty(auto_now=True)
+    low = ndb.StringProperty()
+    mid = ndb.StringProperty()
+    high = ndb.StringProperty()
 
     @classmethod
     def queryServices(cls):
         return cls.query()
 
 
-class BaseTyre(ndb.Model):
-    brand = ndb.StringProperty('b', required=True)
-    loadIndex = ndb.StringProperty('li')
-    model = ndb.StringProperty('m', required=True)
-    price = ndb.StringProperty('p', required=True)
-    season = ndb.StringProperty('se')
-    size = ndb.StringProperty('sz', required=True)
-    speedIndex = ndb.StringProperty('si')
+class CarService(BaseService):
+    pass
 
-    lastModified = ndb.DateTimeProperty('mod', auto_now=True)
-    isHidden = ndb.BooleanProperty('h', default=False)
+
+class TruckService(BaseService):
+    pass
+
+
+class OffroadService(BaseService):
+    pass
+
+
+class CommercialService(BaseService):
+    pass
+
+
+class AgroService(BaseService):
+    pass
+
+
+class IndyService(BaseService):
+    pass
+
+
+class BaseTyre(ndb.Model):
+    brand = ndb.StringProperty(required=True)
+    loadIndex = ndb.StringProperty()
+    model = ndb.StringProperty(required=True)
+    price = ndb.StringProperty(required=True)
+    season = ndb.StringProperty()
+    size = ndb.StringProperty(required=True)
+    speedIndex = ndb.StringProperty()
+
+    lastModified = ndb.DateTimeProperty(auto_now=True)
+    isHidden = ndb.BooleanProperty(default=False)
 
     @classmethod
     def queryTyres(cls):
@@ -60,26 +87,39 @@ class CarTyre(BaseTyre):
 
 
 class UsedCarTyre(CarTyre):
-    treadDepth = ndb.StringProperty('td')
+    treadDepth = ndb.StringProperty()
 
 
 class TruckTyre(BaseTyre):
     # loadIndexPaired = ndb.StringProperty('lip')
-    axlePosition = ndb.StringProperty('ap')
+    axlePosition = ndb.StringProperty()
 
 
 class UsedTruckTyre(TruckTyre):
-    treadDepth = ndb.StringProperty('td')
+    treadDepth = ndb.StringProperty()
 
 
 class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
 
-    paths = {'CarTyre': 'vieglo',
-             'UsedCarTyre': 'lietotas/vieglo',
-             'TruckTyre': 'kravas',
-             'UsedTruckTyre': 'lietotas/kravas'}
+    tyrePaths = {'CarTyre': 'vieglo',
+                 'UsedCarTyre': 'vieglo/lietotas',
+                 'TruckTyre': 'kravas',
+                 'UsedTruckTyre': 'kravas/lietotas',
+                 'vieglo': CarTyre,
+                 'vieglo/jaunas': CarTyre,
+                 'vieglo/lietotas': UsedCarTyre,
+                 'kravas': TruckTyre,
+                 'kravas/jaunas': TruckTyre,
+                 'kravas/lietotas': UsedTruckTyre}
+
+    servicePaths = {'vieglo': CarService,
+                    'kravas': TruckService,
+                    'apvidus': OffroadService,
+                    'komerctransports': CommercialService,
+                    'agro': AgroService,
+                    'industrialais': IndyService}
 
     @classmethod
     def render_str(cls, template, *a, **params):
@@ -90,66 +130,9 @@ class Handler(webapp2.RequestHandler):
         self.write(self.render_str(template, *a, **params))
 
 
-class ManageTyres(Handler):
-    def get(self):
-        carTyres = list(CarTyre.queryTyres())
-        uCarTyres = list(UsedCarTyre.queryTyres())
-        truckTyres = list(TruckTyre.queryTyres())
-        uTruckTyres = list(UsedTruckTyre.queryTyres())
-        tyres = carTyres + uCarTyres + truckTyres + uTruckTyres
-        self.render("manage.html", pathDict=self.paths, Tyres=tyres)
-
-    def post(self):
-        size = self.request.get('size')
-        brand = self.request.get('brand')
-        model = self.request.get('model')
-        price = float(self.request.get('price'))
-        season = self.request.get('season')
-        li = self.request.get('loadIndex')
-        si = self.request.get('speedIndex')
-
-        isTruckTyre = self.request.get('isTruckTyre')
-        axle = self.request.get('axle')
-        # lip = self.request.get('loadIndexPaired')
-
-        isUsed = self.request.get('isUsed')
-        tread = self.request.get('tread')
-
-        params = {"size": size, "brand": brand, "model": model, "price": price,
-                  "season": season, "loadIndex": li, "speedIndex": si}
-
-        if isTruckTyre:
-            params["axlePosition"] = axle
-            # params["loadIndexPaired"] = lip
-            if isUsed:
-                params["treadDepth"] = tread
-                tyre = UsedTruckTyre(**params)
-            else:
-                tyre = TruckTyre(**params)
-        else:
-            if isUsed:
-                params["treadDepth"] = tread
-                tyre = UsedCarTyre(**params)
-            else:
-                tyre = CarTyre(**params)
-
-        tyre.put()
-        self.redirect('/manage')
-
-
 class MainHandler(Handler):
     def get(self):
         self.render("home.html")
-
-
-class TyreHandler(Handler):
-    def get(self):
-        carTyres = list(CarTyre.queryTyres())
-        uCarTyres = list(UsedCarTyre.queryTyres())
-        truckTyres = list(TruckTyre.queryTyres())
-        uTruckTyres = list(UsedTruckTyre.queryTyres())
-        tyres = carTyres + uCarTyres + truckTyres + uTruckTyres
-        self.render("riepas.html", Tyres=tyres)
 
 
 class RimHandler(Handler):
@@ -158,8 +141,22 @@ class RimHandler(Handler):
 
 
 class ServiceHandler(Handler):
-    def get(self):
-        self.render("serviss.html")
+    def get(self, kind=None):
+
+        services = None
+
+        if kind:
+            services = list(self.servicePaths[kind].queryServices())
+            self.render("serviss.html", Services=services)
+
+        services = list(CarService.queryServices()) + \
+            list(TruckService.queryServices()) + \
+            list(OffroadService.queryServices()) + \
+            list(AgroService.queryServices()) + \
+            list(IndyService.queryServices()) + \
+            list(CommercialService.queryServices()) \
+
+        self.render("serviss.html", Services=services)
 
 
 class AboutHandler(Handler):
@@ -203,12 +200,12 @@ class SendMail(Handler):
 
 class PopulateDB(Handler):
     def get(self):
-        def generateDL(paramList, tyres):
+        def generateDL(paramList, entries):
             logging.error("Generating DL...")
             dl = []
-            for tyre in tyres:
+            for entry in entries:
                 tmpdict = collections.OrderedDict()
-                for param, val in zip(paramList, tyre):
+                for param, val in zip(paramList, entry):
                     tmpdict[param] = val
                 dl.append(tmpdict)
             return dl
@@ -217,8 +214,6 @@ class PopulateDB(Handler):
             logging.error("Adding Entries...")
             for params in parameterDL:
                 e = entityName(**params)
-                if entityName == UsedTruckTyre:
-                    logging.error(e.axlePosition)
                 e.put()
 
         a = [["195/70 R15", "10", "R", "Matadr", "MPS 530", "Ziemas", "50.00"],
@@ -268,48 +263,105 @@ class PopulateDB(Handler):
         addEntries(TruckTyre, truckTyreDL)
         addEntries(UsedTruckTyre, usedTruckTyreDL)
 
-        self.redirect("/manage")
+        # Populate Services
+        serviceParams = ["name", "low", "mid", "high"]
+
+        e = [[u"Nonemsana", "0.71", "0.71", "0.71"],
+             [u"Uzliksana", "0.71", "0.71", "0.71"],
+             [u"Montaza", "0.71", "1.42", "2.13"],
+             [u"Demontaza", "0.71", "1.42", "2.13"],
+             [u"Balansesana", "2.13", "2.13", "2.85"],
+             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
+
+        f = [[u"Nonemsana", "0.71", "0.71", "0.71"],
+             [u"Uzliksana", "0.71", "0.71", "0.71"],
+             [u"Montaza", "0.71", "1.42", "2.13"],
+             [u"Demontaza", "0.71", "1.42", "2.13"],
+             [u"Pilns Cikls", "4.98", "6.40", "8.54"],
+             [u"Balansesana", "2.13", "2.13", "2.85"],
+             [u"Protektora padzilginasana", "2.13", "2.13", "2.85"]]
+
+        g = [[u"Nonemsana", "0.71", "0.71", "0.71"],
+             [u"Uzliksana", "0.71", "0.71", "0.71"],
+             [u"Montaza", "0.71", "1.42", "2.13"],
+             [u"Demontaza", "0.71", "1.42", "2.13"],
+             [u"Balansesana", "2.13", "2.13", "2.85"],
+             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
+
+        h = [[u"Nonemsana", "0.71", "", ""],
+             [u"Uzliksana", "0.71", "", ""],
+             [u"Montaza", "2.13", "", ""],
+             [u"Demontaza", "2.13", "", ""],
+             [u"Pilns Cikls", "8.54", "", ""]]
+
+        i = [[u"Nonemsana", "0.71", "0.71", "0.71"],
+             [u"Uzliksana", "0.71", "0.71", "0.71"],
+             [u"Montaza", "0.71", "1.42", "2.13"],
+             [u"Demontaza", "0.71", "1.42", "2.13"],
+             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
+
+        j = [[u"Nonemsana", "0.71", "0.71", "0.71"],
+             [u"Uzliksana", "0.71", "0.71", "0.71"],
+             [u"Montaza", "0.71", "1.42", "2.13"],
+             [u"Demontaza", "0.71", "1.42", "2.13"],
+             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
+
+        carDL = generateDL(serviceParams, e)
+        TruckDL = generateDL(serviceParams, f)
+        OffroadDL = generateDL(serviceParams, g)
+        CommercialDL = generateDL(serviceParams, h)
+        AgroDL = generateDL(serviceParams, i)
+        IndyDL = generateDL(serviceParams, j)
+
+        addEntries(CarService, carDL)
+        addEntries(TruckService, TruckDL)
+        addEntries(OffroadService, OffroadDL)
+        addEntries(CommercialService, CommercialDL)
+        addEntries(AgroService, AgroDL)
+        addEntries(IndyService, IndyDL)
+
+        self.redirect("/")
 
 
-class SingleTyreHandler(Handler):
-    def get(self, isUsed, kind, itemID):
-        self.write(isUsed)
-        self.write("<br />")
-        self.write(kind)
-        self.write("<br />")
-        self.write(itemID)
-        self.write("<br />")
-        revPaths = {v: k for k, v in self.paths.items()}
-        self.write(revPaths)
-        usedPrefix = 'Used' if isUsed else ''
-        key = ndb.Key(usedPrefix + revPaths[kind], int(itemID))
-        self.write("<br />")
-        self.write(key)
-        tyre = key.get()
-        self.write("<br />")
-        self.write(tyre)
-        self.render("manageSingleTyre.html")
+class TyreHandler(Handler):
+    def get(self, kind=None, itemID=None):
 
+        tyres = None
 
-class TyreKindHandler(Handler):
-    def get(self, tyreKind):
-        tyres = globals()[tyreKind].queryTyres()
-        self.render("manage.html", Tyres=tyres, pathDict=self.paths)
+        if kind:
+            if itemID:
+                key = ndb.Key(self.tyrePaths[kind], int(itemID))
+                tyres = [key.get()]
+                self.render("riepas.html", Tyres=tyres)
+                return
+            else:
+                if kind == 'lietotas':
+                    tyres = list(UsedCarTyre.queryTyres()) + \
+                        list(UsedTruckTyre.queryTyres())
+                elif 'jaunas' or 'lietotas' in kind:
+                    tyres = list(self.tyrePaths[kind].queryTyres())
+                else:
+                    # feed the dada
+                    tyres = list(self.tyrePaths[kind].queryTyres()) + \
+                        list(self.tyrePaths[kind + '/lietotas'].queryTyres())
+                self.render("riepas.html", Tyres=tyres)
+                return
+
+        tyres = list(CarTyre.queryTyres()) + list(UsedCarTyre.queryTyres()) + \
+            list(TruckTyre.queryTyres()) + list(UsedTruckTyre.queryTyres())
+        self.render("riepas.html", Tyres=tyres)
 
 
 app = webapp2.WSGIApplication([
-    # Repeating myself, because fuck redirects
     ('/db', PopulateDB),
-    ('/manage', ManageTyres),
-    ('/manage/riepas', ManageTyres),
-    ('/riepas', TyreHandler),
     ('/diski', RimHandler),
-    ('/serviss', ServiceHandler),
     ('/meklet', SearchHandler),
     ('/par', AboutHandler),
     ('/l', SendMail),
-    ('/riepas/([a-z]+)', TyreKindHandler),
-    ('/manage/riepas/(lietotas/)?([a-zA-Z]+)/([0-9]+)', SingleTyreHandler),
+    ('/riepas(?:/)?(?:([a-zA-Z]+(?:(?:/)?[a-zA-Z]+)?)?(?:/)?([0-9]+)?)?',
+     TyreHandler),
+    ('/serviss(?:/)?([a-zA-Z]+)?(?:/)?',
+     ServiceHandler),
     ('/.*', MainHandler)
 ], debug=True)
 

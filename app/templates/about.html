@@ -1,29 +1,45 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1>Par BroPro</h1>
-<p>BroPro ir kvalificēts kravas un vieglo auto riepu serviss.  Sertificēti
-darbinieki ar vairāk kā 15 gadu pieredzi labprāt sniegs konsultācijas, atbildēs
-uz Jūsu jautājumiem un palīdzēs izvēlēties tieši Jums piemērotāko
-risinājumu! Garantējam individuālu pieeju katram klientam un pēc klienta
-pieprasījuma strādājam arī ārpus darba laika!</p>
 
-<div>
+<div class="about bropro">
+  <h1>Par BroPro</h1>
+  <p itemprop="description">BroPro ir kvalificēts kravas un vieglo auto riepu serviss.  Sertificēti
+  darbinieki ar vairāk kā 15 gadu pieredzi labprāt sniegs konsultācijas, atbildēs
+  uz Jūsu jautājumiem un palīdzēs izvēlēties tieši Jums piemērotāko
+  risinājumu! Garantējam individuālu pieeju katram klientam un pēc klienta
+  pieprasījuma strādājam arī ārpus darba laika!</p>
+</div>
+
+<div class="about img">
+  <img src="http://placecage.com/g/300/300" alt="">
+</div>
+
+
+<div class="about tyres">
   <h2>Riepas</h2>
   <p>Mēs piedāvājam dažādu veidu jaunas un lietotas kravas auto,
   mikroautobusu, apvidus un vieglo auto riepas, plašā sortimentā un dažādās cenu
   grupās - sākot no budžeta līdz premium tipa ražotājiem. Piedāvāto preču
-  starpā ir tadi atpazīstami zīmoli kā Fulda, Matador, Goodyear, Bridgestone, Michelin,
-  Firestone, Kormoran, Aeolus, Kumho Tyres un citi.</p>
+  starpā ir tadi atpazīstami zīmoli kā
+  <span itemprop="brand">Fulda</span>,
+  <span itemprop="brand">Matador</span>,
+  <span itemprop="brand">Goodyear</span>,
+  <span itemprop="brand">Bridgestone</span>,
+  <span itemprop="brand">Michelin</span>,
+  <span itemprop="brand">Firestone</span>,
+  <span itemprop="brand">Kormoran</span>,
+  <span itemprop="brand">Aeolus</span>,
+  <span itemprop="brand">Kumho Tyres</span> un citi.</p>
 </div>
 
-<div>
+<div class="about rims">
   <h2>Diski</h2>
   <p>Piedāvājam arī jaunus un lietotus kravas un vieglo automašīnu diskus.
   Sīkākai informācijai lūdzam sazināties ar mums.</p>
 </div>
 
-<div>
+<div class="about service">
   <h2>Serviss</h2>
   <p>
   Uz vietas veicam visu veida kravas, apvidus, mikroautobusu un vieglo auto
@@ -34,19 +50,33 @@ pieprasījuma strādājam arī ārpus darba laika!</p>
   </p>
 </div>
 
-<h2>Kā mūs atrast?</h2>
-Atrodamies netālu no lidostas Rīga. Iebraukšana caur pēdējo ar luksaforu
-regulēto krustojumu. Braucot uz lidostu, krustojumā nepieciešams nogriesties pa
-kreisi un braukt taisni aptuveni 1000m pa Dzirnieku ielu.
-<a href="http://maps.google.com/maps?um=1&ie=UTF-8&q=bropro+sia&fb=1&gl=lv&hq=bropro+sia&cid=6970647867256205212&sa=X&ei=DbytUs6pAoPmywP5-YKQCg&ved=0CDUQrwswAA"> Karte </a>
 
-<h3>Uzņēmuma rekvizīti</h3>
-<ul>
-  <li>Juridiskā adrese: "Atmodas"-21, Pienava, Džūkstes pag., Tukuma nov., LV-3147</li>
-  <li>Faktiskā adrese: Dzirnieku iela 11, Lidosta Rīga, Mārupes novads, LV-2167</li>
-  <li>Reģistrācijas numurs: 40103607159</li>
-  <li>Nodokļu maksātāja numurs: LV40103607159</li>
+<div class="about directions">
+  <h2>Kā mūs atrast?</h2>
+  Atrodamies netālu no lidostas Rīga. Iebraukšana caur pēdējo ar luksaforu
+  regulēto krustojumu. Braucot uz lidostu, krustojumā nepieciešams nogriesties pa
+  kreisi un braukt taisni aptuveni 1000m pa Dzirnieku ielu.
+</div>
 
+
+<div class="about map>
+  <a
+    href="http://maps.google.com/maps?um=1&ie=UTF-8&q=bropro+sia&fb=1&gl=lv&hq=bropro+sia&cid=6970647867256205212&sa=X&ei=DbytUs6pAoPmywP5-YKQCg&ved=0CDUQrwswAA" itemprop="map">
+    Karte
+  </a>
+</div>
+
+<div class="about info">
+  <h3>Uzņēmuma rekvizīti</h3>
+  <ul>
+    <li itemprop="legalName">Nosaukums: BroPro SIA</li>
+    <li>Juridiskā adrese: "Atmodas"-21, Pienava, Džūkstes pag., Tukuma nov., LV-3147</li>
+    <li itemprop="location">Faktiskā adrese: Dzirnieku iela 11, Lidosta Rīga, Mārupes novads, LV-2167</li>
+    <li>Reģistrācijas numurs: 40103607159</li>
+    <li itemprop="vatID">Nodokļu maksātāja numurs: LV40103607159</li>
+  </ul>
+
+  <ul>
   <li>Bankas rekvizīti:</li>
   <li>Banka: "Swedbank" AS</li>
   <li>Konts: LV87HABA0551034596411</li>
@@ -54,10 +84,8 @@ kreisi un braukt taisni aptuveni 1000m pa Dzirnieku ielu.
 
   <li>Tel.<span class='mobile'><a href="tel:+37129141140">+371 29141140</a></span></li>
   <li>E-pasta adrese: info@bropro.lv</li>
-
-</ul>
+  </ul>
+</div>
 
 {% endblock %}
-
-
 

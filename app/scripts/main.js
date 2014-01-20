@@ -45,7 +45,7 @@ require(["app", "domReady", "listJs", "jquery","responsiveSlides", "fuzzySearch"
 		};
 
 		var options = {
-			valueNames: ['size', 'index', 'brand', 'model', 'kind', 'price', 'notes'],
+			valueNames: ['size', 'index', 'brand', 'model', 'season', 'price'],
       // listClass: "list",
       // searchClass: "search",
       // sortClass: "sort",
@@ -55,7 +55,7 @@ require(["app", "domReady", "listJs", "jquery","responsiveSlides", "fuzzySearch"
 
 		};
 
-		var tireList = new List('tire-list', options);
+		var tyreList = new List('tyre-list', options);
 
 		// ResponsiveSlides
 		$(".rslides").responsiveSlides({

@@ -275,7 +275,7 @@ module.exports = function (grunt) {
 						paths: ['node_modules/grunt-contrib-stylus/node_modules']
 					},
 					files: {
-						'app/styles/*.css': ['app/styles/*.styl']
+						'app/styles/main.css': ['app/styles/*.styl']
 					}
 				}
 			},

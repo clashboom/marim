@@ -4,20 +4,52 @@
 
 <h1>Serviss</h1>
 
-{% if Services %}
-<div id="tire-list">
-  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
 
-  <ul class="list">
-  {% for service in Services %}
-  <li>
-  <span class="size">{{ service.name }}</span>
-  {{ service }}
-  </li>
-  {% endfor %}
+
+  <hr>
+
+  <div class="tabs">
+    <div class="tab">
+      <input id="tab-1" type="radio" name="tab-group" checked>
+      <label for="tab-1">Tab One</label>
+      <div class="content">
+        <p>Stuff for Tab One</p>
+        {% for service in Services %}
+          {{ service.name }}
+          {{ service.low }} &euro;
+          {{ service.mid }} &euro;
+          {{ service.high }} &euro;
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="tab">
+      <input id="tab-2" type="radio" name="tab-group" checked>
+      <label for="tab-2">Tab Two</label>
+      <div class="content">
+        <p>Stuff for Tab Two</p>
+      </div>
+    </div>
+
+    <div class="tab">
+      <input id="tab-3" type="radio" name="tab-group" checked>
+      <label for="tab-3">Tab Three</label>
+      <div class="content">
+        <p>Stuff for Tab Three</p>
+      </div>
+    </div>
+
+    <div class="tab">
+      <input id="tab-4" type="radio" name="tab-group" checked>
+      <label for="tab-4">Tab Four</label>
+      <div class="content">
+        <p>Stuff for Tab Four</p>
+      </div>
+    </div>
+  </div>
+
   </ul>
 </div>
-{% endif %}
 
 {% endblock %}
 

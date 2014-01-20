@@ -3,21 +3,61 @@
 {% block main %}
 
 <h1>Riepas</h1>
+
 <div class="filter-list">
-  <span class="vieglo-filter">Vieglais auto</span>
-  <span class="smago-filter">Kravas auto</span>
-  <span class="lietots-filter">Lietotas</span>
+  <span class="title">Filtri:</span>
+  <a href="/riepas/vieglo">Vieglais auto</a>
+  <a href="/riepas/kravas">Kravas auto</a>
+  <a href="{{  }}lietotas">Lietotas</a>
 </div>
 
 {% if Tyres %}
-<div id="tire-list">
+<div id="tyre-list">
   <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
 
   <ul class="list">
   {% for tyre in Tyres %}
-  <li>
-  <span class="size">{{ tyre.size }}</span>
-  {{ tyre }}
+  <li class="product" itemscope itemtype="http://schema.org/Product">
+
+    <div class="image-section">
+    {% if tyre.imageurl %}
+    <a itemprop="image" class="image popup-link" href="{{ tyre.image }}"><img src="{{ tyre.thumbnail }}" alt="Tires"></a>
+    {% else %}
+     <a itemprop="image" class="image popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/75/75" alt="Tires"></a>
+    {% endif %}
+    </div>
+
+    <div class="specification">
+    <span class="name" itemprop="name">
+    <span class="brand" itemprop="brand"> {{ tyre.brand }} </span>
+    <span class="model" itemprop="model"> {{ tyre.model }} </span>
+    <span class="size"> {{ tyre.size }} </span>
+    </span>
+
+    <em>
+    {% if tyre.season %}
+    <span class="season">{{ tyre.season }}</span>
+    {% endif %}
+
+    {% if tyre.treadDepth %}
+    <span class="treadDepth">Lietotas. Protektora atlikums: {{ tyre.treadDepth
+        }}mm</span>
+    {% endif %}
+  </em>
+
+    {% if tyre.description %}
+    <span class="description" itemprop="description">{{ tyre.description }}</span>
+    {% endif %}
+
+    {% if tyre.availability %}
+    <span class="availability" itemprop="availability">{{ tyre.availability }}</span>
+    {% endif %}
+    </div>
+
+    <div class="offer">
+    <span class="price" itemprop="price"> {{ tyre.price }} &euro; </span>
+    </div>
+
   </li>
   {% endfor %}
   </ul>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Serviss</h1>
+
+{% if Services %}
+<div id="tire-list">
+  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
+
+  <ul class="list">
+  {% for service in Services %}
+  <li>
+  <span class="size">{{ service.name }}</span>
+  {{ service }}
+  </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
