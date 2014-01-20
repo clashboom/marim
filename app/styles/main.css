@@ -147,14 +147,15 @@ header h6 ~ p{margin-top:-1.618px}
 .rslides img{display:block;height:auto;float:left;width:100%;border:0}
 #main{background-color:#e7e7e7}
 #main .inner-wrapper,footer .inner-wrapper{padding-left:1.875em;padding-right:1.875em}
-#main .inner-wrapper{padding-bottom:1.875em}
+#main .inner-wrapper{padding-top:1.875em;padding-bottom:1.875em}
 .filter-list{padding:16.18px 0;}
 .filter-list .filter{margin-right:16.18px;}
 .filter-list .filter .active{color:#f77014}
 .price{font-weight:900;color:#32cd32}
+.filter-list .filter{background:#ccc;margin-left:3.236px;text-decoration:none}
 #nav-open{background:#00a6fc no-repeat 100% 100%}
 #nav-close{background:#b44326 no-repeat 100% 100%}
-h1{font-weight:900;padding-top:25.888px;}
+h1{font-weight:900;}
 h1 a{text-decoration:none}
 .subtitle{text-transform:uppercase;display:block;position:relative;top:-1em;letter-spacing:.1em}
 @media screen and (max-width: 44em){.logo,.subtitle{background:c8}
