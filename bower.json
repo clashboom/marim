@@ -1,15 +1,15 @@
 {
   "name": "marim",
-  "version": "0.0.0",
+  "private": true,
   "dependencies": {
+    "sass-bootstrap": "~3.0.0",
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
-    "requirejs": "~2.1.9",
-    "ResponsiveSlides.js": "*",
-    "list.js": "~1.0.0",
+    "jeet": "git://github.com/mojotech/jeet.git#~3.5.0",
+    "requirejs": "~2.1.10",
+    "list.js": "~1.1.0",
     "list.fuzzysearch.js": "~0.1.0",
-    "magnific-popup": "~0.9.9",
-    "jeet": "git://github.com/mojotech/jeet#~3.5.0"
+    "magnific-popup": "~0.9.9"
   },
   "devDependencies": {}
 }
