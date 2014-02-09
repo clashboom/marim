@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         watch: {
             js: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-                tasks: ['jshint'],
+                // tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
@@ -49,6 +49,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/**/*.styl'],
                 tasks: ['stylus']
             },
+            // jade: {
+            //     files: ['<%= yeoman.app %>/templates/**/*.jade'],
+            //     tasks: ['jade']
+            // },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['newer:copy:styles', 'autoprefixer']
@@ -163,8 +167,6 @@ module.exports = function (grunt) {
         },
 
 
-
-
         // Compiles Sass to CSS and generates necessary files if requested
         // compass: {
         //     options: {
@@ -203,9 +205,9 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/styles',
                         '<%= yeoman.app %>/bower_components/jeet/css/jeet'
               ],
-              import: [
-                        'index'
-              ]
+              // import: [
+              //           'index'
+              // ]
             },
             files: [
               {src: '<%= yeoman.app %>/styles/*.styl', dest: '<%= yeoman.app %>/styles/main.css'}
@@ -213,6 +215,19 @@ module.exports = function (grunt) {
             ]
           }
         },
+
+        // jade: {
+        //   compile: {
+        //     options: {
+        //       data: {
+        //         debug: true
+        //       }
+        //     },
+        //     files: [
+        //       { src: '<%= yeoman.app %>/templates/base.jade', dest: '<%= yeoman.app %>/templates/base.html' }
+        //     ]
+        //   }
+        // },
 
         // Add vendor prefixed styles
         autoprefixer: {

@@ -3,18 +3,16 @@ require.config({
 			jquery: "../bower_components/jquery/jquery",
 			listJs: "../bower_components/list.js/dist/list",
 			fuzzySearch: "../bower_components/list.fuzzysearch.js/dist/list.fuzzysearch",
-			responsiveSlides: "../bower_components/ResponsiveSlides.js/responsiveslides",
 			magnificPopup: "../bower_components/magnific-popup/dist/jquery.magnific-popup"
-
 		},
 
 		shim: {
 			jquery: {
 				exports: "jquery"
 			},
-			responsiveSlides: {
-				deps: ['jquery']
-			},
+			// responsiveSlides: {
+			// 	deps: ['jquery']
+			// },
 			fuzzySearch: {
 				deps: ['listJs'],
 			},
@@ -24,8 +22,8 @@ require.config({
 		},
 	});
 
-require(["app", "domReady", "listJs", "jquery","responsiveSlides", "fuzzySearch", "magnificPopup"],
-				function (app, domReady, List, $, responsiveSlides, fuzzySearch, magnificPopup) {
+require(["app", "domReady", "listJs", "jquery", "fuzzySearch", "magnificPopup"],
+				function (app, domReady, List, $, fuzzySearch, magnificPopup) {
 	"use strict";
 
 	console.log("Running jQuery %s", $().jquery);
@@ -58,24 +56,24 @@ require(["app", "domReady", "listJs", "jquery","responsiveSlides", "fuzzySearch"
 		var tyreList = new List('tyre-list', options);
 
 		// ResponsiveSlides
-		$(".rslides").responsiveSlides({
-			auto: true,             // Boolean: Animate automatically, true or false
-			speed: 500,            // Integer: Speed of the transition, in milliseconds
-			timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
-			pager: false,           // Boolean: Show pager, true or false
-			nav: false,             // Boolean: Show navigation, true or false
-			random: false,          // Boolean: Randomize the order of the slides, true or false
-			pause: false,           // Boolean: Pause on hover, true or false
-			pauseControls: true,    // Boolean: Pause when hovering controls, true or false
-			prevText: "Previous",   // String: Text for the "previous" button
-			nextText: "Next",       // String: Text for the "next" button
-			maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
-			navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
-			manualControls: "",     // Selector: Declare custom pager navigation
-			namespace: "rslides",   // String: Change the default namespace used
-			before: function(){},   // Function: Before callback
-			after: function(){}     // Function: After callback
-		});
+		// $(".rslides").responsiveSlides({
+		// 	auto: true,             // Boolean: Animate automatically, true or false
+		// 	speed: 500,            // Integer: Speed of the transition, in milliseconds
+		// 	timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+		// 	pager: false,           // Boolean: Show pager, true or false
+		// 	nav: false,             // Boolean: Show navigation, true or false
+		// 	random: false,          // Boolean: Randomize the order of the slides, true or false
+		// 	pause: false,           // Boolean: Pause on hover, true or false
+		// 	pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+		// 	prevText: "Previous",   // String: Text for the "previous" button
+		// 	nextText: "Next",       // String: Text for the "next" button
+		// 	maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+		// 	navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+		// 	manualControls: "",     // Selector: Declare custom pager navigation
+		// 	namespace: "rslides",   // String: Change the default namespace used
+		// 	before: function(){},   // Function: Before callback
+		// 	after: function(){}     // Function: After callback
+		// });
 
 		// Magnific Popup
 		$('.popup-link').magnificPopup({
