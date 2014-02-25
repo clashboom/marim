@@ -1,3 +1,4 @@
+import pdb; pdb.set_trace()  # XXX BREAKPOINT
 # Happy Violence!
 import jinja2
 import logging
