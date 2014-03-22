@@ -20,17 +20,61 @@ green = #7FC028
 light-blue = #52D7FE
 blue = #00a6fc
 purple = #8E48C2
-white = #fff
+white = #f7f7f7
 black = #272727
 
-// Custom Palette
-c1 = lighten(blue, 10%)
-c2 = darken(blue, 20%)
-c3 = darken(blue, 80%)
-c4 = darken(white, 5%)
-c5 = white
+/* Colorscheme: Modified Sea Wolf */
+c1 = #ff6726  /* pure orange */
+c2 = #d9cb9e  /* cream beige */
+c3 = #374140  /* tire gray */
+c4 = #2a2c2b  /* asphalt */
+c5 = #1e1e20  /* night */
 
 // Grid Settings
 gutter = 3
 parent_first = false
 layout_direction = LTR
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+hidden()
+    display none !important
+    visibility hidden
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+visuallyhidden()
+    border 0
+    clip rect(0 0 0 0)
+    height 1px
+    margin -1px
+    overflow hidden
+    padding 0
+    position absolute
+    width 1px
+    /*
+    * Extends the .visuallyhidden class to allow the element to be focusable
+    * when navigated to via the keyboard: h5bp.com/p
+    */
+    .focusable:focus,
+    .focusable:active
+        clip auto
+        height auto
+        margin 0
+        overflow visible
+        position static
+        width auto
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+invisible() 
+    visibility hidden
+

@@ -1,4 +1,5 @@
-import pdb; pdb.set_trace()  # XXX BREAKPOINT
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 # Happy Violence!
 import jinja2
 import logging

@@ -13,6 +13,16 @@ handlers:
 
 - url: /bower_components
   static_dir: bower_components
+  
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /javascripts
+  static_dir: javascripts
+
+- url: /stylesheets
+  static_dir: stylesheets
 
 - url: /images
   static_dir: images

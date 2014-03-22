@@ -1,2 +1,180 @@
+#inner-wrap, #outer-wrap
+    position relative
+    width 100%
 
+#outer-wrap
+    overflow hidden
+
+.inner-wrapper
+    max-width 63.577em
+    margin 0 auto
+
+
+#top
+    z-index 100
+    position relative
+    .inner-wrapper
+        text-align center
+
+#nav
+    position relative
+    z-index 200
+    width 100%
+    overflow hidden
+    border-bottom 1px solid #ccc
+    .inner-wrapper
+        z-index 2
+        position relative
+    li
+        display block
+        a
+            text-transform uppercase
+            font-size ms(12)
+            font-weight 900
+            display block
+
+.menu-icon
+    display inline
+    width ms(25)
+    height ms(25)
+    margin-right ms(6)
+
+#tyre-list,
+#rim-list
+    ul
+        list-style-type none
+        padding-left 0
+    li
+        background white
+        border 1px solid #ccc
+        border-bottom none
+        padding ms(10)
+        margin-bottom 0
+        &:last-child
+            border-bottom 1px solid #ccc
+        img
+            max-width 100%
+            max-height 100%
+    .name
+        display block
+        width 100%
+        font-size ms(12)
+        line-height ms(14)
+        margin-bottom ms(2)
+    .price
+        font-size ms(12)
+        line-height ms(14)
+        margin-bottom ms(2)
+    .image-section
+        span(1/8)
+    .specification
+        span(5/8)
+    .offer
+        span(1/4)
+        text-align right
+
+.footerform,
+.footercontact,
+.footerhours,
+.footernav,
+.footerinfo,
+.footersearch
+    display block
+    max-width 100%
+    height 100%
+
+/* ==========================================================================
+    Main Content
+   ========================================================================== */
+#main .inner-wrapper,
+footer .inner-wrapper
+    padding-left 1.875em
+    padding-right 1.875em
+
+#main .inner-wrapper
+    padding-top 1.875em
+    padding-bottom 1.875em
+
+// Brandband
+.brandband
+    clear both
+    .brand
+        width 75px
+        height 25px
+        margin-right 1em
+        margin-top 1em
+        display inline-block
+
+table
+    border 1px solid #ddd
+    td,
+    th
+        white-space nowrap
+
+    tr:nth-child(odd) td
+    tr:nth-child(odd) th
+        background #eee
+
+    th+th,
+    td+td,
+    th+td,
+    td+th
+        border-left 1px solid #ddd
+    th:not(:first-child):hover
+       cursor pointer
+       text-decoration underline
+
+
+.bridgestone
+    background url('http://www.placecage.com/g/180/150') no-repeat -15px 0px
+.aeolus
+    background url('http://www.placecage.com/g/180/150') no-repeat 0px 0px
+.firestone
+    background url('http://www.placecage.com/g/180/150') no-repeat -30px -50px
+.fulda
+    background url('http://www.placecage.com/g/180/150') no-repeat -45px -75px
+.goodyear
+    background url('http://www.placecage.com/g/180/150') no-repeat -60px 0px
+.kormoran
+    background url('http://www.placecage.com/g/180/150') no-repeat 0px -25px
+.matador
+    background url('http://www.placecage.com/g/180/150') no-repeat -15px -50px
+.michelin
+    background url('http://www.placecage.com/g/180/150') no-repeat -30px -75px
+.kumho
+    background url('http://www.placecage.com/g/180/150') no-repeat -75px -25px
+
+
+/* ==========================================================================
+    Footer
+   ========================================================================== */
+.footerrow
+    @extends $cf
+    h6
+        font-weight 900
+        padding-bottom ms(10)
+    &:first-child
+        background-color c3
+        color black
+        padding-top 2.5em
+        padding-bottom 2em
+        a:hover
+            color white
+    &:nth-child(2)
+        background-color c4
+        padding-top 2.5em
+        padding-bottom 2.5em
+        h6
+            color c1
+        a,
+        label
+            color white
+        a:hover
+            color c1
+    &:last-child
+        background-color c5
+        color c4
+        a
+            color c4
+        padding 1.2em 0
 

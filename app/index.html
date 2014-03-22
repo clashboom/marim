@@ -1,478 +1,527 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BroPro - Kravas un vieglo automašīnu riepu tirdzniecība un serviss</title>
-        <meta  name="description" content="Kravas un vieglo auto riepas un serviss. Kvalitāte par draudzīgām cenām. Pēc pieprasījuma strādājam arī ārpus darba laika." />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
 
-        <script type="text/javascript">
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-37852642-1']);
-          _gaq.push(['_trackPageview']);
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
 
-          (function() {
-           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-           })();
-         </script>
+  <title>BroPro - Kravas un vieglo auto riepu tirdzniecība un serviss</title>
+  
+  <!-- Included CSS Files (Uncompressed) -->
+  <!--
+  <link rel="stylesheet" href="stylesheets/foundation.css">
+  -->
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css" title='default'>
 
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/magnific-popup.css">
-        <script src="scripts/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-      <div id="outer-wrap">
-      <div id="inner-wrap">
-        <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <script src="javascripts/modernizr.foundation.js"></script>
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-FaIM3d2-r2Wf6bOXyab2YUy2U7Y2Z0k&sensor=true"> </script>
 
+</head>
+<body>
 
-        <header id="top" role="banner">
-        <div class="inner-wrapper">
-          <h1 class="logo">BroPro</h1>
-          <span class="subtitle">Riepu serviss</span>
-          <a href="#nav" id="nav-open">Izvēlne</a>
-        </div>
-        </header>
-
-
-        <nav id="nav" role="navigation">
-        <div class="inner-wrapper">
+  
+  <!-- Header and Nav -->
+  <!-- Basic Needs -->
+  <div id="header">
+      <div class="row topnavwrap" id="navbar">
+          <nav class="top-bar" role="navigation">
           <ul>
-            <li><a href="#"><span class="menu-icon">A</span>Riepas</a></li>
-            <li><a href="#"><span class="menu-icon">B</span>Diski</a></li>
-            <li class="active"><a href="#"><span class="menu-icon">C</span>Serviss</a></li>
-            <li><a href="#"><span class="menu-icon">D</span>Par Mums</a></li>
+              <li class="name brandname"><h1><a href="#header"> BroPro </a></h1></li>
+              <li class="toggle-topbar right name"><a href="#"></a></li>
           </ul>
-          <a id="nav-close" href="#top">Atgriezties uz lapu</a>
-        </div>
-        </nav>
 
-
-        <section id="main" role="main">
-          <div class="inner-wrapper">
-
-
-            <div class="gallery">
-            <ul class="rslides">
-              <li><img src="http://placecage.com/1000/300" alt="Calm Cage" ></li>
-              <li><img src="http://placecage.com/g/1000/300" alt="Grey Cage "></li>
-              <li><img src="http://placecage.com/c/1000/300" alt="Crazy Cage"></li>
-            </ul>
-            </div>
-
-            <p>Searchy thing. Fuzzy search. Means you can type fuzzy. This site
-            is gonna be so encaging.</p>
-
-            <div id="tire-list">
-
-              <table class="table">
-                <caption>
-                  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
-                </caption>
-                <thead>
-
-                  <tr>
-                    <th>Attēls</th>
-                    <th class="sort" data-sort="size">Izmērs</th>
-                    <th class="sort" data-sort="index">Indekss</th>
-                    <th class="sort" data-sort="brand">Marka</th>
-                    <th class="sort" data-sort="model">Modelis</th>
-                    <th class="sort" data-sort="kind">Tips</th>
-                    <th class="sort" data-sort="price">Cena</th>
-                  </tr>
-
-                </thead>
-                <tbody class="list">
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/40/40" alt="Tires"></a></td>
-                    <td class="size">195/70 R15</td>
-                    <td class="index">104R</td>
-                    <td class="brand">Matador</td>
-                    <td class="model">MPS 530</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">50,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/43/47" alt="Tires"></a></td>
-                    <td class="size">195/65 R15</td>
-                    <td class="index">91T</td>
-                    <td class="brand">Matador</td>
-                    <td class="model">MP 92</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">33,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/44/44" alt="Tires"></a></td>
-                    <td class="size">195/65 R15</td>
-                    <td class="index">104R</td>
-                    <td class="brand">Marshal</td>
-                    <td class="model">KW 22</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">37,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/45/40" alt="Tires"></a></td>
-                    <td class="size">205/55 R16</td>
-                    <td class="index">94H</td>
-                    <td class="brand">Matador</td>
-                    <td class="model">MP 59</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">45,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/46/46" alt="Tires"></a></td>
-                    <td class="size">205/55 R16</td>
-                    <td class="index">91T</td>
-                    <td class="brand">Marshal</td>
-                    <td class="model">KW 22</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">50,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/40/48" alt="Tires"></a></td>
-                    <td class="size">205/55 R16</td>
-                    <td class="index">91T</td>
-                    <td class="brand">Debica</td>
-                    <td class="model">Frigo 2</td>
-                    <td class="kind">Ziemas</td>
-                    <td class="price">42,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/42/44" alt="Tires"></a></td>
-                    <td class="size">8,5 R17</td>
-                    <td class="index">121L</td>
-                    <td class="brand">Michelin</td>
-                    <td class="model">HZT</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">25,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/45/44" alt="Tires"></a></td>
-                    <td class="size">235/75 R17</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Aeolus</td>
-                    <td class="model">HN804</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">110,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/44/43" alt="Tires"></a></td>
-                    <td class="size">255/55 R18</td>
-                    <td class="index">109H</td>
-                    <td class="brand">Aeolus</td>
-                    <td class="model">Scorpion</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">15,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/44/46" alt="Tires"></a></td>
-                    <td class="size">220x508 R18</td>
-                    <td class="index">88Q</td>
-                    <td class="brand">GAZ</td>
-                    <td class="model">MI</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">15,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/40/42" alt="Tires"></a></td>
-                    <td class="size">385/65 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Semperit</td>
-                    <td class="model">M350</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">290,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/50/51" alt="Tires"></a></td>
-                    <td class="size">385/55 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Aeolus</td>
-                    <td class="model">HN809</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">230,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/51/50" alt="Tires"></a></td>
-                    <td class="size">385/65 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Aeolus</td>
-                    <td class="model">HN805</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">210,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/49/50" alt="Tires"></a></td>
-                    <td class="size">385/65 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Matador</td>
-                    <td class="model">FH2</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">250,00 Ls</td>
-
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/50/48" alt="Tires"></a></td>
-                    <td class="size">315/80 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Fullrun</td>
-                    <td class="model">TB755</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">175,00 Ls</td>
-
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/48/50" alt="Tires"></a></td>
-                    <td class="size">315/70 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Continental</td>
-                    <td class="model">X</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">30,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/46/50" alt="Tires"></a></td>
-                    <td class="size">315/80 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Aeolus</td>
-                    <td class="model">HN 355</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">220,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/50/46" alt="Tires"></a></td>
-                    <td class="size">315/70 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Marshal</td>
-                    <td class="model">RS03</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">250,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/50/43" alt="Tires"></a></td>
-                    <td class="size">315/70 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Roudlux</td>
-                    <td class="model">R326</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">35,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/50/45" alt="Tires"></a></td>
-                    <td class="size">315/80 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Firestone</td>
-                    <td class="model">XDE2</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">160,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/49/46" alt="Tires"></a></td>
-                    <td class="size">11 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Matador</td>
-                    <td class="model">DR1</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">45,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/48/46" alt="Tires"></a></td>
-                    <td class="size">385/55 R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Continental</td>
-                    <td class="model">HTL1</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">45,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/47/46" alt="Tires"></a></td>
-                    <td class="size">385/55 R22.5</td>
-                    <td class="index">130J</td>
-                    <td class="brand">Kumho</td>
-                    <td class="model">KLA11</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">280,00 Ls</td>
-                  </tr>
-
-                  <tr>
-                    <td><a class="popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/41/46" alt="Tires"></a></td>
-                    <td class="size">13R R22.5</td>
-                    <td class="index">130L</td>
-                    <td class="brand">Rockstone</td>
-                    <td class="model">ST957</td>
-                    <td class="kind">Vissez.</td>
-                    <td class="price">185,00 Ls</td>
-                  </tr>
-
-                </tbody>
-              </table>
-
-            </div>
-
-
-          </div>  <!-- end of wrapper -->
-        </section>
-
-
-        <footer>
-        <div class="footerrow">
-          <div class="inner-wrapper">
-            <div class="footersearch">
-              <form action="" method="">
-                <input type="search" name="fsearch" id="fsearch" placeholder="Meklēšana" />
-                <input type="submit" name="submit" class="submit btn" value="Meklēt!" />
-              </form>
-              <div class="brandband">
-                  <span class="brand bridgestone"></span>
-                  <span class="brand firestone"></span>
-                  <span class="brand kormoran"></span>
-                  <span class="brand michelin"></span>
-                  <span class="brand fulda"></span>
-                  <span class="brand goodyear"></span>
-                  <span class="brand kumho"></span>
-                  <span class="brand aeolus"></span>
-                  <span class="brand matador"></span>
+              <div class="top-icons name left hide-for-small">
+                  <span class="top-icon riepas"></span>
+                  <span class="top-icon serviss"></span>
+                  <span class="top-icon thumbsup"></span>
               </div>
-            </div>
 
-            <ul class="footercontact">
-              <h6>BroPro SIA</h6>
-              <li>Adrese: Dzirnieku iela 11, Lidosta Rīga, Mārupes novads, LV-2167</li>
-              <li>E-pasta adrese: info@bropro.lv</li>
-              <li>
-              <em>Agris Jākobsons</em>
-              <span class='mobile'><a href="tel:+37129297468">+371 29297468</a></span>
-              <span class="flagbox"><span class="flag lv"></span></span>
-              <span class="flagbox"><span class="flag ru"></span></span>
-              </li>
-              <li>
-              <em>Māris Jākobsons</em>
-              <span class='mobile'><a href="tel:+37129141140">+371 29141140</a></span>
-              <span class="flagbox"><span class="flag lv"></span></span>
-              <span class="flagbox"><span class="flag ru"></span></span>
-              <span class="flagbox"><span class="flag de"></span></span>
-              <span class="flagbox"><span class="flag gb"></span></span>
-              </li>
-            </ul>
+          <ul class="right">
+              <li><a href="#homeRiepas">Riepas</a></li>
+              <li><a href="#homeDiski">Diski</a></li>
+              <li><a href="#homeServiss">Serviss</a></li>
+              <li><a href="#homeCenas">Cenas</a></li>
+              <li><a href="#homeParMums">Par Mums</a></li>
+              <li><a href="#header">Kontakti</a></li>
+          </ul>
 
-            <ul class="footerhours">
-              <h6>Darba laiks:</h6>
-              <li> Pirmdiena - Piektdiena: 9<sup>00</sup> - 19<sup>00</sup></li>
-              <li> Sestdiena:   9<sup>00</sup> - 16<sup>00</sup></li>
-              <li> Svētdiena:  Slēgts *</li>
-              <em>* Strādajam pēc pieprasījuma arī ārpus darba laika.
-                Nepieciešamības gadījumā zvaniet pa norādītajiem tālruņiem. </em>
-            </ul>
-
-          </div>  <!-- end of wrapper -->
-        </div>
-
-
-
-
-        <div class="footerrow">
-          <div class="inner-wrapper">
-            <ul class="footernav">
-            <h6>Navigācija</h6>
-              <li><a href="#">Riepas</a></li>
-              <li><a href="#">Diski</a></li>
-              <li><a href="#">Serviss</a></li>
-              <li><a href="#">Par uzņēmumu</a></li>
-              <li><a href="#">Kā mūs atrast?</a></li>
-              <li><a href="#">Lapas karte</a></li>
-            </ul>
-
-            <ul class="footerinfo">
-              <h6>Informācija</h6>
-              <li><a href="#">Jaunumi</a></li>
-              <li><a href="#">Biežak uzdotie jautājumi</a></li>
-              <li><a href="#">Noderīga informācija</a></li>
-              <li><a href="#">Par riepām</a></li>
-              <li><a href="#">Par diskiem</a></li>
-              <li><a href="#">Par servisu</a></li>
-              <li><a href="#">Uzņēmuma rekvizīti</a></li>
-            </ul>
-
-
-            <div class="footerform">
-              <h6>Nepieciešama palīdzība?</h6>
-              <form id="footerform" method="POST" accept-charset="utf-8">
-                <label for="name">Vārds:
-                <input type="text" name="name" id="name" value="" placeholder="Jūsu vārds" />
-                </label>
-                <label for="cinfo">Kontaktinformācija:
-                  <input type="text" name="cinfo" id="cinfo" value=""
-                  placeholder="E-pasts vai telefons" />
-                  <!-- <span class="error">You suck!</span> -->
-                </label>
-                <label for="message">Ziņa:
-                  <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
-                </label>
-                <input type="submit" name="submit" class="submit btn" value="Sūtīt!" />
-              </form>
-
-            </div>
-          </div>  <!-- end of wrapper -->
-        </div>
-
-        <div class="footerrow bottomrow">
-          <div class="inner-wrapper">
-            <span class="footerlogo">&copy; BroPro 2014</span>
-            <span class="backtop">
-              <a href="#top">Uz lapas sākumu</a>
-            </span>
-          </div>  <!-- end of wrapper -->
-        </div>
-        </footer>
-
-
-
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-
-        <script data-main="scripts/main"
-          src="bower_components/requirejs/require.js" type="text/javascript"></script>
+          </nav>
       </div>
+</div>
+  <!-- End Header and Nav -->
+  
+  
+  <!-- First Band (Map & Contacts) -->
+  <div class="wrapper band-one" id="homeKontakti">
+      <div class="row">
+          <div class='six columns'>
+              <div class="row">
+                  <div class="six columns">
+                      <h5>Kontaktinformācija</h5>
+                      <hr />
+                      <ul class="no-bullet large">
+                          <li>Dzirnieku iela 11, Lidosta Rīga, Mārupes novads, LV-1053</li>
+                          <li>
+                                <span class='mobile'><a href="tel:+37129297468">+371 29297468</a></span>
+                                <span class="lang-icon lv"></span>
+                                <span class="lang-icon rus"></span>
+                          </li>
+                          <li>
+                                <span class='mobile'><a href="tel:+37129141140">+371 29141140</a></span>
+                                <span class="lang-icon lv"></span>
+                                <span class="lang-icon rus"></span>
+                                <span class="lang-icon de"></span>
+                                <span class="lang-icon en"></span>
+                          </li>
+                          <li class="email"><a href="mailto:info@bropro.lv">info@bropro.lv</a></li>
+                      </ul>
+                  </div>
+                  <div class="six columns">
+                      <h5>Darba laiks</h5>
+                      <hr />
+                      <ul class="no-bullet large">
+                          <li> P-P: 9:00 - 19:00</li>
+                          <li> S:   9:00 - 16:00</li>
+                          <li> Sv:  Slēgts</li>
+                      </ul>
+
+                  </div>
+              </div>
+              <!--info panel-->
+              <div class="row">
+                  <div class="eleven columns"r>
+                      <h5>Strādājam arī ārpus darba laika!</h5>
+                      <p>Atkarībā no pieprasījuma, strādājam arī ārpus norādītā darba laika un arī brīvdienās!
+                          Nepieciešamības gadījumā vai sīkākai informācijai droši zvaniet uz augstākminētajiem tālruņiem!</p>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class='six columns'>
+              <div class="mapwrapper">
+                  <div id="map_canvas" ></div>
+                  <div class="hidden" id="directions_panel"></div>
+              </div>
+          </div>
       </div>
-    </body>
+  </div>
+  
+  <div class="band-three">
+      <div class="row zimoli text-center">
+          <span class="zimols bridgestone"></span>
+          <span class="zimols firestone"></span>
+          <span class="zimols kormoran"></span>
+          <span class="zimols michelin"></span>
+          <span class="zimols fulda"></span>
+          <span class="zimols goodyear"></span>
+          <span class="zimols kumho"></span>
+          <span class="zimols aeolus"></span>
+          <span class="zimols matador"></span>
+      </div>
+  </div>
+  
+  <!-- Three-up Content Blocks -->
+  <div class="wrapper band-two" role="main">
+      <div class="row" id="homeParMums">
+          <h4>Kas ir BroPro?</h4>
+          <div class="four columns">
+              <p>Mēs esam kvalificēts kravas un vieglo auto riepu un disku serviss. Sertificēti darbinieki ar vairāk kā 15
+                  gadu pieredzi labprāt sniegs konsultācijas, atbildēs uz Jūsu jautājumiem un palīdzēs izvēlēties tieši Jums
+                  piemērotāko risinājumu! </p>
+          </div>
+          <div class="eight columns hide-for-small">
+              <div class="six columns">
+              <span class="aboutpic pic-riepas"></span>
+              </div>
+              <div class="six columns">
+              <span class="aboutpic pic-smagais"></span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row">
+
+          <hr />
+
+          <h4>Ko mēs piedāvājam?</h4>
+
+          <div class="four columns" id="homeRiepas">
+              <span class="servicepic icon-riepas"></span>
+              <h5>Riepas</h5>
+              <p>Piedāvājam dažādu veidu jaunas un lietotas kravas auto, mikroautobusu, apvidus un vieglo auto riepas,
+              plašā sortimentā un dažādās cenu grupās - sākot no budžeta līdz premium tipa brandiem.</p>
+          </div>
+
+          <div class="four columns" id="homeDiski">
+              <span class="servicepic icon-diski"></span>
+              <h5>Diski</h5>
+              <p>Piedāvājam arī jaunus un lietotus kravas un vieglo automašīnu diskus. Pagaidām disku sortiments ir relatīvi neliels. Sīkākai informācijai lūdzam sazināties ar mums.</p>
+          </div>
+
+          <div class="four columns" id="homeServiss">
+              <span class="servicepic icon-serviss"></span>
+              <h5>Serviss</h5>
+              <p>Uz vietas veicam visu veida kravas, apvidus, mikroautobusu un vieglo auto riepu montāžu un
+              balansēšanu. Veicam arī riepu remontu, sākot ar vienkāršu diegu ievēršanu un beidzot ar nopietnu
+              sānu defektu labošanu ar vulkanizācijas metodi. Veicam arī riepu protektora padziļināšanu. Darbi tiek
+              veikti ar kvalitatīvu specializētu servisa aprīkojumu pieredzējušu darbinieku vadībā.</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="wrapper band-three">
+      <div class="row cenas" id="homeCenas">
+          <h4>Cenas</h4>
+          <dl class="tabs pill">
+              <dd class="active"><a href="#kravas">Kravas auto</a></dd>
+              <dd><a href="#vieglais">Vieglais auto</a></dd>
+          </dl>
+
+          <ul class="tabs-content">
+              <li class="active" id="kravasTab">
+                  <dl class="tabs three-up">
+                      <dd class="active"><a href="#kriepas">Riepas</a></dd>
+                      <dd><a href="#kdiski">Diski</a></dd>
+                      <dd class=""><a href="#kserviss">Serviss</a></dd>
+                  </dl>
+                  <ul class="tabs-content">
+                      <li class="active" id="kriepasTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Kravas auto riepas</th>
+                                      <th>Jaunas</th>
+                                      <th>Lietotas</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                              <!--     <tr> -->
+                              <!--         <td>315/80-22.5</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--     </tr> -->
+                              <!--     <tr> -->
+                              <!--         <td>315/80-22.5</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--     </tr> -->
+                              <!--     <tr> -->
+                              <!--         <td>315/80-22.5</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--     </tr> -->
+                              <!--     <tr> -->
+                              <!--         <td>315/80-22.5</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--     </tr> -->
+                              <!--     <tr> -->
+                              <!--         <td>315/80-22.5</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--         <td>99.99 LVL</td> -->
+                              <!--     </tr> -->
+                              </tbody>
+                          </table>
+
+                      </li>
+                      <li id="kdiskiTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Kravas auto diski</th>
+                                      <th>Jauni</th>
+                                      <th>Lietoti</th>
+                                      <th>Piezīmes</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                                  <!-- <tr> -->
+                                  <!--     <td>22.50x9.00</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>22.50x9.00</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>22.50x9.00</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>22.50x9.00</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                              </tbody>
+                          </table>
+                      </li>
+                      <li id="kservissTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Pakalpojums kravas auto</th>
+                                      <th>Cena</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu montāža</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu balansēšana</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu remonts - diegu ievēršana</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu remonts - vulkanizācija</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!-- </tr> -->
+                              </tbody>
+                          </table>
+                      </li>
+                  </ul>
+              </li> <!--end of smagais tab-->
+
+
+              <li id="vieglaisTab">
+                  <dl class="tabs three-up">
+                      <dd class="active"><a href="#vriepas">Riepas</a></dd>
+                      <dd><a href="#vdiski">Diski</a></dd>
+                      <dd class=""><a href="#vserviss">Serviss</a></dd>
+                  </dl>
+                  <ul class="tabs-content">
+                      <li class="active" id="vriepasTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Vieglo auto riepas</th>
+                                      <th>Jaunas</th>
+                                      <th>Lietotas</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                                  <!-- <tr> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>255/55-18</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>255/55-18</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>255/55-18</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                              </tbody>
+                          </table>
+                      </li>
+
+                      <li id="vdiskiTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Vieglo auto diski</th>
+                                      <th>Jauni</th>
+                                      <th>Lietoti</th>
+                                      <th>Piezīmes</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                                  <!-- <tr> -->
+                                  <!--     <td>18"</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>19"</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>21"</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>22"</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td>99.99 LVL</td> -->
+                                  <!--     <td> -->
+                                  <!--         <a href="#">Galerija</a> -->
+                                  <!--     </td> -->
+                                  <!-- </tr> -->
+                              </tbody>
+                          </table>
+                      </li>
+
+                      <li id="vservissTab">
+                          <table class="twelve">
+                              <thead>
+                                  <tr>
+                                      <th>Pakalpojums vieglajam auto</th>
+                                      <th>Cena</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  Drīzumā
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu montāža</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu balansēšana</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu remonts - diegu ievēršana</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                                  <!-- <tr> -->
+                                  <!--     <td>Riepu remonts - vulkanizācija</td> -->
+                                  <!--     <td>88.88 LVL</td> -->
+                                  <!-- </tr> -->
+                              </tbody>
+                          </table>
+                      </li>
+                  </ul>
+              </li> <!--end of vieglais-->
+          </ul>
+
+      </div>
+      <!-- <div class="row"> -->
+      <!--     <hr /> -->
+      <!-- </div> -->
+      <!-- <div class="row zimoli text-center"> -->
+      <!--     <img src="images/bridgestone.png" />  -->
+      <!--     <img src="images/firestone.png" />  -->
+      <!--     <img src="images/kormoran.png" />  -->
+      <!--     <img src="images/michelin.png" />  -->
+      <!--     <img src="images/fulda.png" />  -->
+      <!--     <img src="images/goodyear.png" />  -->
+      <!--     <img src="images/kumho.png" />  -->
+      <!--     <img src="images/aeolus.png" />  -->
+      <!--     <img src="images/matador.png" />  -->
+      <!-- </div> -->
+  </div> <!--end of band three-->
+  
+  <div class="wrapper band-four">
+      <div class="row">
+      </div>
+  </div>
+
+  
+  
+  <!-- Footer -->
+  
+  <div class="wrapper band-five">
+      <footer class="row">
+              <div class="six columns">
+                  <p>&copy; BroPro 2012</p>
+              </div>
+              <div class="six columns">
+                  <!-- <ul class="link-list right"> -->
+                  <!--     <li>Seko mums:</li> -->
+                  <!--     <li><a href="#">Facebook</a></li> -->
+                  <!--     <li><a href="#">Draugiem.lv</a></li> -->
+                  <!--     <li><a href="#">Twitter</a></li> -->
+                  <!-- </ul> -->
+              <span class="notice right">Lapa izstrādes stadijā. Atvainojamies
+                  par sagādātajām neērtībām. :) </span>
+              </div>
+      </footer>
+  </div>
+  
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+  
+  <script src="javascripts/jquery.js"></script>
+  
+  <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+  
+  <script src="javascripts/jquery.foundation.forms.js"></script>
+  
+  <script src="javascripts/jquery.foundation.navigation.js"></script>
+  
+  <script src="javascripts/jquery.foundation.buttons.js"></script>
+  
+  <script src="javascripts/jquery.foundation.tabs.js"></script>
+  
+  <script src="javascripts/jquery.foundation.tooltips.js"></script>
+  
+  <script src="javascripts/jquery.foundation.accordion.js"></script>
+  
+  <script src="javascripts/jquery.placeholder.js"></script>
+  
+  <script src="javascripts/jquery.foundation.alerts.js"></script>
+  
+  <script src="javascripts/jquery.foundation.topbar.js"></script>
+  
+  -->
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="javascripts/app.js">
+  </script>
+
+  <script type="text/javascript">
+     /* $(window).load(function() { */
+     /*     $('#slider').orbit(); */
+     /*  }); */
+  </script>
+</body>
 </html>

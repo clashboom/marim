@@ -1,0 +1,242 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+/* Colorscheme: Modified Sea Wolf */
+/* #ff6726 - pure orange */
+/* #d9cb9e - cream beige */
+/* #374140 - tire gray */
+/* #2a2c2b - asphalt */
+/* #1e1e20 - night */
+
+/* light text - #fff8d3 */
+
+body { background: #374140; }
+
+/* Top bar */
+
+/* .top-bar { background: #ff6726;} */
+/* .top-bar ul.right li a { color: #2a2c2b; } */
+/* .top-bar ul > li h1 a:hover { color: #2a2c2b; background: #ff6726; } */
+/* .top-bar section > ul > li a:hover { color: #ff6726; background: #374140; } */
+/* .top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a, .top-bar ul > li:not(.name):focus a { color: #ff6726; } */
+
+
+@media only screen and (min-width: 940px) { 
+
+#header { background: #ff6726; }
+.topnavwrap .top-bar { background: #ff6726; }
+.topnavwrap .top-bar {height: 90px; line-height: 90px; margin: 0; padding: 0;}
+.topnavwrap .top-bar > ul .name h1 {  line-height: 90px; margin: 0; }
+.topnavwrap .top-bar > ul .name h1 a { font-weight: bold; padding: 0 22.5px; font-size: 36px !important; }
+.topnavwrap .top-bar > ul .name img { margin-top: -5px; vertical-align: middle; }
+.topnavwrap .top-bar ul { margin-left: 0; display: inline; height: 90px; line-height: 90px; list-style: none; }
+.topnavwrap .top-bar ul > li a:not(.button) { color: #374140; display: block; font-size: 1em; font-weight: bold; height: 90px; line-height: 90px; padding: 0 15px; }
+.topnavwrap .top-bar ul > li h1 a:hover { color: #d9cb9e; background: #ff6726; }
+.topnavwrap .top-bar ul > li a:hover { color: #ff6726; background: #374140 url('../images/bandonebg.jpg') repeat 0px 0px; }
+ }
+
+.topnavwrap .top-bar ul > li.brandname h1 a { color: #2a2c2b; }
+
+.fixednavwrap { background: #2a2c2b; }
+.fixednavwrap .top-bar { background: #2a2c2b;}
+.fixednavwrap .top-bar ul li.name h1 a { color: #ff6726; background: #2a2c2b; }
+.fixednavwrap .top-bar ul.right li a { color: #d9cb9e; }
+.top-bar {margin-bottom: 0;}
+.fixednavwrap .top-bar ul > li h1 a:hover { color: #2a2c2b; background: #ff6726; }
+.fixednavwrap .top-bar ul > li a:hover { color: #ff6726; background: #374140; }
+
+.fixednavwrap, .topnavwrap { 
+    -webkit-box-shadow: 0px 0px 4px 1px transparent;
+    box-shadow: 0px 0px 4px 1px transparent;
+    background: #2a2c2b;
+}
+
+.mapwrapper, .band-three {
+    -moz-box-shadow: 1px 1px 4px 1px #222;
+    -webkit-box-shadow: 1px 1px 4px 1px #222;
+    box-shadow: 1px 1px 4px 1px #222;
+
+}
+
+.topnavwrap, .fixednavwrap {
+    -webkit-transition: width .2s ease-in-out;
+    -moz-transition: width .2s ease-in-out;
+    -ms-transition: width .2s ease-in-out;
+    transition: width .2s ease-in-out;
+}
+
+.wrapper { padding-bottom: 20px;}
+
+/* COLOR BAND STYLES */
+/* ================= */
+
+.band-one, .band-two, .band-three, .band-four, .band-five {
+    padding: 20px 0;
+}
+
+.band-one, .band-two, .band-five, .panel.callout p { color: #fff8d3; }
+
+.band-one { background: #374140 url('../images/bandonebg.jpg') repeat top left;}
+
+div.band-one h5 { color: #ff6726; }
+
+.band-two { background-color: #ff6726;}
+
+.band-three { background: #d9cb9e;}
+.band-three hr { border-color: #2a2c2b; }
+
+.band-four { background: #2a2c2b;}
+
+.band-five { background: #1e1e20;}
+
+.topnavwrap .top-icon {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    margin-top: 1.3em;
+}
+
+.top-icons { height: inherit; }
+.top-icon.riepas { background: url('../images/broprosprites.png') no-repeat -350px -100px; }
+.top-icon.serviss { background: url('../images/broprosprites.png') no-repeat -395px -100px; }
+.top-icon.thumbsup { background: url('../images/broprosprites.png') no-repeat -440px -100px; }
+
+
+
+.topnavwrap .top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus {
+    background: inherit;
+}
+
+.fixednavwrap .top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus {
+    background: #ff6726;
+}
+
+.topnavwrap .topbar-pic#topbar-riepas {
+background-image: url("../images/topbarriepas.png");
+}
+
+.topnavwrap .topbar-pic#topbar-diski {
+background-image: url("../images/topbarserviss.png");
+}
+
+.topnavwrap .topbar-pic#topbar-serviss {
+background-image: url("../images/topbarok.png");
+}
+
+
+.zimols {
+    width: 150px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.notice { color: #555; }
+
+.bridgestone { background: url('../images/broprosprites.png') no-repeat -150px 0px; }
+.aeolus { background: url('../images/broprosprites.png') no-repeat 0px 0px; }
+.firestone { background: url('../images/broprosprites.png') no-repeat -300px 0px; }
+.fulda { background: url('../images/broprosprites.png') no-repeat -450px 0px; }
+.goodyear { background: url('../images/broprosprites.png') no-repeat -600px 0px; }
+.kormoran { background: url('../images/broprosprites.png') no-repeat 0px -50px; }
+.matador { background: url('../images/broprosprites.png') no-repeat -150px -50px; }
+.michelin { background: url('../images/broprosprites.png') no-repeat -300px -50px; }
+.kumho { background: url('../images/broprosprites.png') no-repeat -450px -50px; }
+
+.lang-icon {
+    width: 16px;
+    height: 11px;
+    display: inline-block;
+}
+
+.lang-icon.en { background: url('../images/broprosprites.png') no-repeat -350px -145px; }
+.lang-icon.lv { background: url('../images/broprosprites.png') no-repeat -366px -145px; }
+.lang-icon.rus { background: url('../images/broprosprites.png') no-repeat -382px -145px; }
+.lang-icon.de { background: url('../images/broprosprites.png') no-repeat -398px -145px; }
+
+.servicepic {
+    width: 110px;
+    height: 110px;
+    display: block;
+}
+
+.servicepic.icon-riepas { background: url('../images/broprosprites.png') no-repeat -110px -100px; }
+.servicepic.icon-diski { background: url('../images/broprosprites.png') no-repeat -220px -100px; }
+.servicepic.icon-serviss { background: url('../images/broprosprites.png') no-repeat 0px -100px; }
+
+.mobile a, .email a { color: inherit; }
+
+.aboutpic {
+    border: 5px solid #2a2c2b;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    /* width: 100%; */
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    -moz-box-shadow: 1px 1px 4px 1px #222;
+    -webkit-box-shadow: 1px 1px 4px 1px #222;
+    box-shadow: 1px 1px 4px 1px #222;
+}
+
+.aboutpic.pic-riepas { background: url('../images/broprosprites.jpg') repeat 0px 0px; }
+.aboutpic.pic-smagais { background: url('../images/broprosprites.jpg') repeat -250px 0px; }
+
+
+div.mapwrapper {
+    height: 25em;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+    color: #222;
+}
+
+
+.cenas a:hover { font-weight: 900; }
+a, a:hover { color: #ff6726; }
+
+
+/* Tabs ---------------------- */
+.tabs { border-bottom: solid 1px #2a2c2b; }
+.tabs dd.active, .tabs li.active { border-top: 3px solid #ff6726;}
+.tabs dd.active a, .tabs li.active a {  color: #fff8d3; background: #2a2c2b; border-left: 1px solid #1e1e20; border-right: 1px solid #1e1e20;}
+
+.tabs.pill dd a, .tabs.pill li a { background: #e6e6e6; color: #666; }
+.tabs.pill dd.active a, .tabs.pill li.active a { background-color: #ff6726; color: #fff8d3; }
+
+
+/* Tables ---------------------- */
+/* table { background: #d9cb9e; border: 1px solid #ddd; } */
+/* table thead, table tfoot { background: #d9cb9e; } */
+/* table thead tr th, table tfoot tr td { color: #222; } */
+/* table tbody tr.even, table tbody tr.alt { background: #fff8d3; } */
+/* table tbody tr:nth-child(even) { background: #fff8d3; } */
+/* table tbody tr td { color: #333; } */
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+
+
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+
