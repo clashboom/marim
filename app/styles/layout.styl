@@ -29,8 +29,6 @@
         display block
         a
             text-transform uppercase
-            font-size ms(12)
-            font-weight 900
             display block
 
 .menu-icon
@@ -45,6 +43,12 @@
         list-style-type none
         padding-left 0
     li
+        *zoom: 1
+        &:before, &:after
+            content: ''
+            display: table
+        &:after
+            clear: both
         background white
         border 1px solid #ccc
         border-bottom none
@@ -149,17 +153,23 @@ table
     Footer
    ========================================================================== */
 .footerrow
-    @extends $cf
+    *zoom: 1
+    &:before, &:after
+        content: ''
+        display: table
+    &:after
+        clear: both
     h6
         font-weight 900
         padding-bottom ms(10)
     &:first-child
         background-color c3
-        color black
+        color white
         padding-top 2.5em
         padding-bottom 2em
+        h6,
         a:hover
-            color white
+            color c2
     &:nth-child(2)
         background-color c4
         padding-top 2.5em
@@ -173,8 +183,10 @@ table
             color c1
     &:last-child
         background-color c5
-        color c4
+        color c3
+        padding 20px 0
         a
-            color c4
-        padding 1.2em 0
+            color c3
+            &:hover
+                color c1
 
