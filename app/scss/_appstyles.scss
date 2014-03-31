@@ -1,0 +1,206 @@
+/* all app scss styles here */
+
+/* Temp styles */
+/* =========== */
+#main { min-height: 200px; }
+
+
+.main-outer-wrap {
+}
+
+.main-section
+{
+  min-height: 700px;
+  background-color: $white;
+}
+
+.example-orbit-content {
+  max-height: 1500px;
+}
+
+/* Settings */
+/* ======== */
+
+
+footer li {
+  list-style-type: none;
+}
+
+/* Base */
+/* ==== */
+
+/* Layout */
+/* ====== */
+.main-section > .row {
+  padding: rem-calc(20);
+}
+
+
+/* Modules */
+/* ======= */
+
+.mobile { display: block; }
+
+/* Top-bar */
+.menu-icon,
+.top-bar-section .menu-icon {
+  margin-right: rem-calc(8);
+}
+
+.tab-bar h1.name {
+    padding-right: rem-calc(20);
+}
+
+
+/*  Flags */
+.flag {
+  width: 16px;
+  height: 11px;
+  display: inline-block;
+}
+
+.flag.gb { background: url('../images/broprosprites.png') no-repeat -350px -145px; }
+.flag.lv { background: url('../images/broprosprites.png') no-repeat -366px -145px; }
+.flag.ru { background: url('../images/broprosprites.png') no-repeat -382px -145px; }
+.flag.de { background: url('../images/broprosprites.png') no-repeat -398px -145px; }
+
+/* Brandband */
+.brand-logo {
+  height: 25px;
+  width: 75px;
+  display: inline-block;
+}
+
+.bridgestone { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.aeolus { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.firestone { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.fulda { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.goodyear { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.kormoran { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.matador { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.michelin { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.kumho { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+
+.bridgestone { background: url('../images/broprosprites.png') no-repeat -150px 0px; }
+.aeolus { background: url('../images/broprosprites.png') no-repeat 0px 0px; }
+.firestone { background: url('../images/broprosprites.png') no-repeat -300px 0px; }
+.fulda { background: url('../images/broprosprites.png') no-repeat -450px 0px; }
+.goodyear { background: url('../images/broprosprites.png') no-repeat -600px 0px; }
+.kormoran { background: url('../images/broprosprites.png') no-repeat 0px -50px; }
+.matador { background: url('../images/broprosprites.png') no-repeat -150px -50px; }
+.michelin { background: url('../images/broprosprites.png') no-repeat -300px -50px; }
+.kumho { background: url('../images/broprosprites.png') no-repeat -450px -70px; }
+
+/* Product */
+li.product {
+  list-style-type: none;
+  &:hover {
+    background-color: $c2;
+  }
+}
+
+.tyre-list .product { padding: 20px 0; }
+
+.product .model,
+.product .size,
+.product .price{
+  font-weight: 900;
+}
+
+.product .price {
+}
+
+.season-image,
+.stock-image {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: blue;
+}
+
+
+.season {
+  margin-left: rem-calc(10);
+}
+
+
+/* States */
+/* ====== */
+
+
+/* Theme */
+/* ===== */
+
+/*  Better default colors */
+$red: #B44326;
+$orange: #F2A34F;
+$yellow: #F8CA5C;
+$green: #7FC028;
+$light-blue: #52D7FE;
+$blue: #00a6fc;
+$purple: #8E48C2;
+$white: #f7f7f7;
+$black: #272727;
+
+/* Colorscheme: Modified Sea Wolf */
+
+$c1: #ff6726;  /* pure orange */
+$c2: #d9cb9e;  /* cream beige */
+$c3: #374140;  /* tire gray */
+$c4: #2a2c2b;  /* asphalt */
+$c5: #1e1e20;  /* night */
+
+.top-bar .title-area .name a {
+  color: $c1;
+  &:hover {
+    color: darken($c1, 5%);
+  }
+}
+
+
+/* Footer  */
+footer .outer-wrap:first-child {
+  background-color: $c1;
+  padding: 40px 0;
+  h3 {
+    /* color: $c2;  */
+  }
+  a {
+    color: $black;
+    &:hover {
+      color: $c5;
+    }
+  }
+  .panel {
+    background-color: $c2;
+    color: $c4;
+  }
+  .button {
+    background-color: $c3;
+    &:hover {
+      background-color: darken($c3, 10%);
+    }
+  }
+}
+
+footer .outer-wrap:nth-child(2) {
+  background-color: $c5;
+  color: $white;
+  padding: 40px 0;
+  h3 {
+    color: $c1;
+  }
+  a {
+    color: $c2;
+    &:hover {
+      color: $c1;
+    }
+  }
+}
+
+footer .outer-wrap:last-child {
+  background-color: darken($c5, 5%);
+  color: lighten($c5, 10%);
+  padding: 25px 0 15px 0;
+}
+

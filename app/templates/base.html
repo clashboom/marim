@@ -6,181 +6,195 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BroPro - Kravas un vieglo automašīnu riepu tirdzniecība un serviss</title>
-        <meta  name="description" content="Kravas un vieglo auto riepas un serviss. Kvalitāte par draudzīgām cenām. Pēc pieprasījuma strādājam arī ārpus darba laika." />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta  name="description" content="Kravas un vieglo auto riepas un serviss. Kvalitāte par draudzīgām cenām. Pēc pieprasījuma strādājam arī ārpus darba laika." />
+        <title>BroPro - Kravas un vieglo automašīnu riepu tirdzniecība un serviss</title>
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
+        <!-- build:css css/libraries.min.css -->
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="http://i.icomoon.io/public/temp/860fc031a6/UntitledProject2/style.css">+
         <!-- bower:css -->
-
         <!-- endbower -->
         <!-- endbuild -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="/styles/main.css">
+        <!-- build:css css/app.min.css -->
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/app_override.css">
         <!-- endbuild -->
-        <link rel="stylesheet" href="http://i.icomoon.io/public/temp/e1f4dbd984/UntitledProject2/style.css">
+        <!-- build:js js/vendor/modernizr.min.js -->
         <script src="/bower_components/modernizr/modernizr.js"></script>
-
+        <!-- endbuild -->
     </head>
 
     <body>
-      <div id="outer-wrap">
-      <div itemscope itemtype="http://schema.org/LocalBusiness" id="inner-wrap">
         <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+    <div class="off-canvas-wrap">
+      <div itemscope itemtype="http://schema.org/LocalBusiness" class="inner-wrap">
 
-        <header id="top" role="banner">
-        <div class="inner-wrapper logo-wrapper">
-          <h1 class="logo" itemprop="name"><a href="/">BroPro</a></h1>
-          <span class="subtitle">Riepu serviss</span>
-          <a href="#nav" id="nav-open">Izvēlne</a>
+        <div class="contain-to-grid">
+        <nav class="top-bar hide-for-small" role="navigation">
+          <ul class="title-area">
+              <li class="name"><h1><a href="/">BroPro</a></h1></li>
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li><a href="/riepas"><span class="menu-icon icon-bowling"></span>Riepas</a></li>
+              <li><a href="/diski"><span class="menu-icon icon-eightball"></span>Diski</a></li>
+              <li><a href="/serviss"><span class="menu-icon icon-tools"></span>Serviss</a></li>
+              <li><a href="/par"><span class="menu-icon icon-location"></span>Par mums</a></li>
+            </ul>
+          </section>
+        </nav>
         </div>
-        </header>
 
-
-        <nav id="nav" role="navigation">
-        <div class="inner-wrapper">
-          <ul>
+        <nav class="tab-bar show-for-small" role="navigation">
+          <section class="left-small"><a class="left-off-canvas-toggle menu-icon"> <span></span> </a></section>
+              <h1 class="name right"><a href="/">BroPro</a></h1>
+        </nav>
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label class="first">Izvēlne</label></li>
             <li><a href="/riepas"><span class="menu-icon icon-bowling"></span>Riepas</a></li>
             <li><a href="/diski"><span class="menu-icon icon-eightball"></span>Diski</a></li>
             <li><a href="/serviss"><span class="menu-icon icon-tools"></span>Serviss</a></li>
-            <li><a href="/par"><span class="menu-icon icon-location"></span>Par Mums</a></li>
+            <li><a href="/par"><span class="menu-icon icon-location"></span>Par mums</a></li>
           </ul>
-          <a id="nav-close" href="#top">Atgriezties uz lapu</a>
-        </div>
-        </nav>
+        </aside>
 
-
-        <section id="main" role="main">
-          <div class="inner-wrapper">
+        <div id="main" class="main-section" role="main">
 
             {% block main %}
-              {% endblock %}
-
-          </div>  <!-- end of wrapper -->
-        </section>
-
+            {% endblock %}
+            <a class="exit-off-canvas"></a>
+        </div>
 
         <footer>
-          <div class="footerrow">
-          <div class="inner-wrapper">
-            <div class="footersearch">
+          <div class="outer-wrap">
+          <div class="row">
+            <div class="footersearch large-4 columns">
               <form action="/meklet">
-                <input type="search" name="q" id="fsearch" placeholder="Goodyear 315/85 R22.5" />
-                <input type="submit" class="submit btn" value="Meklēt!" />
+                <input type="search" name="q" id="fsearch" placeholder="Goodyear 315/85 r22.5" />
+                <input type="submit" class="button postfix" value="Meklēt!" />
               </form>
-              <div class="brandband">
-                  <span class="brand bridgestone"></span>
-                  <span class="brand firestone"></span>
-                  <span class="brand kormoran"></span>
-                  <span class="brand michelin"></span>
-                  <span class="brand fulda"></span>
-                  <span class="brand goodyear"></span>
-                  <span class="brand kumho"></span>
-                  <span class="brand aeolus"></span>
-                  <span class="brand matador"></span>
+                <ul class="large-block-grid-3">
+                  <li><span class="brand-logo center bridgestone"></span></li>
+                  <li><span class="brand-logo center firestone"></span></li>
+                  <li><span class="brand-logo center kormoran"></span></li>
+                  <li><span class="brand-logo center michelin"></span></li>
+                  <li><span class="brand-logo center fulda"></span></li>
+                  <li><span class="brand-logo center goodyear"></span></li>
+                  <li><span class="brand-logo center kumho"></span></li>
+                  <li><span class="brand-logo center aeolus"></span></li>
+                  <li><span class="brand-logo center matador"></span></li>
+                </ul>
+            </div>
+
+
+            <div class="footercontact medium-6 large-4 columns">
+              <h3>Kontakti</h3>
+              <ul>
+                <li itemprop="address" itemscope
+                  itemtype="http://schema.org/postaladdress">Adrese:
+                  <span itemprop="streetaddress">Dzirnieku iela 11</span>,
+                  <span itemprop="addresslocality">Lidosta rīga, Mārupes novads</span>,
+                  <span itemprop="postalcode">LV-2167</span></li>
+                <li>
+                  <em itemprop="founder">Agris Jākobsons</em>
+                  <span class="flagbox"><span class="flag lv"></span></span>
+                  <span class="flagbox"><span class="flag ru"></span></span>
+                  <span class='mobile'><a href="tel:+37129297468" itemprop="telephone">+371 29297468</a></span>
+                </li>
+                <li>
+                  <em itemprop="founder">Māris Jākobsons</em>
+                  <span class="flagbox"><span class="flag lv"></span></span>
+                  <span class="flagbox"><span class="flag ru"></span></span>
+                  <span class="flagbox"><span class="flag de"></span></span>
+                  <span class="flagbox"><span class="flag gb"></span></span>
+                </li>
+                  <span class='mobile'><a href="tel:+37129141140" itemprop="telephone">+371 29141140</a></span>
+                <li itemprop="email">e-pasts: info@bropro.lv</li>
+              </ul>
+            </div>
+
+            <div class="footerhours medium-6 large-4 columns">
+              <h3>Darba laiks</h3>
+              <ul>
+                <li><time itemprop="openinghours" datetime="mo,tu,we,th,fr 9:00-19:00">Pirmdiena - Piektdiena: 9<sup>00</sup> - 19<sup>00</sup></time></li>
+                <li><time itemprop="openingHours" datetime="Sa 9:00-16:00">Sestdiena:   9<sup>00</sup> - 16<sup>00</sup></time></li>
+                <li><time itemprop="openingHours" datetime="Su"> Svētdiena:  Slēgts</time></li>
+              </ul>
+                <div class="panel"><em> Strādajam pēc pieprasījuma arī ārpus darba laika.  Droši zvaniet! </em></div>
+            </div>
+
+          </div>
+          </div>
+
+          <div class="outer-wrap">
+          <div class="row">
+              <div class="footernav large-4 medium-6 columns">
+                <h3>Navigācija</h3>
+                <ul>
+                  <li><a href="#">Kravas auto riepas</a></li>
+                  <li><a href="#">Vieglo auto riepas</a></li>
+                  <li><a href="#">Lietotas kravas riepas</a></li>
+                  <li><a href="#">Lietotas vieglo riepas</a></li>
+                  <li><a href="#">Diski</a></li>
+                  <li><a href="#">Serviss</a></li>
+                  <li><a href="#">Par uzņēmumu</a></li>
+                  <li><a href="#">Lapas karte</a></li>
+                </ul>
               </div>
-            </div>
 
-            <ul class="footercontact">
-              <h6>Kontaktinformācija:</h6>
-              <li itemprop="address" itemscope
-              itemtype="http://schema.org/PostalAddress">Adrese:
-              <span itemprop="streetAddress">Dzirnieku iela 11</span>,
-              <span itemprop="addressLocality">Lidosta Rīga, Mārupes novads</span>,
-              <span itemprop="postalCode">LV-2167</span></li>
-              <li itemprop="email">E-pasts: info@bropro.lv</li>
-              <li>
-              <em itemprop="founder">Agris Jākobsons</em>
-              <span class='mobile'><a href="tel:+37129297468" itemprop="telephone">+371 29297468</a></span>
-              <span class="flagbox"><span class="flag lv"></span></span>
-              <span class="flagbox"><span class="flag ru"></span></span>
-              </li>
-              <li>
-              <em itemprop="founder">Māris Jākobsons</em>
-              <span class='mobile'><a href="tel:+37129141140" itemprop="telephone">+371 29141140</a></span>
-              <span class="flagbox"><span class="flag lv"></span></span>
-              <span class="flagbox"><span class="flag ru"></span></span>
-              <span class="flagbox"><span class="flag de"></span></span>
-              <span class="flagbox"><span class="flag gb"></span></span>
-              </li>
-            </ul>
-
-            <ul class="footerhours">
-              <h6>Darba laiks:</h6>
-              <li><time itemprop="openingHours" datetime="Mo,Tu,We,Th,Fr 9:00-19:00">Pirmdiena - Piektdiena: 9<sup>00</sup> - 19<sup>00</sup></time></li>
-              <li><time itemprop="openingHours" datetime="Sa 9:00-16:00">Sestdiena:   9<sup>00</sup> - 16<sup>00</sup></time></li>
-              <li><time itemprop="openingHours" datetime="Su"> Svētdiena:  Slēgts*</time></li>
-              <em>* Strādajam pēc pieprasījuma arī ārpus darba laika.
-                Nepieciešamības gadījumā zvaniet pa norādītajiem tālruņiem. </em>
-            </ul>
-
-          </div>  <!-- end of wrapper -->
-        </div>
-
-        <div class="footerrow">
-          <div class="inner-wrapper">
-            <ul class="footernav">
-            <h6>Navigācija</h6>
-              <li><a href="#">Kravas auto riepas</a></li>
-              <li><a href="#">Vieglo auto riepas</a></li>
-              <li><a href="#">Lietotas kravas riepas</a></li>
-              <li><a href="#">Lietotas vieglo riepas</a></li>
-              <li><a href="#">Diski</a></li>
-              <li><a href="#">Serviss</a></li>
-              <li><a href="#">Par uzņēmumu</a></li>
-              <li><a href="#">Lapas karte</a></li>
-            </ul>
-
-            <ul class="footerinfo">
-              <h6>Informācija</h6>
-              <li><a href="#">Jaunumi</a></li>
-              <li><a href="#">Par riepām</a></li>
-              <li><a href="#">Par servisu</a></li>
-              <li><a href="#">Piegādes iespējas</a></li>
-              <li><a href="#">Apmaksa</a></li>
-              <li><a href="#">Atsauksmes</a></li>
-              <li><a href="#">Kā mūs atrast?</a></li>
-              <li><a href="#">Uzņēmuma rekvizīti</a></li>
-            </ul>
+              <div class="footerinfo large-4 medium-6 columns">
+                <h3>Informācija</h3>
+                <ul>
+                  <li><a href="#">Jaunumi</a></li>
+                  <li><a href="#">Par riepām</a></li>
+                  <li><a href="#">Par servisu</a></li>
+                  <li><a href="#">Piegādes iespējas</a></li>
+                  <li><a href="#">Apmaksa</a></li>
+                  <li><a href="#">Atsauksmes</a></li>
+                  <li><a href="#">Kā mūs atrast?</a></li>
+                  <li><a href="#">Uzņēmuma rekvizīti</a></li>
+                </ul>
+              </div>
 
 
-            <div class="footerform">
-              <h6>Nepieciešama palīdzība?</h6>
-              <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
-                <label for="name">Vārds:
-                <input type="text" name="name" id="name" value="" placeholder="Jūsu vārds" />
-                </label>
-                <label for="cinfo">Kontaktinformācija:
-                  <input type="text" name="cinfo" id="cinfo" value=""
-                  placeholder="E-pasts vai telefons" />
-                  <!-- <span class="error">This is an error.</span> -->
-                </label>
-                <label for="message">Ziņa:
-                  <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
-                </label>
-                <input type="submit" name="submit" class="submit btn" value="Sūtīt!" />
-              </form>
+              <div class="footerform large-4 columns">
+                <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
+                  <label for="cinfo">Kontaktinformācija:
+                    <input type="text" name="cinfo" id="cinfo" value=""
+                    placeholder="Jūsu e-pasts vai telefons" />
+                    <!-- <span class="error">This is an error.</span> -->
+                  </label>
+                  <label for="message">Ziņa:
+                    <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
+                  </label>
+                  <input type="submit" name="submit" class="submit button right" value="Sūtīt!" />
+                </form>
+              </div>
 
             </div>
-          </div>  <!-- end of wrapper -->
+          </div>
+
+          <div class="outer-wrap">
+          <div class="row">
+            <div class="columns">
+              <span class="footerlogo">&copy; BroPro 2014</span>
+              <span class="gae right">Powered by Google Appengine</span> |
+
+              <!-- <span class="social">Social Links</span> -->
+            </div>
+          </div>
         </div>
 
-        <div class="footerrow bottomrow">
-          <div class="inner-wrapper">
-            <span class="footerlogo">&copy; BroPro 2014</span>
-            <span class="gae">Powered by Google Appengine</span>
-            <span class="social">Social Links</span>
-            <span class="backtop">
-              <a href="#top">Uz lapas sākumu</a>
-            </span>
-          </div>  <!-- end of wrapper -->
-        </div>
         </footer>
 
+      </div>
+    </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -193,11 +207,38 @@
         </script>
 
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script data-main="/scripts/main" src="bower_components/requirejs/require.js" type="text/javascript"></script>
+
+        <!-- <script data&#45;main="/scripts/main" src="bower_components/requirejs/require.js"></script> -->
+        <!-- build:js js/vendor/libraries.min.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="/bower_components/list.fuzzysearch.js/dist/list.fuzzysearch.js"></script>
+        <script src="/bower_components/list.js/dist/list.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js js/vendor/foundation.min.js -->
+        <script src="/bower_components/foundation/js/foundation/foundation.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.abide.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.accordion.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.alert.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.clearing.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.dropdown.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.equalizer.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.interchange.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.joyride.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.magellan.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.offcanvas.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.orbit.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.reveal.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.slider.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.tab.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.tooltip.js"></script>
+        <script src="/bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+        <!-- endbuild -->
+        <!-- build:js js/app.min.js -->
+        <script src="/js/app.js"></script>
         <!-- endbuild -->
 
-      </div>
-      </div>
     </body>
 </html>

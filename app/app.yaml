@@ -21,6 +21,21 @@ handlers:
 - url: /javascripts
   static_dir: javascripts
 
+- url: /js
+  static_dir: js
+
+- url: /css
+  static_dir: css
+
+- url: /scss
+  static_dir: scss
+
+- url: /doc
+  static_dir: doc
+
+- url: /fonts
+  static_dir: fonts
+
 - url: /stylesheets
   static_dir: stylesheets
 

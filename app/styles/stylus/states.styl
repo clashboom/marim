@@ -1,0 +1,301 @@
+/* ==========================================================================
+   General
+   ========================================================================== */
+#nav-open, #nav-close
+    display block
+    width 3.43em
+    height 3.43em
+    text-indent 100%
+    white-space nowrap
+    position absolute
+    overflow hidden
+    top 1.25em
+    left 1.875em
+    -webkit-tap-highlight-color rgba(0,0,0,0)
+    -webkit-touch-callout none
+    -webkit-user-select none
+    -moz-user-select none
+    -ms-user-select none
+    -o-user-select none
+    user-select none
+
+#nav-open
+    background blue no-repeat 100% 100%
+
+#nav-close
+    background red no-repeat 100% 100%
+
+/* ==========================================================================
+   Large Screen
+   ========================================================================== */
+@media screen and (min-width: 44.0625em)
+    #nav-open, #nav-close
+        visuallyhidden()
+    #nav
+        text-align center
+        ul
+            padding-left 0
+        .active a
+            border-bottom 5px solid black
+            margin-bottom -5px
+        li
+            span(1/4)
+            display inline-block
+            &:last-child
+                border-right none
+            a
+                text-decoration none
+                &:focus,
+                &:active,
+                &:hover
+                    border-bottom 5px solid hover_color
+                    margin-bottom -5px
+
+    #fsearch
+        width 65%
+
+    .footerform,
+    .footercontact,
+    .footerhours
+        unstack()
+        column(1/3)
+    .footernav,
+    .footerinfo,
+    .footersearch
+        unstack()
+        column(1/3)
+
+    // Looks
+
+
+/* ==========================================================================
+   Small Screen
+   ========================================================================== */
+@media screen and (max-width: 44em)
+    #main
+        padding-top 2em
+    #nav
+        li a
+            line-height 3em
+            text-decoration none
+        position absolute
+        top 0
+        padding-top 7.5em
+        &:not(:target)
+            z-index 1
+            height 0
+        &:target #nav-close
+            display block
+        #nav-close
+            position absolute
+            top -6.25em
+            right 1.875em
+
+    .js-ready #nav
+        left -70%
+        height 100%
+        width 70%
+        .inner-wrapper
+            background transparent
+        #nav-close, #nav-open
+            display block
+        #inner-wrap
+            left 0
+
+    .js-nav
+        #inner-wrap
+            left 70%
+
+    .csstransforms3d.csstransitions.js-ready
+        #nav
+            left 0
+            -webkit-transform translate3d(-100%, 0, 0)
+            -moz-transform translate3d(-100%, 0, 0)
+            -ms-transform translate3d(-100%, 0, 0)
+            -o-transform translate3d(-100%, 0, 0)
+            transform translate3d(-100%, 0, 0)
+            -webkit-backface-visibility hidden
+            -moz-backface-visibility hidden
+            -ms-backface-visibility hidden
+            -o-backface-visibility hidden
+            backface-visibility hidden
+        #inner-wrap
+            left 0 !important
+            -webkit-transform translate3d(0, 0, 0)
+            -moz-transform translate3d(0, 0, 0)
+            -ms-transform translate3d(0, 0, 0)
+            -o-transform translate3d(0, 0, 0)
+            transform translate3d(0, 0, 0)
+            -webkit-transition -webkit-transform 500ms ease
+            -moz-transition -moz-transform 500ms ease
+            -o-transition -o-transform 500ms ease
+            transition transform 500ms ease
+            -webkit-backface-visibility hidden
+            -moz-backface-visibility hidden
+            -ms-backface-visibility hidden
+            -o-backface-visibility hidden
+            backface-visibility hidden
+        #nav .inner-wrapper
+            opacity 0.7
+            -webkit-transition opacity 300ms 100ms, -webkit-transform 500ms ease
+            -webkit-transition-delay ease 0s
+            -moz-transition opacity 300ms 100m ease, -moz-transform 500ms ease
+            -o-transition opacity 300ms 100ms ease, -o-transform 500ms ease
+            transition opacity 300ms 100ms ease, transform 500ms ease
+            -webkit-transform translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9)
+            -moz-transform translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9)
+            -ms-transform translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9)
+            -o-transform translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9)
+            transform translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9)
+            -webkit-transform-origin 50% 0%
+            -moz-transform-origin 50% 0%
+            -ms-transform-origin 50% 0%
+            -o-transform-origin 50% 0%
+            transform-origin 50% 0%
+
+
+    .csstransforms3d.csstransitions.js-nav
+        #inner-wrap
+            -webkit-transform translate3d(70%, 0, 0) scale3d(1, 1, 1)
+            -moz-transform translate3d(70%, 0, 0) scale3d(1, 1, 1)
+            -ms-transform translate3d(70%, 0, 0) scale3d(1, 1, 1)
+            -o-transform translate3d(70%, 0, 0) scale3d(1, 1, 1)
+            transform translate3d(70%, 0, 0) scale3d(1, 1, 1)
+        #nav
+            .inner-wrapper
+                opacity 1
+                -webkit-transform translate3d(0, 0, 0)
+                -moz-transform translate3d(0, 0, 0)
+                -ms-transform translate3d(0, 0, 0)
+                -o-transform translate3d(0, 0, 0)
+                transform translate3d(0, 0, 0)
+
+    // Looks
+    .logo,
+    .subtitle
+        background c8
+    .subtitle
+        padding-bottom 1em
+    #nav
+        // background c4
+        ul
+            padding-left 0
+        a
+            padding-left 1.875em
+            &:focus,
+            &:active,
+            &:hover
+                // color c5
+                // background-color c3
+        li.active
+            a
+                // color c1
+            &:after
+                z-index 50
+                display block
+                width 5%
+                float right
+                content ""
+                position relative
+                top -1.5em
+                right -0.03125em
+                margin-top -0.625em
+                border-top 0.625em transparent solid
+                border-bottom 0.625em transparent solid
+                border-right 0.625em white solid
+    #main .inner-wrapper
+        padding-top 1.875em
+    #fsearch
+        width 75%
+
+    .footerform,
+    .footercontact,
+    .footerhours,
+    .footernav,
+    .footerinfo,
+    .footersearch
+        stack()
+
+/* ==========================================================================
+   Retina
+   ========================================================================== */
+@media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx)
+    #nav-open
+        // #TODO retina img
+        background-image blue 100% 100%
+        -webkit-background-size 100px 100px
+        -moz-background-size 100px 100px
+        -o-background-size 100px 100px
+        background-size 100px 100px
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

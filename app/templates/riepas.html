@@ -2,68 +2,95 @@
 
 {% block main %}
 
-<h1>Riepas</h1>
+<div class="row">
 
-<div class="filter-list">
-  <span class="title"></span>
-  <a class="filter" href="/riepas/vieglo">Vieglais auto</a>
-  <a class="filter" href="/riepas/kravas">Kravas auto</a>
-  <a class="filter" href="/riepas/lietotas">Lietotas</a>
-</div>
-
-{% if Tyres %}
-<div id="tyre-list">
-  <input type="search" class="fuzzy-search" placeholder="Meklēšana"/>
-
-  <ul class="list">
-  {% for tyre in Tyres %}
-  <li class="product" itemscope itemtype="http://schema.org/Product">
-
-    <div class="image-section">
-    {% if tyre.imageurl %}
-    <a itemprop="image" class="image popup-link" href="{{ tyre.image }}"><img src="{{ tyre.thumbnail }}" alt="Tires"></a>
-    {% else %}
-     <a itemprop="image" class="image popup-link" href="http://placecage.com/c/800/600"><img src="http://placecage.com/75/75" alt="Tires"></a>
-    {% endif %}
-    </div>
-
-    <div class="specification">
-    <span class="name" itemprop="name">
-    <span class="brand" itemprop="brand"> {{ tyre.brand }} </span>
-    <span class="model" itemprop="model"> {{ tyre.model }} </span>
-    <span class="size"> {{ tyre.size }} </span>
-    </span>
-
-    <em>
-    {% if tyre.season %}
-    <span class="season">{{ tyre.season }}</span>
-    {% endif %}
-
-    {% if tyre.treadDepth %}
-    <span class="treadDepth">Lietotas. Protektora atlikums: {{ tyre.treadDepth
-        }}mm</span>
-    {% endif %}
-  </em>
-
-    {% if tyre.description %}
-    <span class="description" itemprop="description">{{ tyre.description }}</span>
-    {% endif %}
-
-    {% if tyre.availability %}
-    <span class="availability" itemprop="availability">{{ tyre.availability }}</span>
-    {% endif %}
-    </div>
-
-    <div class="offer">
-    <span class="price" itemprop="price"> {{ tyre.price }} &euro; </span>
-    </div>
-
-  </li>
-  {% endfor %}
+  <ul class="breadcrumbs">
+    <li><a href="/">Sākums</a></li>
+    <li class="current"><a href="#">Riepas</a></li>
   </ul>
-</div>
-{% endif %}
 
+  <!-- <div class="filter&#45;list"> -->
+  <!--   <span class="title"></span> -->
+  <!--   <a class="filter" href="/riepas/vieglo">Vieglais auto</a> -->
+  <!--   <a class="filter" href="/riepas/kravas">Kravas auto</a> -->
+  <!--   <a class="filter" href="/riepas/lietotas">Lietotas</a> -->
+  <!-- </div> -->
+
+  {% if Tyres %}
+  <div id= "tire-list" class="tyre-list">
+    <input type="search" class="fuzzy-search search" placeholder="Meklēšana"/>
+
+    <ul class="list">
+      {% for tyre in Tyres %}
+      <li class="product row" itemscope itemtype="http://schema.org/Product">
+
+        <div class="image-section hide-for-small medium-1 columns">
+          {% if tyre.imageurl %}
+          <a itemprop="image" class="image th" href="{{ tyre.image }}"><img src="{{ tyre.thumbnail }}" alt="Tires"></a>
+          {% else %}
+          <a itemprop="image" class="image th" href="http://placecage.com/c/800/600"><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
+          {% endif %}
+        </div>
+
+        <div class="specification  small-10 medium-9 columns">
+          <div class="row">
+            <div class="small-6 large-3">
+              <span class="brand" itemprop="brand"> {{ tyre.brand }} </span>
+              <span class="brand-logo center firestone"></span>
+            </div>
+            <div class="small-6 medium-7 large-9">
+              <em>
+                {% if tyre.treadDepth %}
+                <span>Lietotas: </span>
+                <span class="hide-for-small">Protektora atlikums: </span>
+                <span class="treadDepth">{{ tyre.treadDepth }}mm</span>
+                {% endif %}
+              </em>
+            </div>
+
+          </div>
+
+          <div class="row">
+          <span class="name small-8 medium-5 large-3" itemprop="name">
+            <span class="model" itemprop="model"> {{ tyre.model }} </span>
+            <span class="size"> {{ tyre.size }} </span>
+          </span>
+
+          {% if tyre.season %}
+          <span class="season small-2">
+          <span class="hide-for-small">Sezona: </span>
+          <span class="season-image {{ tyre.season }}"></span>
+          <span class="hide-for-small name">{{ tyre.season }}</span>
+          </span>
+          {% endif %}
+
+
+          {% if tyre.description %}
+          <span class="description" itemprop="description">{{ tyre.description }}</span>
+          {% endif %}
+
+          {% if tyre.availability %}
+          <span class="stock small-2">
+          <span class="hide-for-small">Noliktavā:</span>
+          <span class="stock-image"></span>
+          <span class="availability" itemprop="availability">??</span>
+          </span>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="offer small-2 columns text-right">
+        <span class="price" itemprop="price"> {{ tyre.price }} &euro; </span>
+      </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+</div>
 {% endblock %}
 
 
