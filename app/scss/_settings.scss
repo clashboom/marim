@@ -1086,9 +1086,9 @@ $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;
-// $tabs-navigation-active-bg-color: #fff;
+// $tabs-navigation-active-bg-color: $c1;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
-// $tabs-navigation-font-color: #222;
+// $tabs-navigation-font-color: $black;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
@@ -1121,7 +1121,7 @@ $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 // $include-html-tooltip-classes: $include-html-classes;
 
 // $has-tip-border-bottom: dotted 1px #ccc;
-// $has-tip-font-weight: bold;
+$has-tip-font-weight: normal;
 // $has-tip-font-color: #333;
 // $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
 // $has-tip-font-color-hover: $primary-color;

@@ -3,53 +3,238 @@
 {% block main %}
 <div class="row">
 
-<h1>Serviss</h1>
+  <ul class="breadcrumbs">
+    <li><a href="/">Sākums</a></li>
+    <li class="current"><a href="#">Serviss</a></li>
+  </ul>
 
+  <dl class="tabs" data-tab>
+      <dd class="active"><a href="#panel2-1"><span class="fa fa-globe"></span>Vieglais auto</a></dd>
+      <dd><a href="#panel2-2"><span class="fa fa-truck"></span>Kravas tehnika</a></dd>
+  </dl>
 
+  <div class="tabs-content">
 
-  <hr>
+    <div class="content active" id="panel2-1">
+      <dl class="tabs vertical" data-tab>
+        <dd class="active"><a href="#panel1a">Vieglais auto</a></dd>
+        <dd><a href="#panel2a">Apvidus auto</a></dd>
+      </dl>
+      <div class="tabs-content vertical">
+        <div id="panel1a" class="content active">
+          <div class="medium-4 columns">
+            <ul class="pricing-table">
+              <li class="title">R13 - R16</li>
+              <li class="description">Vieglo automašīnu riepu montāža un balansēšana</li>
+              <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+              <li class="price"><span data-tooltip class="has-tip" title="3,50 Ls"> 4,98 &euro;</span></li>
+            </ul>
+          </div>
 
-  <div class="tabs">
-    <div class="tab">
-      <input id="tab-1" type="radio" name="tab-group" checked>
-      <label for="tab-1">Tab One</label>
-      <div class="content">
-        <p>Stuff for Tab One</p>
-        {% for service in Services %}
-          {{ service.name }}
-          {{ service.low }} &euro;
-          {{ service.mid }} &euro;
-          {{ service.high }} &euro;
-        {% endfor %}
+          <div class="medium-4 columns">
+            <ul class="pricing-table">
+              <li class="title">R17 - R18</li>
+              <li class="description">Vieglo automašīnu riepu montāža un balansēšana</li>
+              <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+              <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+              <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+              <li class="price"><span data-tooltip class="has-tip" title="4,50 Ls"> 6,40 &euro;</span></li>
+            </ul>
+          </div>
+
+          <div class="medium-4 columns">
+            <ul class="pricing-table">
+              <li class="title">R19 - R22</li>
+              <li class="description">Vieglo automašīnu riepu montāža un balansēšana</li>
+              <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+              <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+              <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+              <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+              <li class="price"><span data-tooltip class="has-tip" title="6,00 Ls"> 8,54 &euro;</span></li>
+            </ul>
+          </div>
+        </div>
+
+      <div id="panel2a" class="content">
+        <div class="medium-4 columns">
+        <ul class="pricing-table">
+          <li class="title">R15 - R16</li>
+          <li class="description">Apvidus automašīnu riepu montāža un balansēšana</li>
+          <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="2,50 Ls">3,56 &euro;</span></li>
+          <li class="price"><span data-tooltip class="has-tip" title="4,50 Ls"> 6,40 &euro;</span></li>
+        </ul>
+        </div>
+
+        <div class="medium-4 columns">
+        <ul class="pricing-table">
+          <li class="title">R17 - R18</li>
+          <li class="description">Apvidus automašīnu riepu montāža un balansēšana</li>
+          <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+          <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+          <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="2,50 Ls">3,56 &euro;</span></li>
+          <li class="price"><span data-tooltip class="has-tip" title="5,50 Ls"> 7,83 &euro;</span></li>
+        </ul>
+        </div>
+
+        <div class="medium-4 columns">
+        <ul class="pricing-table">
+          <li class="title">R19 - R22</li>
+          <li class="description">Apvidus automašīnu riepu montāža un balansēšana</li>
+          <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+          <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+          <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+          <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="2,50 Ls">3,56 &euro;</span></li>
+          <li class="price"><span data-tooltip class="has-tip" title="6,50 Ls"> 9,25 &euro;</span></li>
+        </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="tab">
-      <input id="tab-2" type="radio" name="tab-group" checked>
-      <label for="tab-2">Tab Two</label>
-      <div class="content">
-        <p>Stuff for Tab Two</p>
-      </div>
-    </div>
-
-    <div class="tab">
-      <input id="tab-3" type="radio" name="tab-group" checked>
-      <label for="tab-3">Tab Three</label>
-      <div class="content">
-        <p>Stuff for Tab Three</p>
-      </div>
-    </div>
-
-    <div class="tab">
-      <input id="tab-4" type="radio" name="tab-group" checked>
-      <label for="tab-4">Tab Four</label>
-      <div class="content">
-        <p>Stuff for Tab Four</p>
-      </div>
     </div>
   </div>
 
-  </ul>
+    <div class="content" id="panel2-2">
+      <dl class="tabs vertical" data-tab>
+        <dd class="active"><a href="#panel1b">Kravas auto</a></dd>
+        <dd><a href="#panel2b">Komerctransports</a></dd>
+        <dd><a href="#panel3b">Agro</a></dd>
+        <dd><a href="#panel4b">Industriālais</a></dd>
+      </dl>
+      <div class="tabs-content vertical">
+        <div id="panel1b" class="content active">
+          <div class="medium-4 columns">
+            <ul class="pricing-table">
+              <li class="title">R17.5 - R22.5</li>
+              <li class="description">Kravas automašīnu riepu montāža</li>
+              <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+              <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+              <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+              <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+              <li class="price"><span data-tooltip class="has-tip" title="8,00 Ls"> 11,38 &euro;</span></li>
+            </ul>
+          </div>
+          <div class="medium-4 columns left">
+            <ul class="pricing-table">
+              <li class="title">R17.5 - R22.5</li>
+              <li class="description">Kravas automašīnu riepu balansēšana</li>
+              <li class="price"><span data-tooltip class="has-tip" title="6,00 Ls"> 8,54 &euro;</span></li>
+            </ul>
+          </div>
+          <div class="medium-4 columns left">
+            <ul class="pricing-table">
+              <li class="title">R17.5 - R22.5</li>
+              <li class="description">Kravas automašīnu riepu protektora padziļināšana</li>
+              <li class="price"><span data-tooltip class="has-tip" title="10,00 Ls"> 14,23 &euro;</span></li>
+            </ul>
+          </div>
+
+        </div>
+      <div id="panel2b" class="content">
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R14 - R17</li>
+            <li class="description">Komerctransporta riepu montāža un balansēšana</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="0,50 Ls">0,71 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Balansēšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="5,00 Ls"> 7,11 &euro;</span></li>
+          </ul>
+        </div>
+      </div>
+      <div id="panel3b" class="content">
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R8 - R15</li>
+            <li class="description">Agro riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="3,00 Ls">4,27 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="3,00 Ls">4,27 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="8,00 Ls"> 11,38 &euro;</span></li>
+          </ul>
+        </div>
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R16 - R19</li>
+            <li class="description">Agro riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="1,00 Ls">1,42 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="4,00 Ls">5,69 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="4,00 Ls">5,69 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="10,00 Ls"> 14,23 &euro;</span></li>
+          </ul>
+        </div>
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R20 - R22.5</li>
+            <li class="description">Agro riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="5,00 Ls">7,11 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="5,00 Ls"> 7,11 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="14,00 Ls"> 19,92 &euro;</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="panel4b" class="content">
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R8 - R16.5</li>
+            <li class="description">Industriālo riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="1,50 Ls">2,13 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="2,50 Ls">3,56 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="2,50 Ls"> 3,56 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="8,00 Ls"> 11,38 &euro;</span></li>
+          </ul>
+        </div>
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R17.5 - R19.5</li>
+            <li class="description">Industriālo riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="4,00 Ls">5,69 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="4,00 Ls"> 5,69 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="12,00 Ls"> 17,07 &euro;</span></li>
+          </ul>
+        </div>
+        <div class="medium-4 columns">
+          <ul class="pricing-table">
+            <li class="title">R20 - R24</li>
+            <li class="description">Industriālo riepu montāža</li>
+            <li class="bullet-item">Noņemšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Uzlikšana <span data-tooltip class="has-tip" title="2,00 Ls">2,85 &euro;</span></li>
+            <li class="bullet-item">Demontāža <span data-tooltip class="has-tip" title="8,00 Ls">11,38 &euro;</span></li>
+            <li class="bullet-item">Montāža <span data-tooltip class="has-tip" title="8,00 Ls"> 11,38 &euro;</span></li>
+            <li class="price"><span data-tooltip class="has-tip" title="20,00 Ls"> 28,46 &euro;</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+
+
 </div>
 
 </div>
