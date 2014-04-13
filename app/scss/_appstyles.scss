@@ -1,5 +1,12 @@
 /* all app scss styles here */
 
+/* Colorscheme: Modified Sea Wolf */
+// $c1: #ff6726;  /* pure orange */
+// $c2: #d9cb9e;  /* cream beige */
+// $c3: #374140;  /* tire gray */
+// $c4: #2a2c2b;  /* asphalt */
+// $c5: #1e1e20;  /* night */
+
 /* Temp styles */
 /* =========== */
 #main { min-height: 200px; }
@@ -10,8 +17,7 @@
 
 .main-section
 {
-  min-height: 700px;
-  background-color: $white;
+  background-color: $f7f7f7;
 }
 
 .example-orbit-content {
@@ -29,6 +35,7 @@ footer li {
 /* Base */
 /* ==== */
 
+
 /* Layout */
 /* ====== */
 .main-section > .row {
@@ -39,7 +46,7 @@ footer li {
 /* Modules */
 /* ======= */
 
-.mobile { display: block; }
+footer .mobile { display: block; }
 
 /* Top-bar */
 .menu-icon, .fa,
@@ -51,6 +58,15 @@ footer li {
     padding-right: rem-calc(20);
 }
 
+.top-bar-mini {
+   height: rem-calc(20); 
+   line-height: rem-calc(20);
+   text-transform: uppercase;
+   color: $c5;
+   font-size: 0.6875rem;
+   background: $c2;
+
+}
 
 /*  Flags */
 .flag {
@@ -65,45 +81,75 @@ footer li {
 .flag.de { background: url('../images/broprosprites.png') no-repeat -398px -145px; }
 
 /* Brandband */
-.brand-logo {
-  height: 25px;
-  width: 75px;
+
+.brandband {
+  padding-top: rem-calc(14);
+  padding-bottom: rem-calc(20);
+}
+
+.brand-small {
+  height: 37px;
+  width: 126px;
   display: inline-block;
 }
 
-.bridgestone { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.aeolus { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.firestone { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.fulda { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.goodyear { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.kormoran { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.matador { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.michelin { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
-.kumho { background: url('http://www.placecage.com/g/180/150') no-repeat 0px 0px; }
+.bridgestone { background: url('/images/bridgestone.png'); }
+.aeolus { background: url('/images/dunlop.png'); }
+.firestone { background: url('/images/firestone.png'); }
+.fulda { background: url('/images/fulda.png'); }
+.goodyear { background: url('/images/goodyear.png'); }
+.kormoran { background: url('/images/kormoran.png'); }
+.matador { background: url('/images/matador.png'); }
+.michelin { background: url('/images/michelin.png'); }
+.kumho { background: url('/images/kumho.png'); }
 
-.bridgestone { background: url('../images/broprosprites.png') no-repeat -150px 0px; }
-.aeolus { background: url('../images/broprosprites.png') no-repeat 0px 0px; }
-.firestone { background: url('../images/broprosprites.png') no-repeat -300px 0px; }
-.fulda { background: url('../images/broprosprites.png') no-repeat -450px 0px; }
-.goodyear { background: url('../images/broprosprites.png') no-repeat -600px 0px; }
-.kormoran { background: url('../images/broprosprites.png') no-repeat 0px -50px; }
-.matador { background: url('../images/broprosprites.png') no-repeat -150px -50px; }
-.michelin { background: url('../images/broprosprites.png') no-repeat -300px -50px; }
-.kumho { background: url('../images/broprosprites.png') no-repeat -450px -70px; }
+
+/* Flexible iFrame */
+.flexible {
+    position: relative;
+    padding-top: 30px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.flexible iframe,   
+.flexible object,  
+.flexible embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#cover {
+  z-index: 500;
+  top: 44px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 250px;
+}
+
 
 /* Product */
 li.product {
   list-style-type: none;
-  &:hover {
-    background-color: $c2;
+  .description {
+    font-weight: normal;
+  }
+  .brand-small {
+    display: block;
+    margin: 0 auto;
   }
 }
 
-.tyre-list .product { padding: 20px 0; }
-
-.product .model,
-.product .size,
-.product .price{
+.product .model {
   font-weight: 900;
 }
 
@@ -119,13 +165,15 @@ li.product {
 }
 
 
-.season {
-  margin-left: rem-calc(10);
-}
-
 
 /* States */
 /* ====== */
+
+/* Tabs */
+.tabs .active a {
+   /* text-decoration: underline;  */
+   color: $c1;
+}
 
 
 /* Theme */
@@ -154,6 +202,17 @@ $c5: #1e1e20;  /* night */
   color: $c1;
   &:hover {
     color: darken($c1, 5%);
+  }
+}
+
+/* About page */
+.about {
+  h1,h2,h3 {
+    font-weight: 900;
+    color: $c1;
+  }
+  li {
+    list-style-type: none;
   }
 }
 

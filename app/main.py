@@ -5,11 +5,14 @@ import jinja2
 import logging
 import os
 import webapp2
+import urllib
 
 from google.appengine.runtime import apiproxy_errors
-# from google.appengine.api import images
+from google.appengine.api import images
 from google.appengine.api import mail
 from google.appengine.ext import ndb
+from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
 
 import collections
 
@@ -18,51 +21,11 @@ JINJA_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader(TEMPLATE_DIR), autoescape=True)
 
 
-class BaseService(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    lastModified = ndb.DateTimeProperty(auto_now=True)
-    low = ndb.StringProperty()
-    mid = ndb.StringProperty()
-    high = ndb.StringProperty()
-
-    @classmethod
-    def queryServices(cls):
-        return cls.query()
-
-
-class CarService(BaseService):
-    pass
-
-
-class TruckService(BaseService):
-    pass
-
-
-class OffroadService(BaseService):
-    pass
-
-
-class CommercialService(BaseService):
-    pass
-
-
-class AgroService(BaseService):
-    pass
-
-
-class IndyService(BaseService):
-    pass
-
-
 class BaseTyre(ndb.Model):
     brand = ndb.StringProperty(required=True)
-    loadIndex = ndb.StringProperty()
     model = ndb.StringProperty(required=True)
     price = ndb.StringProperty(required=True)
-    season = ndb.StringProperty()
     size = ndb.StringProperty(required=True)
-    speedIndex = ndb.StringProperty()
-
     lastModified = ndb.DateTimeProperty(auto_now=True)
     isHidden = ndb.BooleanProperty(default=False)
 
@@ -84,7 +47,14 @@ class BaseTyre(ndb.Model):
         # TODO: invalidate memcache here as well
 
 
-class CarTyre(BaseTyre):
+class Tyre(BaseTyre):
+    season = ndb.StringProperty(default=None)
+    speedIndex = ndb.StringProperty(default=None)
+    loadIndex = ndb.StringProperty(default=None)
+    image = ndb.BlobProperty(default=None)
+
+
+class CarTyre(Tyre):
     pass
 
 
@@ -92,7 +62,7 @@ class UsedCarTyre(CarTyre):
     treadDepth = ndb.StringProperty()
 
 
-class TruckTyre(BaseTyre):
+class TruckTyre(Tyre):
     # loadIndexPaired = ndb.StringProperty('lip')
     axlePosition = ndb.StringProperty()
 
@@ -116,13 +86,6 @@ class Handler(webapp2.RequestHandler):
                  'kravas/jaunas': TruckTyre,
                  'kravas/lietotas': UsedTruckTyre}
 
-    servicePaths = {'vieglo': CarService,
-                    'kravas': TruckService,
-                    'apvidus': OffroadService,
-                    'komerctransports': CommercialService,
-                    'agro': AgroService,
-                    'industrialais': IndyService}
-
     @classmethod
     def render_str(cls, template, *a, **params):
         template = JINJA_ENV.get_template(template)
@@ -144,21 +107,7 @@ class RimHandler(Handler):
 
 class ServiceHandler(Handler):
     def get(self, kind=None):
-
-        services = None
-
-        if kind:
-            services = list(self.servicePaths[kind].queryServices())
-            self.render("serviss.html", Services=services)
-
-        services = list(CarService.queryServices()) + \
-            list(TruckService.queryServices()) + \
-            list(OffroadService.queryServices()) + \
-            list(AgroService.queryServices()) + \
-            list(IndyService.queryServices()) + \
-            list(CommercialService.queryServices()) \
-
-        self.render("serviss.html", Services=services)
+        self.render("serviss.html")
 
 
 class AboutHandler(Handler):
@@ -265,63 +214,6 @@ class PopulateDB(Handler):
         addEntries(TruckTyre, truckTyreDL)
         addEntries(UsedTruckTyre, usedTruckTyreDL)
 
-        # Populate Services
-        serviceParams = ["name", "low", "mid", "high"]
-
-        e = [[u"Nonemsana", "0.71", "0.71", "0.71"],
-             [u"Uzliksana", "0.71", "0.71", "0.71"],
-             [u"Montaza", "0.71", "1.42", "2.13"],
-             [u"Demontaza", "0.71", "1.42", "2.13"],
-             [u"Balansesana", "2.13", "2.13", "2.85"],
-             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
-
-        f = [[u"Nonemsana", "0.71", "0.71", "0.71"],
-             [u"Uzliksana", "0.71", "0.71", "0.71"],
-             [u"Montaza", "0.71", "1.42", "2.13"],
-             [u"Demontaza", "0.71", "1.42", "2.13"],
-             [u"Pilns Cikls", "4.98", "6.40", "8.54"],
-             [u"Balansesana", "2.13", "2.13", "2.85"],
-             [u"Protektora padzilginasana", "2.13", "2.13", "2.85"]]
-
-        g = [[u"Nonemsana", "0.71", "0.71", "0.71"],
-             [u"Uzliksana", "0.71", "0.71", "0.71"],
-             [u"Montaza", "0.71", "1.42", "2.13"],
-             [u"Demontaza", "0.71", "1.42", "2.13"],
-             [u"Balansesana", "2.13", "2.13", "2.85"],
-             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
-
-        h = [[u"Nonemsana", "0.71", "", ""],
-             [u"Uzliksana", "0.71", "", ""],
-             [u"Montaza", "2.13", "", ""],
-             [u"Demontaza", "2.13", "", ""],
-             [u"Pilns Cikls", "8.54", "", ""]]
-
-        i = [[u"Nonemsana", "0.71", "0.71", "0.71"],
-             [u"Uzliksana", "0.71", "0.71", "0.71"],
-             [u"Montaza", "0.71", "1.42", "2.13"],
-             [u"Demontaza", "0.71", "1.42", "2.13"],
-             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
-
-        j = [[u"Nonemsana", "0.71", "0.71", "0.71"],
-             [u"Uzliksana", "0.71", "0.71", "0.71"],
-             [u"Montaza", "0.71", "1.42", "2.13"],
-             [u"Demontaza", "0.71", "1.42", "2.13"],
-             [u"Pilns Cikls", "4.98", "6.40", "8.54"]]
-
-        carDL = generateDL(serviceParams, e)
-        TruckDL = generateDL(serviceParams, f)
-        OffroadDL = generateDL(serviceParams, g)
-        CommercialDL = generateDL(serviceParams, h)
-        AgroDL = generateDL(serviceParams, i)
-        IndyDL = generateDL(serviceParams, j)
-
-        addEntries(CarService, carDL)
-        addEntries(TruckService, TruckDL)
-        addEntries(OffroadService, OffroadDL)
-        addEntries(CommercialService, CommercialDL)
-        addEntries(AgroService, AgroDL)
-        addEntries(IndyService, IndyDL)
-
         self.redirect("/")
 
 
@@ -354,8 +246,76 @@ class TyreHandler(Handler):
         self.render("riepas.html", Tyres=tyres)
 
 
+class EntriesHandler(Handler, blobstore_handlers.BlobstoreUploadHandler):
+    def get(self):
+        upload_url = blobstore.create_upload_url('/add')
+        self.render("manage.html", url=str(upload_url))
+
+    def post(self):
+        size = self.request.get('size')
+        brand = self.request.get('brand')
+        model = self.request.get('model')
+        price = self.request.get('price')
+        isUsed = self.request.get('isUsed')
+
+        # Get the file and upload it
+        upload_files = self.get_uploads('file')
+        # Get the key from blobstore for the first element
+        blob_info = upload_files[0]
+        # Get the key
+        img = blob_info.key()
+
+        params = {'size': size, 'brand': brand, 'model': model,
+                  'price': price, 'image': str(img)}
+
+        if isUsed:
+            tread = self.request.get('tread')
+            params['treadDepth'] = tread
+
+        tyre = CarTyre(**params)
+
+        tyre.put()
+        self.redirect('')
+
+
+class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+    def post(self):
+        # 'file' is file upload field in the form
+        upload_files = self.get_uploads('file')
+        blob_info = upload_files[0]
+        self.redirect('/serve/%s' % blob_info.key())
+
+
+class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
+    def get(self, resource):
+        resource = str(urllib.unquote(resource))
+        blob_info = blobstore.BlobInfo.get(resource)
+        self.send_blob(blob_info)
+
+
+class ThumbnailHandler(blobstore_handlers.BlobstoreDownloadHandler):
+    def get(self, resource):
+        resource = str(urllib.unquote(resource))
+        blob_info = blobstore.BlobInfo.get(resource)
+
+        if blob_info:
+            img = images.Image(blob_key=resource)
+            img.resize(width=80, height=100)
+            thumbnail = img.execute_transforms(
+                output_encoding=images.JPEG)
+
+            self.response.headers['Content-Type'] = 'image/jpeg'
+            self.response.out.write(thumbnail)
+            return
+
+        # Either blob_key wasnt provided or there was no value with that ID
+        # in the Blobstore
+        self.error(404)
+
+
 app = webapp2.WSGIApplication([
     ('/db', PopulateDB),
+    ('/add', EntriesHandler),
     ('/diski', RimHandler),
     ('/meklet', SearchHandler),
     ('/par', AboutHandler),
@@ -364,6 +324,9 @@ app = webapp2.WSGIApplication([
      TyreHandler),
     ('/serviss(?:/)?([a-zA-Z]+)?(?:/)?',
      ServiceHandler),
+    ('/upload', UploadHandler),
+    ('/serve/([^/]+)?', ServeHandler),
+    ('/serve/th/([^/]+)?', ThumbnailHandler),
     ('/.*', MainHandler)
 ], debug=True)
 

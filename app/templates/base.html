@@ -23,6 +23,10 @@
         <!-- endbuild -->
         <!-- build:js js/vendor/modernizr.min.js -->
         <script src="/bower_components/modernizr/modernizr.js"></script>
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-MwWIy7JGkW_bKKI4GYBXdclqjEo9bK4&sensor=false">
+        </script>
+        <script src="/js/maps.js"></script>
         <!-- endbuild -->
     </head>
 
@@ -34,8 +38,8 @@
     <div class="off-canvas-wrap">
       <div itemscope itemtype="http://schema.org/LocalBusiness" class="inner-wrap">
 
-        <div class="contain-to-grid">
-        <nav class="top-bar hide-for-small" role="navigation">
+        <div class="contain-to-grid sticky">
+        <nav class="top-bar hide-for-small" data-topbar data-options="sticky_on: " role="navigation">
           <ul class="title-area">
               <li class="name"><h1><a href="/">BroPro</a></h1></li>
           </ul>
@@ -44,7 +48,7 @@
               <li><a href="/riepas"><span class="menu-icon icon-dial"></span>Riepas</a></li>
               <li><a href="/diski"><span class="menu-icon icon-compass"></span>Diski</a></li>
               <li><a href="/serviss"><span class="menu-icon icon-cog"></span>Serviss</a></li>
-              <li><a href="/par"><span class="menu-icon icon-map-pin-fill"></span>Par mums</a></li>
+              <li><a href="/par"><span class="menu-icon icon-map-pin-fill"></span>Info</a></li>
             </ul>
           </section>
         </nav>
@@ -75,25 +79,11 @@
           <div class="outer-wrap">
           <div class="row">
             <div class="footersearch large-4 columns">
-              <form action="/meklet">
-                <input type="search" name="q" id="fsearch" placeholder="Goodyear 315/85 r22.5" />
-                <input type="submit" class="button postfix" value="Meklēt!" />
-              </form>
-                <ul class="large-block-grid-3">
-                  <li><span class="brand-logo center bridgestone"></span></li>
-                  <li><span class="brand-logo center firestone"></span></li>
-                  <li><span class="brand-logo center kormoran"></span></li>
-                  <li><span class="brand-logo center michelin"></span></li>
-                  <li><span class="brand-logo center fulda"></span></li>
-                  <li><span class="brand-logo center goodyear"></span></li>
-                  <li><span class="brand-logo center kumho"></span></li>
-                  <li><span class="brand-logo center aeolus"></span></li>
-                  <li><span class="brand-logo center matador"></span></li>
-                </ul>
+                <div id="map-canvas"></div>
             </div>
 
 
-            <div class="footercontact medium-6 large-4 columns">
+            <div id="footercontact" class="footercontact medium-6 large-4 columns">
               <h3>Kontakti</h3>
               <ul>
                 <li itemprop="address" itemscope
@@ -143,22 +133,19 @@
                   <li><a href="#">Lietotas vieglo riepas</a></li>
                   <li><a href="#">Diski</a></li>
                   <li><a href="#">Serviss</a></li>
-                  <li><a href="#">Par uzņēmumu</a></li>
-                  <li><a href="#">Lapas karte</a></li>
                 </ul>
               </div>
 
               <div class="footerinfo large-4 medium-6 columns">
                 <h3>Informācija</h3>
                 <ul>
-                  <li><a href="#">Jaunumi</a></li>
-                  <li><a href="#">Par riepām</a></li>
-                  <li><a href="#">Par servisu</a></li>
-                  <li><a href="#">Piegādes iespējas</a></li>
-                  <li><a href="#">Apmaksa</a></li>
-                  <li><a href="#">Atsauksmes</a></li>
+                  <li><a href="#">Preču piegāde</a></li>
+                  <li><a href="#">Norēķinu iespejas</a></li>
                   <li><a href="#">Kā mūs atrast?</a></li>
+                  <li><a href="#">Atsauksmes</a></li>
+                  <li><a href="#">Par uzņēmumu</a></li>
                   <li><a href="#">Uzņēmuma rekvizīti</a></li>
+                  <li><a href="#">Lapas karte</a></li>
                 </ul>
               </div>
 
@@ -184,7 +171,7 @@
           <div class="row">
             <div class="columns">
               <span class="footerlogo">&copy; BroPro 2014</span>
-              <span class="gae right">Powered by Google Appengine</span>
+              <span class="gae right">Lapa izstrādes stadijā.</span>
 
               <!-- <span class="social">Social Links</span> -->
             </div>
@@ -211,9 +198,10 @@
         <!-- <script data&#45;main="/scripts/main" src="bower_components/requirejs/require.js"></script> -->
         <!-- build:js js/vendor/libraries.min.js -->
         <!-- bower:js -->
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="./bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/fastclick/lib/fastclick.js"></script>
         <script src="/bower_components/list.fuzzysearch.js/dist/list.fuzzysearch.js"></script>
+        <script src="/bower_components/list.pagination.js/dist/list.pagination.js"></script>
         <script src="/bower_components/list.js/dist/list.js"></script>
         <!-- endbower -->
         <!-- endbuild -->

@@ -8,9 +8,22 @@
     <li class="current"><a href="#">Diski</a></li>
   </ul>
 
-<p>Piedāvajam gan jaunus, gan lietotus kravas un vieglo automašīnu diskus.
-Sīkākai informācijai lūdzam sazināties ar mums. Kontaktinformācija atrodama
-sadaļā <a href="/par">Par Mums</a> vai lapas apakšā.</p>
+<p>Piedāvajam arī jaunus un lietotus kravas un vieglo automašīnu diskus.
+Sīkākai informācijai lūdzam sazināties ar mums. Mūsu kontaktinformācija atrodama
+sadaļā <a href="/par">par mums</a> vai <a href="#footercontact">lapas apakšā.</a>
+Varat arī nosūtīt mums ziņu, aizpildot šo formu, un mūsu pārstāvis pēc iespējas ātrākā laikā ar jums sazināsies. </p>
+
+                <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
+                  <label for="cinfo">Jūsu kontaktinformācija:
+                    <input type="text" name="cinfo" id="cinfo" value=""
+                    placeholder="Jūsu e-pasts vai telefons" />
+                    <!-- <span class="error">This is an error.</span> -->
+                  </label>
+                  <label for="message">Ziņa:
+                    <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
+                  </label>
+                  <input type="submit" name="submit" class="submit button right" value="Sūtīt!" />
+                </form>
 
 </div>
 {% endblock %}

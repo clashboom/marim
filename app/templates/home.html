@@ -1,29 +1,54 @@
 {% extends "base.html" %}
 
 {% block main %}
-  <ul class="example-orbit-content" data-orbit>
-  <li data-orbit-slide="headline-1">
-    <img src="../images/1.jpg" alt="slide 1" />
-    <div>
-      <h2>Headline 1</h2>
-      <h3>Subheadline</h3>
+
+ <!-- First Band (Slider) -->
+ 
+  <div class="row">
+    <div class="large-12 columns">
+    <div id="slider">
+      <img src="http://placehold.it/1000x400&text=[ img 1 ]" />
     </div>
-  </li>
-  <li data-orbit-slide="headline-2">
-    <div>
-    <img src="../images/2.jpg" alt="slide 2" />
-      <h2>Headline 2</h2>
-      <h3>Subheadline</h3>
+    
+    <hr />
     </div>
-  </li>
-  <li data-orbit-slide="headline-3">
-    <div>
-    <img src="../images/3.jpg" alt="slide 3" />
-      <h2>Headline 3</h2>
-      <h3>Subheadline</h3>
+  </div>
+  
+<!-- Three-up Content Blocks -->
+ 
+  <div class="row">
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>Riepas</h4>
+      <p>Piedāvājam dažādu veidu jaunas un lietotas kravas auto, mikroautobusu, apvidus un vieglo auto riepas, plašā sortimentā un dažādās cenu grupās - sākot no budžeta līdz premium tipa brandiem.</p>
     </div>
-  </li>
-</ul>
+    
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>Diski</h4>
+      <p>Piedāvājam arī jaunus un lietotus kravas un vieglo automašīnu diskus. Sīkākai informācijai lūdzam sazināties ar mums.</p>
+    </div>
+    
+    <div class="large-4 columns">
+      <img src="http://placehold.it/400x300&text=[img]" />
+      <h4>Serviss</h4>
+      <p>Uz vietas veicam visu veida kravas, apvidus, mikroautobusu un vieglo auto riepu montāžu un balansēšanu. Veicam arī riepu remontu, sākot ar vienkāršu diegu ievēršanu un beidzot ar nopietnu sānu defektu labošanu ar vulkanizācijas metodi. Veicam arī riepu protektora padziļināšanu. </p>
+    </div>
+  
+    </div>
+    
+<!-- Call to Action Panel -->
+<div class="row">
+  <ul class="brandband small-block-grid-2 medium-block-grid-5 large-block-grid-6">
+    <li><span class="brand-small bridgestone"></span></li>
+    <li><span class="brand-small goodyear"></span></li>
+    <li><span class="brand-small kumho"></span></li>
+    <li><span class="brand-small fulda"></span></li>
+    <li><span class="brand-small michelin"></span></li>
+    <li><span class="brand-small firestone"></span></li>
+  </ul>
+</div>
+
 
 {% endblock %}
 

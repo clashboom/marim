@@ -20,73 +20,53 @@
   <div id= "tire-list" class="tyre-list">
     <input type="search" class="fuzzy-search search" placeholder="Meklēšana"/>
 
-    <ul class="list">
+    <ul class="list small-block-grid-2 medium-block-grid-4 large-block-grid-5">
       {% for tyre in Tyres %}
-      <li class="product row" itemscope itemtype="http://schema.org/Product">
 
-        <div class="image-section hide-for-small medium-1 columns">
-          {% if tyre.imageurl %}
-          <a itemprop="image" class="image th" href="{{ tyre.image }}"><img src="{{ tyre.thumbnail }}" alt="Tires"></a>
-          {% else %}
-          <a itemprop="image" class="image th" href="http://placecage.com/c/800/600"><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
-          {% endif %}
-        </div>
+      <li class="product" itemscope itemtype="http://schema.org/Product">
 
-        <div class="specification  small-10 medium-9 columns">
-          <div class="row">
-            <div class="small-6 large-3">
-              <span class="brand" itemprop="brand"> {{ tyre.brand }} </span>
-              <span class="brand-logo center firestone"></span>
-            </div>
-            <div class="small-6 medium-7 large-9">
-              <em>
-                {% if tyre.treadDepth %}
-                <span>Lietotas: </span>
-                <span class="hide-for-small">Protektora atlikums: </span>
-                <span class="treadDepth">{{ tyre.treadDepth }}mm</span>
-                {% endif %}
-              </em>
-            </div>
+        <div class="">
 
-          </div>
-
-          <div class="row">
-          <span class="name small-8 medium-5 large-3" itemprop="name">
-            <span class="model" itemprop="model"> {{ tyre.model }} </span>
-            <span class="size"> {{ tyre.size }} </span>
-          </span>
-
-          {% if tyre.season %}
-          <span class="season small-2">
-          <span class="hide-for-small">Sezona: </span>
-          <span class="season-image {{ tyre.season }}"></span>
-          <span class="hide-for-small name">{{ tyre.season }}</span>
-          </span>
-          {% endif %}
+          <ul class="pricing-table">
+            <li class="title">
+              <span class="model" itemprop="model"> {{ tyre.model }} </span>
+              <span class="size"> {{ tyre.size }} </span>
+            </li>
+            <li class="bullet-item">
+            {% if tyre.image %}
+            <a itemprop="image" class="image" href="/serve/{{ tyre.image }}"><img src="/serve/th/{{ tyre.image }}" alt="Tires"></a>
+            {% else %}
+            <a itemprop="image" class="image" href="http://placecage.com/c/800/600"><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
+            {% endif %}
+            <!-- <span class="brand" itemprop="brand"> {{ tyre.brand }} </span> -->
+            <span class="brand-small firestone" class="has-tip" title="{{ tyre.brand }}"></span>
+              {% if tyre.treadDepth %}
+              Protektora atlikums:
+              <span class="treadDepth">{{ tyre.treadDepth }}mm</span>
+              {% endif %}
+            </li>
 
 
-          {% if tyre.description %}
-          <span class="description" itemprop="description">{{ tyre.description }}</span>
-          {% endif %}
+            <li class="price">
+            <span itemprop="price"> {{ tyre.price }} &euro; </span>
+            </li>
 
-          {% if tyre.availability %}
-          <span class="stock small-2">
-          <span class="hide-for-small">Noliktavā:</span>
-          <span class="stock-image"></span>
-          <span class="availability" itemprop="availability">??</span>
-          </span>
-          {% endif %}
+            <li class="cta-button">
+            <!--   <span class="small&#45;4"> -->
+            <!--   <input type="number" step="1.0" value="4"></input> -->
+            <!-- </span> -->
+              <a class="button" href="#">Pirkt</a>
+            </li>
+          </ul>
+
 
         </div>
-      </div>
-
-      <div class="offer small-2 columns text-right">
-        <span class="price" itemprop="price"> {{ tyre.price }} &euro; </span>
-      </div>
 
       </li>
       {% endfor %}
+
     </ul>
+    <ul class="pagination clear right"></ul>
   </div>
   {% endif %}
 

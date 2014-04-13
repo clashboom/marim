@@ -9,7 +9,7 @@ var app = (function(document, $) {
 		_init = function() {
 			$(document).foundation();
 			_userAgentInit();
-            console.log('go fuck yourself fitness freak');
+            console.log('Maybe. Maybe not. Maybe go fuck yourself.');
 		};
 
 	return {
@@ -34,11 +34,15 @@ var app = (function(document, $) {
 
   var options = {
     valueNames: ['brand', 'model', 'size'],
-    plugins: [ListFuzzySearch()]
+    page: 12,
+    paginationClass: "pagination",
+    innerWindow: 2,
+    plugins: [ListFuzzySearch(), ListPagination({})]
   };
 
   var listObj = new List('tire-list', options);
 
-  console.log('got this far');
+
+console.log('got this far');
 
 })();
