@@ -2752,7 +2752,7 @@ label.error {
     color: #333; }
 
 [data-magellan-expedition], [data-magellan-expedition-clone] {
-  background: #fff;
+  background: #f7f7f7;
   z-index: 50;
   min-width: 100%;
   padding: 10px; }
@@ -5072,7 +5072,6 @@ th.hide-for-touch {
 
 
 .main-section {
-  min-height: 700px;
   background-color: #f7f7f7; }
 
 .example-orbit-content {
@@ -5089,6 +5088,11 @@ footer li {
 /* ====== */
 .main-section > .row {
   padding: 1.25rem; }
+  .main-section > .row:first-child {
+    padding-top: 2.5rem; }
+
+.featured img {
+  max-height: 400px; }
 
 /* Modules */
 /* ======= */
@@ -5181,10 +5185,10 @@ footer .mobile {
 
 #cover {
   z-index: 500;
-  top: 44px;
-  left: 0;
+  top: 17%;
+  left: 10%;
   bottom: 0;
-  right: 0;
+  right: 2%;
   position: absolute; }
 
 #map-canvas {
@@ -5200,15 +5204,25 @@ li.product {
     display: block;
     margin: 0 auto; }
 
+.product .productwrap {
+  margin-top: 5%; }
+.product .name, .product .purchase, .product .notes {
+  text-align: center; }
+.product .name {
+  line-height: 2.5;
+  background: #2a2c2b;
+  color: #ff6726; }
+.product .pic, .product .purchase {
+  padding-top: 5%; }
+.product .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: block;
+  padding: 0 20%; }
 .product .model {
-  font-weight: 900; }
-
-
-.season-image, .stock-image {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: blue; }
+  font-weight: bold; }
+.product .button {
+  margin-bottom: 0; }
 
 /* States */
 /* ====== */

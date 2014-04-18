@@ -4,11 +4,6 @@
 
 <div class="row">
 
-  <ul class="breadcrumbs">
-    <li><a href="/">Sākums</a></li>
-    <li class="current"><a href="#">Riepas</a></li>
-  </ul>
-
   <!-- <div class="filter&#45;list"> -->
   <!--   <span class="title"></span> -->
   <!--   <a class="filter" href="/riepas/vieglo">Vieglais auto</a> -->
@@ -20,54 +15,59 @@
   <div id= "tire-list" class="tyre-list">
     <input type="search" class="fuzzy-search search" placeholder="Meklēšana"/>
 
-    <ul class="list small-block-grid-2 medium-block-grid-4 large-block-grid-5">
+    <ul class="list small-block-grid-2 medium-block-grid-3 large-block-grid-4">
       {% for tyre in Tyres %}
 
       <li class="product" itemscope itemtype="http://schema.org/Product">
 
-        <div class="">
+        <div class="productwrap">
 
-          <ul class="pricing-table">
-            <li class="title">
+          <a href="http://placecage.com/c/800/600">
+            <div class="row name">
               <span class="model" itemprop="model"> {{ tyre.model }} </span>
               <span class="size"> {{ tyre.size }} </span>
-            </li>
-            <li class="bullet-item">
-            {% if tyre.image %}
-            <a itemprop="image" class="image" href="/serve/{{ tyre.image }}"><img src="/serve/th/{{ tyre.image }}" alt="Tires"></a>
-            {% else %}
-            <a itemprop="image" class="image" href="http://placecage.com/c/800/600"><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
-            {% endif %}
-            <!-- <span class="brand" itemprop="brand"> {{ tyre.brand }} </span> -->
-            <span class="brand-small firestone" class="has-tip" title="{{ tyre.brand }}"></span>
-              {% if tyre.treadDepth %}
-              Protektora atlikums:
-              <span class="treadDepth">{{ tyre.treadDepth }}mm</span>
+            </div>
+          </a>
+
+          <div class="row">
+
+            <div class="medium-6 columns pic">
+
+              {% if tyre.image %}
+              <a itemprop="image" class="image" href="/serve/{{ tyre.image }}" data-lightbox="{{ tyre.image }}"><img src="/serve/th/{{ tyre.image }}" alt="Tires"></a>
+              {% else %}
+              <a itemprop="image" class="image" href="http://placecage.com/c/800/600" data-lightbox={{ "http://placecage.com/c/800/600 "}}><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
               {% endif %}
-            </li>
+              <img src="/images/{{ tyre.brand | lower }}.png"  alt="{{ tyre.brand }}"/>
+            </div>
 
+            <div class="medium-6 columns purchase">
+              <span itemprop="price" class="price"> {{ tyre.price }} &euro; </span>
+              <a class="button button-small" href="#">Pirkt</a>
+            </div>
 
-            <li class="price">
-            <span itemprop="price"> {{ tyre.price }} &euro; </span>
-            </li>
+          </div>
 
-            <li class="cta-button">
-            <!--   <span class="small&#45;4"> -->
-            <!--   <input type="number" step="1.0" value="4"></input> -->
-            <!-- </span> -->
-              <a class="button" href="#">Pirkt</a>
-            </li>
-          </ul>
-
+          {% if tyre.treadDepth %}
+          <div class="row notes">
+            <em><span class="tread-depth">Protektora atlikums: {{ tyre.treadDepth }}mm</span></em>
+          </div>
+          {% endif %}
 
         </div>
-
       </li>
       {% endfor %}
 
     </ul>
+
     <ul class="pagination clear right"></ul>
+
   </div>
+
+  {% else %}
+
+  <div class="panel"><p>Tehnisku iemeslu dēļ riepu katalogs šobrīd nav pieejams. Zvaniet, vai rakstiet uz e-pastu, izmantojot <a href="#kontakti"> kontaktu </a> sadaļu. Atvainojamies par sagādātajām neērtībām.  </p></div>
+
   {% endif %}
 
 </div>

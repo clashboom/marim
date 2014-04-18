@@ -17,7 +17,7 @@
 
 .main-section
 {
-  background-color: $f7f7f7;
+  background-color: #f7f7f7;
 }
 
 .example-orbit-content {
@@ -38,10 +38,21 @@ footer li {
 
 /* Layout */
 /* ====== */
+
+
 .main-section > .row {
   padding: rem-calc(20);
+  &:first-child {
+    padding-top: rem-calc(40);
+  }
 }
 
+
+.featured {
+  img {
+    max-height: 400px;
+  }
+}
 
 /* Modules */
 /* ======= */
@@ -124,10 +135,10 @@ footer .mobile { display: block; }
 
 #cover {
   z-index: 500;
-  top: 44px;
-  left: 0;
+  top: 17%;
+  left: 10%;
   bottom: 0;
-  right: 0;
+  right: 2%;
   position: absolute;
 }
 
@@ -149,22 +160,37 @@ li.product {
   }
 }
 
-.product .model {
-  font-weight: 900;
+.product {
+  .productwrap {
+    margin-top: 5%;
+  }
+  .name,
+  .purchase,
+  .notes {
+    text-align: center;
+  }
+  .name {
+    line-height: 2.5;
+    background: $c4;
+    color: $c1;
+  }
+  .pic,
+  .purchase {
+    padding-top: 5%;
+  }
+  .price {
+    font-size: rem-calc(20);
+    font-weight: bold;
+    display: block;
+    padding: 0 20%;
+  }
+  .model {
+    font-weight: bold;
+  }
+  .button {
+    margin-bottom: 0;
+  }
 }
-
-.product .price {
-}
-
-.season-image,
-.stock-image {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: blue;
-}
-
-
 
 /* States */
 /* ====== */

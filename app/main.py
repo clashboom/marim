@@ -25,7 +25,9 @@ class BaseTyre(ndb.Model):
     brand = ndb.StringProperty(required=True)
     model = ndb.StringProperty(required=True)
     price = ndb.StringProperty(required=True)
+
     size = ndb.StringProperty(required=True)
+
     lastModified = ndb.DateTimeProperty(auto_now=True)
     isHidden = ndb.BooleanProperty(default=False)
 
@@ -52,6 +54,8 @@ class Tyre(BaseTyre):
     speedIndex = ndb.StringProperty(default=None)
     loadIndex = ndb.StringProperty(default=None)
     image = ndb.BlobProperty(default=None)
+
+    inStock = ndb.IntegerProperty(default=0)
 
 
 class CarTyre(Tyre):
@@ -167,36 +171,60 @@ class PopulateDB(Handler):
                 e = entityName(**params)
                 e.put()
 
-        a = [["195/70 R15", "10", "R", "Matadr", "MPS 530", "Ziemas", "50.00"],
-             ["195/65 R15", "9", "T", "Matador", "MP 92", "Ziemas", "33.00"],
-             ["205/55 R16", "9", "H", "Matador", "MP 59", "Ziemas", "45.00"],
-             ["205/55 R16", "9", "T", "Marshal", "KW 22", "Ziemas", "50.00"],
-             ["205/55 R16", "9", "T", "Debica", "Frigo 2", "Ziemas", "42.00"],
-             ["235/75 R17", "13", "L", "Aeolus", "HN804", "Vissez.", "110.00"]]
+        a = [["195/70 R15", "10", "R", "Firestone",
+              "MPS 530", "Ziemas", "50.00", 4],
+             ["195/65 R15", "9", "T", "Goodyear",
+              "MP 92", "Ziemas", "33.00", 3],
+             ["205/55 R16", "9", "H", "Michelin",
+              "MP 59", "Ziemas", "45.00", 3],
+             ["205/55 R16", "9", "T", "Falken",
+              "KW 22", "Ziemas", "50.00", 2],
+             ["205/55 R16", "9", "T", "General",
+              "Frigo 2", "Ziemas", "42.00", 1],
+             ["235/75 R17", "13", "L", "Debica",
+              "HN804", "Vissez.", "110.00", 0]]
 
-        b = [["255/55 R18", "10", "H", "Pirel", "Scop", "Vs.", "15.00", "4.0"],
-             ["220x508 R18", "8", "Q", "GAZ", "MI", "Vissez.", "15.00", "5.0"]]
+        b = [["255/55 R18", "10", "H", "Dunlop",
+              "Scop", "Vs.", "15.00", 3, "4.0"],
+             ["220x508 R18", "8", "Q", "Bridgestone",
+              "MI", "Vissez.", "15.00", 0, "5.0"]]
 
-        c = [["385/65 R22.5", "13", "L", "Sempit", "M350", "V.", "290.0", 'U'],
-             ["385/55 R22.5", "13", "L", "Aeol", "HN809", "V.", "230.0", "U"],
-             ["385/65 R22.5", "13", "L", "Aeol", "HN805", "V.", "210.0", "U"],
-             ["385/65 R22.5", "13", "L", "Matador", "FH2", "V.", "250.0", "U"],
-             ["315/80 R22.5", "13", "L", "Fulln", "TB755", "V.", "175.0", "U"],
-             ["315/80 R22.5", "13", "L", "Aeol", "HN 355", "V.", "220.0", "F"],
-             ["315/70 R22.5", "13", "L", "Marsl", "RS03", "Vi.", "250.0", "F"],
-             ["315/80 R22.5", "13", "L", "Firee", "XD2", "V.", "160.0", "U"],
-             ["385/55 R22.5", "13", "J", "Kumho", "KLA1", "Vz.", "280.0", "U"],
-             ["1R R22.5", "13", "L", "Rocks", "ST957", "V.", "185.0", "U"]]
+        c = [["385/65 R22.5", "13", "L", "Infinity",
+              "M350", "V.", "290.0", 5, 'U'],
+             ["385/55 R22.5", "13", "L", "Hankook",
+              "HN809", "V.", "230.0", 0, "U"],
+             ["385/65 R22.5", "13", "L", "Dayton",
+              "HN805", "V.", "210.0", 6, "U"],
+             ["385/65 R22.5", "13", "L", "BFGoodrich",
+              "FH2", "V.", "250.0", 0, "U"],
+             ["315/80 R22.5", "13", "L", "Fulda",
+              "TB755", "V.", "175.0", 6, "U"],
+             ["315/80 R22.5", "13", "L", "Tigar",
+              "HN 355", "V.", "220.0", 2, "F"],
+             ["315/70 R22.5", "13", "L", "Yokohama",
+              "RS03", "Vi.", "250.0", 2, "F"],
+             ["315/80 R22.5", "13", "L", "Nankang",
+              "XD2", "V.", "160.0", 1, "U"],
+             ["385/55 R22.5", "13", "J", "Kumho",
+              "KLA1", "Vz.", "280.0", 5, "U"],
+             ["1R R22.5", "13", "L", "Kingstar",
+              "ST957", "V.", "185.0", 3, "U"]]
 
-        d = [["315/65 R2.5", "10", "R", "Marsal", "KW22", "Z", "37", "U", "5"],
-             ["315/70 R22.5", "13", "L", "Cont", "X", "A.", "30.00", 'F', "5"],
-             ["8.5 R17", "12", "L", "Michelin", "HT", "Va", "25.00", 'S', "4"],
-             ["385/55 R22.5", "13", "L", "Co", "HT1", "V.", "45.00", 'U', "7"],
-             ["315/70 R22.5", "13", "L", "Rou", "R6", "V", "35.00", 'U', "11"],
-             ["11 R22.5", "13", "L", "Matador", "DR1", "V", "45.00", 'U', "5"]]
+        d = [["315/65 R2.5", "10", "R", "Bridgestone",
+              "KW22", "Z", "37", 3, "U", "5"],
+             ["315/70 R22.5", "13", "L", "Tracmax",
+              "X", "A.", "30.00", 0, 'F', "5"],
+             ["8.5 R17", "12", "L", "Michelin", "HT",
+              "Va", "25.00", 4, 'S', "4"],
+             ["385/55 R22.5", "13", "L", "Pirelli",
+              "HT1", "V.", "45.00", 6, 'U', "7"],
+             ["315/70 R22.5", "13", "L", "Kormoran",
+              "R6", "V", "35.00", 0, 'U', "11"],
+             ["11 R22.5", "13", "L", "Kormoran",
+              "DR1", "V", "45.00", 2, 'U', "5"]]
 
         paramList = ["size", "loadIndex", "speedIndex", "brand", "model",
-                     "season", "price"]
+                     "season", "price", "inStock"]
         usedCarParamList = paramList[:]
         usedCarParamList.append("treadDepth")
         truckParamList = paramList[:]

@@ -14,6 +14,7 @@
         <!-- build:css css/libraries.min.css -->
         <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="http://i.icomoon.io/public/temp/af5a0341d8/UntitledProject1/style.css">
+        <link rel="stylesheet" href="/bower_components/lightbox/css/lightbox.css">
         <!-- bower:css -->
         <!-- endbower -->
         <!-- endbuild -->
@@ -45,10 +46,10 @@
           </ul>
           <section class="top-bar-section">
             <ul class="right">
-              <li><a href="/riepas"><span class="menu-icon icon-dial"></span>Riepas</a></li>
-              <li><a href="/diski"><span class="menu-icon icon-compass"></span>Diski</a></li>
-              <li><a href="/serviss"><span class="menu-icon icon-cog"></span>Serviss</a></li>
-              <li><a href="/par"><span class="menu-icon icon-map-pin-fill"></span>Info</a></li>
+              <li><a href="/riepas"><span class="fa fa-circle-o"></span>Riepas</a></li>
+              <li><a href="/diski"><span class="fa fa-circle"></span>Diski</a></li>
+              <li><a href="/serviss"><span class="fa fa-wrench"></span>Serviss</a></li>
+              <li><a href="/par"><span class="fa fa-map-marker"></span>Info</a></li>
             </ul>
           </section>
         </nav>
@@ -61,10 +62,10 @@
         <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list">
             <li><label class="first">Izvēlne</label></li>
-            <li><a href="/riepas"><span class="menu-icon icon-bowling"></span>Riepas</a></li>
-            <li><a href="/diski"><span class="menu-icon icon-eightball"></span>Diski</a></li>
-            <li><a href="/serviss"><span class="menu-icon icon-tools"></span>Serviss</a></li>
-            <li><a href="/par"><span class="menu-icon icon-location"></span>Par mums</a></li>
+            <li><a href="/riepas"><span class="fa fa-circle-o"></span>Riepas</a></li>
+            <li><a href="/diski"><span class="fa fa-circle"></span>Diski</a></li>
+            <li><a href="/serviss"><span class="fa fa-wrench"></span>Serviss</a></li>
+            <li><a href="/par"><span class="fa fa-map-marker"></span>Info</a></li>
           </ul>
         </aside>
 
@@ -78,12 +79,18 @@
         <footer>
           <div class="outer-wrap">
           <div class="row">
-            <div class="footersearch large-4 columns">
-                <div id="map-canvas"></div>
+
+            <div class="footerhours medium-6 large-4 columns">
+              <h3>Darba laiks</h3>
+              <ul>
+                <li><time itemprop="openinghours" datetime="mo,tu,we,th,fr 9:00-19:00"><strong>Pirmdiena - Piektdiena:</strong> 9<sup>00</sup> - 19<sup>00</sup></time></li>
+                <li><time itemprop="openingHours" datetime="Sa 9:00-16:00"><strong>Sestdiena:</strong> 9<sup>00</sup> - 16<sup>00</sup></time></li>
+                <li><time itemprop="openingHours" datetime="Su"> <strong>Svētdiena:</strong>  Slēgts</time></li>
+              </ul>
+              <p><em> Atkarībā no pieprasījuma, strādajam arī ārpus darba laika.  Droši zvaniet! </em></p>
             </div>
 
-
-            <div id="footercontact" class="footercontact medium-6 large-4 columns">
+            <div id="kontakti" class="footercontact medium-6 large-4 columns">
               <h3>Kontakti</h3>
               <ul>
                 <li itemprop="address" itemscope
@@ -109,15 +116,20 @@
               </ul>
             </div>
 
-            <div class="footerhours medium-6 large-4 columns">
-              <h3>Darba laiks</h3>
-              <ul>
-                <li><time itemprop="openinghours" datetime="mo,tu,we,th,fr 9:00-19:00">Pirmdiena - Piektdiena: 9<sup>00</sup> - 19<sup>00</sup></time></li>
-                <li><time itemprop="openingHours" datetime="Sa 9:00-16:00">Sestdiena:   9<sup>00</sup> - 16<sup>00</sup></time></li>
-                <li><time itemprop="openingHours" datetime="Su"> Svētdiena:  Slēgts</time></li>
-              </ul>
-                <div class="panel"><em> Strādajam pēc pieprasījuma arī ārpus darba laika.  Droši zvaniet! </em></div>
+            <div class="footerform large-4 columns">
+              <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
+                <label for="cinfo">Kontaktinformācija:
+                  <input type="text" name="cinfo" id="cinfo" value=""
+                  placeholder="Jūsu e-pasts vai telefons" />
+                  <!-- <span class="error">This is an error.</span> -->
+                </label>
+                <label for="message">Ziņa:
+                  <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
+                </label>
+                <input type="submit" name="submit" class="submit button small right" value="Sūtīt!" />
+              </form>
             </div>
+
 
           </div>
           </div>
@@ -150,19 +162,9 @@
               </div>
 
 
-              <div class="footerform large-4 columns">
-                <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
-                  <label for="cinfo">Kontaktinformācija:
-                    <input type="text" name="cinfo" id="cinfo" value=""
-                    placeholder="Jūsu e-pasts vai telefons" />
-                    <!-- <span class="error">This is an error.</span> -->
-                  </label>
-                  <label for="message">Ziņa:
-                    <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
-                  </label>
-                  <input type="submit" name="submit" class="submit button right" value="Sūtīt!" />
-                </form>
-              </div>
+            <div class="footersearch large-4 columns">
+                <div id="map-canvas"></div>
+            </div>
 
             </div>
           </div>
@@ -203,6 +205,7 @@
         <script src="/bower_components/list.fuzzysearch.js/dist/list.fuzzysearch.js"></script>
         <script src="/bower_components/list.pagination.js/dist/list.pagination.js"></script>
         <script src="/bower_components/list.js/dist/list.js"></script>
+        <script src="/bower_components/lightbox/js/lightbox.min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js js/vendor/foundation.min.js -->
