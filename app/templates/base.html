@@ -13,7 +13,6 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css css/libraries.min.css -->
         <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" href="http://i.icomoon.io/public/temp/af5a0341d8/UntitledProject1/style.css">
         <link rel="stylesheet" href="/bower_components/lightbox/css/lightbox.css">
         <!-- bower:css -->
         <!-- endbower -->
@@ -24,9 +23,6 @@
         <!-- endbuild -->
         <!-- build:js js/vendor/modernizr.min.js -->
         <script src="/bower_components/modernizr/modernizr.js"></script>
-        <script type="text/javascript"
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-MwWIy7JGkW_bKKI4GYBXdclqjEo9bK4&sensor=false">
-        </script>
         <script src="/js/maps.js"></script>
         <!-- endbuild -->
     </head>
@@ -40,25 +36,32 @@
       <div itemscope itemtype="http://schema.org/LocalBusiness" class="inner-wrap">
 
         <div class="contain-to-grid sticky">
-        <nav class="top-bar hide-for-small" data-topbar data-options="sticky_on: " role="navigation">
-          <ul class="title-area">
+          <nav class="top-bar hide-for-small" data-topbar data-options="sticky_on: " role="navigation">
+            <ul class="title-area">
               <li class="name"><h1><a href="/">BroPro</a></h1></li>
-          </ul>
-          <section class="top-bar-section">
-            <ul class="right">
-              <li><a href="/riepas"><span class="fa fa-circle-o"></span>Riepas</a></li>
-              <li><a href="/diski"><span class="fa fa-circle"></span>Diski</a></li>
-              <li><a href="/serviss"><span class="fa fa-wrench"></span>Serviss</a></li>
-              <li><a href="/par"><span class="fa fa-map-marker"></span>Info</a></li>
             </ul>
-          </section>
-        </nav>
+            <section class="top-bar-section">
+              <ul class="right">
+                <li><a href="/riepas"><span class="fa fa-circle-o"></span>Riepas</a></li>
+                <li><a href="/diski"><span class="fa fa-circle"></span>Diski</a></li>
+                <li><a href="/serviss"><span class="fa fa-wrench"></span>Serviss</a></li>
+                <li><a href="/par"><span class="fa fa-map-marker"></span>Info</a></li>
+                {% if item_count %}
+                <li class="shopping-cart"><a href="/grozs"><span class="fa fa-shopping-cart"> {{ item_count }}</span></a></li>
+                {% endif%}
+              </ul>
+            </section>
+          </nav>
         </div>
 
         <nav class="tab-bar show-for-small" role="navigation">
           <section class="left-small"><a class="left-off-canvas-toggle menu-icon"> <span></span> </a></section>
-              <h1 class="name right"><a href="/">BroPro</a></h1>
+          {% if item_count %}
+          <div class="shopping-cart right"><a href="/grozs"><span class="fa fa-shopping-cart"> {{ item_count }}</span></a></div>
+          {% endif%}
+          <h1 class="name right"><a href="/">BroPro</a></h1>
         </nav>
+
         <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list">
             <li><label class="first">Izvēlne</label></li>
@@ -71,8 +74,20 @@
 
         <div id="main" class="main-section" role="main">
 
+          {% if alert %}
+          <div data-alert class="alert-box success radius">
+            <p class="text-center">
+              {{ alert | safe }}
+            </p>
+            <a href="#" class="close">&times;</a>
+          </div>
+          {% endif %}
+
+
             {% block main %}
+
             {% endblock %}
+
             <a class="exit-off-canvas"></a>
         </div>
 
@@ -119,14 +134,14 @@
             <div class="footerform large-4 columns">
               <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
                 <label for="cinfo">Kontaktinformācija:
-                  <input type="text" name="cinfo" id="cinfo" value=""
+                  <input type="text" name="cinfo" id="cinfo" value="" required
                   placeholder="Jūsu e-pasts vai telefons" />
                   <!-- <span class="error">This is an error.</span> -->
                 </label>
                 <label for="message">Ziņa:
-                  <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
+                  <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32" required></textarea>
                 </label>
-                <input type="submit" name="submit" class="submit button small right" value="Sūtīt!" />
+                <input  type="submit" class="submit button small right" value="Sūtīt!" />
               </form>
             </div>
 
@@ -200,7 +215,7 @@
         <!-- <script data&#45;main="/scripts/main" src="bower_components/requirejs/require.js"></script> -->
         <!-- build:js js/vendor/libraries.min.js -->
         <!-- bower:js -->
-        <script src="./bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
         <script src="/bower_components/fastclick/lib/fastclick.js"></script>
         <script src="/bower_components/list.fuzzysearch.js/dist/list.fuzzysearch.js"></script>
         <script src="/bower_components/list.pagination.js/dist/list.pagination.js"></script>

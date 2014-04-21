@@ -115,6 +115,8 @@ footer .mobile { display: block; }
 .kumho { background: url('/images/kumho.png'); }
 
 
+
+
 /* Flexible iFrame */
 .flexible {
     position: relative;
@@ -170,7 +172,7 @@ li.product {
     text-align: center;
   }
   .name {
-    line-height: 2.5;
+    padding: rem-calc(10) rem-calc(10);
     background: $c4;
     color: $c1;
   }
@@ -190,6 +192,43 @@ li.product {
   .button {
     margin-bottom: 0;
   }
+  .pic img {
+    display: block;
+    margin: 0 auto;
+    
+  }
+}
+
+/* Shopping Cart */
+
+.cart {
+    li {
+        list-style-type: none;
+        line-height: 2.5;
+    }
+    .title {
+        font-weight: bold;
+    }
+    .remove {
+        color: #ccc;
+        &:hover {
+            color: $alert-color;
+        }
+    }
+    .name {
+        
+    }
+}
+
+
+.tab-bar .shopping-cart,
+.top-bar .shopping-cart {
+    a {
+        color: limegreen;
+    }
+    &:hover {
+        color: $c4;
+    }
 }
 
 /* States */
@@ -200,6 +239,11 @@ li.product {
    /* text-decoration: underline;  */
    color: $c1;
 }
+
+.serviss .vertical dd:last-child {
+    margin-bottom: 20px !important;
+}
+
 
 
 /* Theme */
@@ -241,6 +285,7 @@ $c5: #1e1e20;  /* night */
     list-style-type: none;
   }
 }
+
 
 
 /* Footer  */

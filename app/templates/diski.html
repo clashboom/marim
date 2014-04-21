@@ -11,12 +11,12 @@ Varat arī nosūtīt mums ziņu, aizpildot šo formu, un mūsu pārstāvis pēc 
 
                 <form id="footerform" action="/l" method="POST" accept-charset="utf-8">
                   <label for="cinfo">Jūsu kontaktinformācija:
-                    <input type="text" name="cinfo" id="cinfo" value=""
+                    <input type="text" name="cinfo" id="cinfo" value="" required
                     placeholder="Jūsu e-pasts vai telefons" />
                     <!-- <span class="error">This is an error.</span> -->
                   </label>
                   <label for="message">Ziņa:
-                    <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32"></textarea>
+                    <textarea name="message" id="message" placeholder="Ziņas saturs" rows="5" cols="32" required></textarea>
                   </label>
                   <input type="submit" name="submit" class="submit button right" value="Sūtīt!" />
                 </form>

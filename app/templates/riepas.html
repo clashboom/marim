@@ -13,7 +13,15 @@
 
   {% if Tyres %}
   <div id= "tire-list" class="tyre-list">
-    <input type="search" class="fuzzy-search search" placeholder="Meklēšana"/>
+
+    <div class="row collapse">
+        <div class="small-10 large-11 columns">
+            <input name="tyre" id="tyre-search-input" class="search fuzzy-search" type="search" placeholder="Firestone FS400 315/70 R22.5">
+        </div>
+        <div class="small-2 large-1 columns">
+            <a href="#" id="tyre-search-submit" class="button postfix"><span class="fa fa-search"></span><span class="hide-for-small-only">Meklēt</span></a>
+        </div>
+    </div>
 
     <ul class="list small-block-grid-2 medium-block-grid-3 large-block-grid-4">
       {% for tyre in Tyres %}
@@ -22,7 +30,7 @@
 
         <div class="productwrap">
 
-          <a href="http://placecage.com/c/800/600">
+            <a href="/riepa/{{ tyre.key.urlsafe() }}">
             <div class="row name">
               <span class="model" itemprop="model"> {{ tyre.model }} </span>
               <span class="size"> {{ tyre.size }} </span>
@@ -39,11 +47,17 @@
               <a itemprop="image" class="image" href="http://placecage.com/c/800/600" data-lightbox={{ "http://placecage.com/c/800/600 "}}><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
               {% endif %}
               <img src="/images/{{ tyre.brand | lower }}.png"  alt="{{ tyre.brand }}"/>
+
             </div>
 
             <div class="medium-6 columns purchase">
-              <span itemprop="price" class="price"> {{ tyre.price }} &euro; </span>
-              <a class="button button-small" href="#">Pirkt</a>
+              <span itemprop="price" class="price has-tip" title="{{ '%0.2f' | format(tyre.price | float * 0.702804)}} Ls"> {{ tyre.price }} &euro; </span>
+
+              <form action="/pirkt" method="get">
+                <input type="hidden" name="key" value="{{ tyre.key.urlsafe() }}" />
+                <input type="submit" class="button small" value="Pirkt">
+              </form>
+
             </div>
 
           </div>
@@ -66,7 +80,7 @@
 
   {% else %}
 
-  <div class="panel"><p>Tehnisku iemeslu dēļ riepu katalogs šobrīd nav pieejams. Zvaniet, vai rakstiet uz e-pastu, izmantojot <a href="#kontakti"> kontaktu </a> sadaļu. Atvainojamies par sagādātajām neērtībām.  </p></div>
+  <div class="panel"><p>Nav nevienas preces</p></div>
 
   {% endif %}
 

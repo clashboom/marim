@@ -13,11 +13,11 @@ handlers:
 
 - url: /bower_components
   static_dir: bower_components
-  
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
-  
+
 - url: /javascripts
   static_dir: javascripts
 
@@ -41,6 +41,10 @@ handlers:
 
 - url: /images
   static_dir: images
+
+- url: /admin/.*
+  script: main.app
+  login: admin
 
 - url: /.*
   script: main.app
