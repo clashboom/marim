@@ -1,50 +1,123 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="row">
-<h1>Pievienot riepu</h1>
+<div class="row" id="add-tyre-form">
 
 <form action="{{ url }}" enctype="multipart/form-data" method="post">
-  <label for="size">Izmers:</label>
-  <input type="text" name="size" id="size" value="" />
 
-  <label for="brand">Razotajs</label>
-  <input type="text" name="brand" id="brand" value="" />
+  <h2> Riepas pievienošana </h2>
 
-  <label for="model">Modelis</label>
-  <input type="text" name="model" id="model" value="" />
+  <div class="row">
+    <div class="small-12 columns" id="tyre-type">
+      <label class="label secondary" for="type">Riepas tips:</label>
+      <select name="type">
+        <option value="any" selected>Vieglo</option>
+        <option value="front">Kravas</option>
+      </select>
+    </div>
+  </div>
 
-  <label for="price">Cena</label>
-  <input type="text" name="price" id="price" value="" />
+  <div class="row">
+    <div class="medium-6 columns">
+      <label class="label secondary" for="brand">Ražotājs</label>
+      <input type="text" name="brand" value="Aeolus" required/>
+    </div>
 
-  <label for="isUsed">Lietota?</label>
-  <input type="checkbox" name="isUsed" id="isUsed" />
+    <div class="medium-6 columns">
+      <label class="label secondary" for="model">Modelis</label>
+      <input type="text" name="model" placeholder="AU01" required/>
+    </div>
+  </div>
 
-  <label for="tread">Protektora atlikums</label>
-  <input type="text" name="tread" id="tread" value="" />
+  <div class="row">
+    <div class="small-6 medium-4 columns">
+      <label class="label secondary" for="width">Platums:</label>
+      <input type="number" step="1" name="width" placeholder="195" required/>
+    </div>
 
-  <!-- <label for="isTruckTyre">Kravas auto riepa?</label> -->
-  <!-- <input type="checkbox" name="isTruckTyre" id="isTruckTyre" /> -->
-  <!--  -->
-  <!-- <label for="axle">Ass:</label> -->
-  <!-- <select name="axle" id="axle"> -->
-  <!--   <option value="front">Sturejoshaa</option> -->
-  <!--   <option value="drive">Velkoshaa</option> -->
-  <!--   <option value="trailer">Piekabes</option> -->
-  <!--   <option value="any">Jebkura</option> -->
-  <!-- </select> -->
+    <div class="small-6 medium-4 columns">
+      <label class="label secondary" for="ratio">Profils:</label>
+      <input type="number" step="1" name="ratio" placeholder="65" required/>
+    </div>
 
-  <!-- <label for="loadIndexPaired">Kravnesibas indekss saparotai riepai</label> -->
-  <!-- <input type="text" name="loadIndexPaired" id="loadIndexPaired" value="" /> -->
-  <!--  -->
-  <!-- <label for="loadIndex">Kravnesibas indekss 1 riepai</label> -->
-  <!-- <input type="text" name="loadIndex" id="loadIndex" value="" /> -->
-  <!--  -->
-  <!-- <label for="speedIndex">Atruma indekss:</label> -->
-  <!-- <input type="text" name="speedIndex" id="speedIndex" value="" /> -->
-  <label for="img">Attēls (&lt; 1MB, .jpg)</label>
-  <input type="file" name="file"/>
-  <input type="submit" class="submit button" value="Pievienot" />
+    <div class="small-6 medium-1 columns">
+      <label class="label secondary" for="construction">Konstrukcija:</label>
+      <input type="text" name="construction" value="R" required/>
+    </div>
+
+    <div class="small-6 medium-3 columns">
+      <label class="label secondary" for="diameter">Diametrs:</label>
+      <input type="number" step="0.5" name="diameter" placeholder="16" required/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <label class="label secondary" for="loadIndex">Kravnesības indekss</label>
+      <input type="text" name="loadIndex" id="loadIndex" placeholder="91" />
+    </div>
+
+    <div class="small-6 columns">
+      <label class="label secondary" for="speedIndex">Ātruma indekss:</label>
+      <input type="text" name="speedIndex" placeholder="T" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <label class="label secondary" for="condition">Stāvoklis:</label>
+      <select name="condition" id="condition">
+        <option value="new" selected>Jauna</option>
+        <option value="renewed">Atjaunota</option>
+        <option value="used">Lietota</option>
+      </select>
+    </div>
+
+    <div class="small-6 columns" id="tread">
+      <label class="label secondary" for="tread">Protektora atlikums (mm)</label>
+      <input type="number" min="1" step="1" name="tread" placeholder="4" />
+    </div>
+  </div>
+
+
+  <div class="row" id="truck-tyre-properties">
+    <div class="small-12 medium-6 columns">
+      <label class="label secondary" for="axle">Ass:</label>
+      <select name="axle" id="axle">
+        <option value="any" selected>Jebkura</option>
+        <option value="front">Stūrējošā</option>
+        <option value="drive">Velkošā</option>
+        <option value="trailer">Piekabes</option>
+      </select>
+    </div>
+
+
+    <div class="small-12 medium-6 columns">
+      <label class="label secondary" for="loadIndexPaired">Kravnesības indekss pārī</label>
+      <input type="text" name="loadIndexPaired" placeholder="148" />
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="small-12 medium-4 columns">
+      <label class="label secondary" for="price">Cena (&euro;)</label>
+      <input type="number" min="0.01" step="0.01" name="price" placeholder="33.00" required/>
+    </div>
+
+    <div class="small-12 medium-4 columns">
+      <label  class="label secondary" for="img">Attēls <strong>(&lt; 1MB, .jpg)</strong></label>
+      <input type="file" name=""/>
+    </div>
+
+    <div class="small-12 medium-4 columns disabled">
+      <input type="checkbox" name="ss" disabled/>
+      <label class="label secondary" for="ss">Sludinājums SS.lv</label>
+    </div>
+
+  </div>
+
+  <input type="submit" class="submit button right" value="Pievienot" />
 </form>
 
  </div>

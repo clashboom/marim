@@ -94,11 +94,24 @@ var app = (function(document, $) {
   };
 
 
+  if ($('#add-tyre-form').length) {
+    $('#truck-tyre-properties').hide();
+    $('#tread').hide();
+    $('#condition').parent().removeClass('small-6').addClass('small-12');
+    $('#condition').change(function(){
+      if $(this).val() == "used" {
+        $("tread").show();
+      };
+  });
+
+  };
+
+
 
   // Search bar
   $('#tyre-search-submit').click(function(){
     listObj.fuzzySearch.search($('#tyre-search-input').val());
   });
-
+;
 
 })();

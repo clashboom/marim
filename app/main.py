@@ -60,12 +60,22 @@ def rate_limit(seconds_per_request=1):
 class BaseTyre(ndb.Model):
     brand = ndb.StringProperty(required=True)
     model = ndb.StringProperty(required=True)
-    price = ndb.StringProperty(required=True)
 
-    size = ndb.StringProperty(required=True)
+    size = ndb.ComputedProperty(lambda self: "%s/%s %s%s" %
+                                (self.width, self.aspectRatio,
+                                 self.construction, self.diameter))
 
-    lastModified = ndb.DateTimeProperty(auto_now=True)
-    isHidden = ndb.BooleanProperty(default=False)
+    width = ndb.IntegerProperty()
+    aspectRatio = ndb.IntegerProperty()
+
+    construction = ndb.StringProperty(default=u'R')
+    diameter = ndb.FloatProperty()
+
+    season = ndb.StringProperty(default=None)
+
+    speedIndex = ndb.StringProperty(default=None)
+    loadIndex = ndb.StringProperty(default=None)
+
 
     @classmethod
     def queryTyres(cls):
@@ -90,11 +100,16 @@ class BaseTyre(ndb.Model):
 
 
 class Tyre(BaseTyre):
-    season = ndb.StringProperty(default=None)
-    speedIndex = ndb.StringProperty(default=None)
-    loadIndex = ndb.StringProperty(default=None)
     image = ndb.BlobProperty(default=None)
+    price = ndb.FloatProperty(required=True)
     inStock = ndb.IntegerProperty(default=0)
+
+    EUwetGrip = ndb.StringProperty('EUwg')
+    EUnoiseLevels = ndb.StringProperty('EUnl')
+    EUfuelEfficiency = ndb.StringProperty('EUfe')
+
+    lastModified = ndb.DateTimeProperty(auto_now=True)
+    isHidden = ndb.BooleanProperty(default=False)
 
 
 class CarTyre(Tyre):
@@ -106,7 +121,7 @@ class UsedCarTyre(CarTyre):
 
 
 class TruckTyre(Tyre):
-    # loadIndexPaired = ndb.StringProperty()
+    loadIndexPaired = ndb.StringProperty()
     axlePosition = ndb.StringProperty()
 
 
@@ -428,7 +443,7 @@ class EntriesHandler(Handler, blobstore_handlers.BlobstoreUploadHandler):
         size = self.request.get('size')
         brand = self.request.get('brand')
         model = self.request.get('model')
-        price = self.request.get('price')
+        price = float(self.request.get('price'))
         isUsed = self.request.get('isUsed')
 
         # Get the file and upload it
