@@ -70,7 +70,7 @@ footer .mobile { display: block; }
 }
 
 .top-bar-mini {
-   height: rem-calc(20); 
+   height: rem-calc(20);
    line-height: rem-calc(20);
    text-transform: uppercase;
    color: $c5;
@@ -85,11 +85,6 @@ footer .mobile { display: block; }
   height: 11px;
   display: inline-block;
 }
-
-.flag.gb { background: url('../images/broprosprites.png') no-repeat -350px -145px; }
-.flag.lv { background: url('../images/broprosprites.png') no-repeat -366px -145px; }
-.flag.ru { background: url('../images/broprosprites.png') no-repeat -382px -145px; }
-.flag.de { background: url('../images/broprosprites.png') no-repeat -398px -145px; }
 
 /* Brandband */
 
@@ -125,8 +120,8 @@ footer .mobile { display: block; }
     overflow: hidden;
 }
 
-.flexible iframe,   
-.flexible object,  
+.flexible iframe,
+.flexible object,
 .flexible embed {
     position: absolute;
     top: 0;
@@ -162,6 +157,10 @@ li.product {
   }
 }
 
+.brand.hidden {
+    display: none;
+}
+
 .product {
   .productwrap {
     margin-top: 5%;
@@ -195,7 +194,7 @@ li.product {
   .pic img {
     display: block;
     margin: 0 auto;
-    
+
   }
 }
 
@@ -216,7 +215,7 @@ li.product {
         }
     }
     .name {
-        
+
     }
 }
 
@@ -332,5 +331,13 @@ footer .outer-wrap:last-child {
   background-color: darken($c5, 5%);
   color: lighten($c5, 10%);
   padding: 25px 0 15px 0;
+}
+
+.footersocial span {
+    color: lighten($c5, 10%);
+    font-size: 5em;
+    &:hover {
+        color: $c1;
+    }
 }
 

@@ -3,24 +3,16 @@
 {% block main %}
 
 <div class="row">
-
-  <!-- <div class="filter&#45;list"> -->
-  <!--   <span class="title"></span> -->
-  <!--   <a class="filter" href="/riepas/vieglo">Vieglais auto</a> -->
-  <!--   <a class="filter" href="/riepas/kravas">Kravas auto</a> -->
-  <!--   <a class="filter" href="/riepas/lietotas">Lietotas</a> -->
-  <!-- </div> -->
-
   {% if Tyres %}
   <div id= "tire-list" class="tyre-list">
 
     <div class="row collapse">
-        <div class="small-10 large-11 columns">
-            <input name="tyre" id="tyre-search-input" class="search fuzzy-search" type="search" placeholder="Firestone FS400 315/70 R22.5">
-        </div>
-        <div class="small-2 large-1 columns">
-            <a href="#" id="tyre-search-submit" class="button postfix"><span class="fa fa-search"></span><span class="hide-for-small-only">Meklēt</span></a>
-        </div>
+      <div class="small-10 large-11 columns">
+        <input name="tyre" id="tyre-search-input" class="search fuzzy-search" type="search" placeholder="Firestone FS400 315/70 R22.5">
+      </div>
+      <div class="small-2 large-1 columns">
+        <a href="#" id="tyre-search-submit" class="button postfix"><span class="fa fa-search"></span><span class="hide-for-small-only">Meklēt</span></a>
+      </div>
     </div>
 
     <ul class="list small-block-grid-2 medium-block-grid-3 large-block-grid-4">
@@ -30,28 +22,27 @@
 
         <div class="productwrap">
 
-            <a href="/riepa/{{ tyre.key.urlsafe() }}">
             <div class="row name">
+              <span class="brand hidden" itemprop="manufacturer"> {{ tyre.brand }} </span>
               <span class="model" itemprop="model"> {{ tyre.model }} </span>
               <span class="size"> {{ tyre.size }} </span>
             </div>
-          </a>
 
           <div class="row">
 
             <div class="medium-6 columns pic">
 
               {% if tyre.image %}
-              <a itemprop="image" class="image" href="/serve/{{ tyre.image }}" data-lightbox="{{ tyre.image }}"><img src="/serve/th/{{ tyre.image }}" alt="Tires"></a>
+              <a itemprop="image" class="image" href="/serve/{{ tyre.image }}" data-lightbox="{{ tyre.image }}"><img src="/serve/th/{{ tyre.image }}" alt="Riepa"></a>
               {% else %}
-              <a itemprop="image" class="image" href="http://placecage.com/c/800/600" data-lightbox={{ "http://placecage.com/c/800/600 "}}><img src="http://placecage.com/100/100" data-caption="" alt="Riepas"></a>
+              <img src="images/tyre-th.jpg" alt="Riepa">
               {% endif %}
               <img src="/images/{{ tyre.brand | lower }}.png"  alt="{{ tyre.brand }}"/>
 
             </div>
 
             <div class="medium-6 columns purchase">
-              <span itemprop="price" class="price has-tip" title="{{ '%0.2f' | format(tyre.price | float * 0.702804)}} Ls"> {{ tyre.price }} &euro; </span>
+              <span itemprop="price" class="price"> {{ '%0.2f' % tyre.price|float }} &euro; </span>
 
               <form action="/pirkt" method="get">
                 <input type="hidden" name="key" value="{{ tyre.key.urlsafe() }}" />

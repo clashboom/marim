@@ -20,9 +20,7 @@ from webapp2_extras import sessions
 from webapp2_extras import sessions_memcache
 # from webapp2_extras import sessions_ndb
 
-import collections
 from functools import wraps
-
 
 # Jinja2 Config
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -49,7 +47,8 @@ def rate_limit(seconds_per_request=1):
                                  namespace='rate_limiting')
 
             if not added:
-                self.response.write(u'Rate limit exceeded.')
+                self.response.write(u'Darbība veikta pārāk bieži. Mēģiniet \
+                                    vēlreiz pēc vienas minūtes')
                 self.response.set_status(403)
                 return
             return function(self, *args, **kwargs)
@@ -65,17 +64,18 @@ class BaseTyre(ndb.Model):
                                 (self.width, self.aspectRatio,
                                  self.construction, self.diameter))
 
-    width = ndb.IntegerProperty()
-    aspectRatio = ndb.IntegerProperty()
+    width = ndb.IntegerProperty(required=True)
+    aspectRatio = ndb.IntegerProperty(required=True)
 
-    construction = ndb.StringProperty(default=u'R')
-    diameter = ndb.FloatProperty()
+    construction = ndb.StringProperty(default=u'R', required=True)
+    diameter = ndb.FloatProperty(required=True)
 
-    season = ndb.StringProperty(default=None)
+    season = ndb.StringProperty()
 
-    speedIndex = ndb.StringProperty(default=None)
-    loadIndex = ndb.StringProperty(default=None)
+    loadIndex = ndb.IntegerProperty()
+    speedIndex = ndb.StringProperty()
 
+    condition = ndb.StringProperty()
 
     @classmethod
     def queryTyres(cls):
@@ -100,7 +100,7 @@ class BaseTyre(ndb.Model):
 
 
 class Tyre(BaseTyre):
-    image = ndb.BlobProperty(default=None)
+    image = ndb.BlobProperty()
     price = ndb.FloatProperty(required=True)
     inStock = ndb.IntegerProperty(default=0)
 
@@ -117,16 +117,16 @@ class CarTyre(Tyre):
 
 
 class UsedCarTyre(CarTyre):
-    treadDepth = ndb.StringProperty()
+    treadDepth = ndb.IntegerProperty()
 
 
 class TruckTyre(Tyre):
-    loadIndexPaired = ndb.StringProperty()
+    loadIndexPaired = ndb.IntegerProperty()
     axlePosition = ndb.StringProperty()
 
 
 class UsedTruckTyre(TruckTyre):
-    treadDepth = ndb.StringProperty()
+    treadDepth = ndb.IntegerProperty()
 
 
 class Handler(webapp2.RequestHandler):
@@ -174,14 +174,18 @@ class AddToCartHandler(Handler):
 
         if not current_item_count:
             current_item_count = 0
+
         current_item_count = int(current_item_count) + 1
+
         key = self.request.get('key')
         item_list = self.session.get('item_list')
         if not item_list:
             item_list = []
-        item_list.append(key)
-        self.session['item_list'] = item_list
-        self.session['item_count'] = current_item_count
+        if key not in item_list:
+            item_list.append(key)
+            self.session['item_list'] = item_list
+            self.session['item_count'] = current_item_count
+
         self.redirect('/grozs')
 
 
@@ -214,8 +218,8 @@ class ShowCartHandler(Handler):
             except:
                 order[key] = value
 
-        from_addr = "info@bropro.lv"
-        to_addr = "nejeega@gmail.com"
+        from_addr = "bropro.tire@gmail.com"
+        to_addr = "info@bropro.lv"
 
         try:
             msg = mail.EmailMessage()
@@ -274,8 +278,8 @@ class MailHandler(Handler):
         user_info = self.request.get("cinfo")
         message = self.request.get("message")
         # TODO: Add rate limiting
-        from_addr = "info@bropro.lv"
-        to_addr = "nejeega@gmail.com"
+        from_addr = "bropro.tire@gmail.com"
+        to_addr = "info@bropro.lv"
 
         try:
             mail.send_mail(from_addr,
@@ -293,99 +297,6 @@ class MailHandler(Handler):
             self.session['alert'] = u'Ziņu neizdevās nosūtīt. \
                 Lūdzu, mēģiniet vēlāk.'
             self.redirect(self.request.referer)
-        # TODO: Implement redirect with success message.
-
-
-class PopulateDB(Handler):
-    def get(self):
-        def generateDL(paramList, entries):
-            logging.error("Generating DL...")
-            dl = []
-            for entry in entries:
-                tmpdict = collections.OrderedDict()
-                for param, val in zip(paramList, entry):
-                    tmpdict[param] = val
-                dl.append(tmpdict)
-            return dl
-
-        def addEntries(entityName, parameterDL):
-            logging.error("Adding Entries...")
-            for params in parameterDL:
-                e = entityName(**params)
-                e.put()
-
-        a = [["205/55 R16", "91", "H", "StarFire",
-              "RS-C 2.0", "Ziemas", "50.00", 4],
-             ["235/75 R17", "9", "T", "Aeolus",
-              "HN804", "Ziemas", "33.00", 3],
-             ["255/75 R18", "9", "H", "Goodyear",
-              "Wrangler S4", "Ziemas", "45.00", 3],
-             ["255/55 R18", "9", "T", "Pirelli",
-              "Scorpion", "Ziemas", "50.00", 2],
-             ["205/55 R16", "9", "T", "General",
-              "Frigo 2", "Ziemas", "42.00", 1],
-             ["235/75 R17", "13", "L", "Debica",
-              "HN804", "Vissez.", "110.00", 0]]
-
-        b = [["255/55 R18", "10", "H", "Dayton",
-              "DW510", "Vs.", "15.00", 3, "4.0"],
-             ["220x508 R18", "8", "Q", "Bridgestone",
-              "Wrangler Yada", "Vissez.", "15.00", 0, "5.0"]]
-
-        c = [["385/65 R22.5", "13", "L", "Antyre",
-              "TB1000", "V.", "290.0", 5, 'U'],
-             ["385/55 R22.5", "13", "L", "Yokohama",
-              "HN809", "V.", "230.0", 0, "U"],
-             ["385/65 R22.5", "13", "L", "Dayton",
-              "HN805", "V.", "210.0", 6, "U"],
-             ["385/65 R22.5", "13", "L", "BFGoodrich",
-              "FH2", "V.", "250.0", 0, "U"],
-             ["315/80 R22.5", "13", "L", "Matador",
-              "Silent", "V.", "175.0", 6, "U"],
-             ["315/80 R22.5", "13", "L", "Tigar",
-              "HN 355", "V.", "220.0", 2, "F"],
-             ["315/70 R22.5", "13", "L", "Kormoran",
-              "LHT", "Vi.", "250.0", 2, "F"],
-             ["315/80 R22.5", "13", "L", "Nankang",
-              "XD2", "V.", "160.0", 1, "U"],
-             ["385/55 R22.5", "13", "J", "Kumho",
-              "KLA1", "Vz.", "280.0", 5, "U"],
-             ["1R R22.5", "13", "L", "Kingstar",
-              "ST957", "V.", "185.0", 3, "U"]]
-
-        d = [["315/65 R2.5", "10", "R", "Bridgestone",
-              "KW22", "Z", "37", 3, "U", "5"],
-             ["315/70 R22.5", "13", "L", "Tracmax",
-              "X", "A.", "30.00", 0, 'F', "5"],
-             ["8.5 R17", "12", "L", "Michelin", "HT",
-              "Va", "25.00", 4, 'S', "4"],
-             ["385/55 R22.5", "13", "L", "Pirelli",
-              "HT1", "V.", "45.00", 6, 'U', "7"],
-             ["315/70 R22.5", "13", "L", "Continental",
-              "Earthmover", "V", "35.00", 0, 'U', "11"],
-             ["11 R22.5", "13", "L", "Kormoran",
-              "DR1", "V", "45.00", 2, 'U', "5"]]
-
-        paramList = ["size", "loadIndex", "speedIndex", "brand", "model",
-                     "season", "price", "inStock"]
-        usedCarParamList = paramList[:]
-        usedCarParamList.append("treadDepth")
-        truckParamList = paramList[:]
-        truckParamList.append("axlePosition")
-        usedTruckParamList = truckParamList[:]
-        usedTruckParamList.append("treadDepth")
-
-        carTyreDL = generateDL(paramList, a)
-        usedCarTyreDL = generateDL(usedCarParamList, b)
-        truckTyreDL = generateDL(truckParamList, c)
-        usedTruckTyreDL = generateDL(usedTruckParamList, d)
-
-        addEntries(CarTyre, carTyreDL)
-        addEntries(UsedCarTyre, usedCarTyreDL)
-        addEntries(TruckTyre, truckTyreDL)
-        addEntries(UsedTruckTyre, usedTruckTyreDL)
-
-        self.redirect(self.request.referer)
 
 
 class Utils(Handler):
@@ -402,6 +313,22 @@ class Utils(Handler):
                      'kravas/jaunas': TruckTyre,
                      'kravas/lietotas': UsedTruckTyre}
         return tyrePaths[path]
+
+    @staticmethod
+    def addTyre(kind, **params):
+        if kind == 'truck':
+            if params['condition'] == 'used':
+                tyre = UsedTruckTyre(**params)
+            else:
+                tyre = TruckTyre(**params)
+        else:
+            if params['condition'] == 'used':
+                tyre = UsedCarTyre(**params)
+            else:
+                tyre = CarTyre(**params)
+        if tyre:
+            tyre.put()
+        return
 
 
 class TyresHandler(Handler):
@@ -436,33 +363,50 @@ class SingleTyreHandler(Handler):
 
 class EntriesHandler(Handler, blobstore_handlers.BlobstoreUploadHandler):
     def get(self):
-        upload_url = blobstore.create_upload_url('/add')
+        upload_url = blobstore.create_upload_url('/admin/add')
         self.render("manage.html", url=str(upload_url))
 
     def post(self):
-        size = self.request.get('size')
+        # Get tyre params
+        kind = self.request.get('kind')
         brand = self.request.get('brand')
         model = self.request.get('model')
+        width = int(self.request.get('width'))
+        ratio = int(self.request.get('ratio'))
+        construction = self.request.get('construction')
+        diameter = float(self.request.get('diameter'))
+        li = int(self.request.get('loadIndex'))
+        si = self.request.get('speedIndex')
+        condition = self.request.get('condition')
+        season = self.request.get('season')
         price = float(self.request.get('price'))
-        isUsed = self.request.get('isUsed')
 
-        # Get the file and upload it
+
+        params = {'brand': brand, 'model': model, 'width': width,
+                  'aspectRatio': ratio, 'construction': construction,
+                  'diameter': diameter, 'loadIndex': li, 'speedIndex': si,
+                  'condition': condition, 'season': season, 'price': price
+                  }
+
+        # Get the picture and upload it
         upload_files = self.get_uploads('file')
         # Get the key from blobstore for the first element
-        blob_info = upload_files[0]
-        # Get the key
-        img = blob_info.key()
+        if upload_files:
+            blob_info = upload_files[0]
+            img = blob_info.key()
+            params['image'] = str(img)
 
-        params = {'size': size, 'brand': brand, 'model': model,
-                  'price': price, 'image': str(img)}
-
-        if isUsed:
-            tread = self.request.get('tread')
+        if condition == 'used':
+            tread = int(self.request.get('tread'))
             params['treadDepth'] = tread
 
-        tyre = CarTyre(**params)
+        if kind == 'truck':
+            lip = int(self.request.get('loadIndexPaired'))
+            params['loadIndexPaired'] = lip
+            axle = self.request.get('axle')
+            params['axlePosition'] = axle
 
-        tyre.put()
+        Utils.addTyre(kind, **params)
         self.redirect(self.request.referer)
 
 
@@ -502,15 +446,8 @@ class ThumbnailHandler(blobstore_handlers.BlobstoreDownloadHandler):
         self.error(404)
 
 
-class NoiceHandler(Handler):
-    def get(self):
-        self.write("NOICE!")
-
-
 app = webapp2.WSGIApplication([
-    ('/admin/.*', NoiceHandler),
-    ('/db', PopulateDB),
-    ('/add', EntriesHandler),
+    ('/admin/add', EntriesHandler),
     ('/diski', RimHandler),
     ('/meklet', SearchHandler),
     ('/par', AboutHandler),

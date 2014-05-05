@@ -5,7 +5,7 @@
 <div id="shopping-cart" class="row cart">
 
     {% if item_list %}
-    <form method="post">
+    <form method="post" data-abide>
         <ul class="">
             <li class="title row collapse">
                 <span class="small-1 medium-1 columns">&nbsp;</span>
@@ -17,9 +17,9 @@
         {% for item in item_list %}
         <li class="row collapse">
             <span class="small-1 medium-1 columns"><a href="grozs/dzest/{{ item.key.urlsafe() }}" class="fa fa-times remove"></a></span>
-            <span class="small-5 medium-6 columns name">{{ item.model + " " + item.size + " " + item.brand }}</span>
-            <span class="small-3 medium-1 large-2 columns text-center"><span class="item-price">{{ item.price }}</span></span>
-            <span class="small-2 medium-2 large-1 columns"><input name="{{ item.key.urlsafe() }}" class="item-count" min="1" type="number" step="1" value="0" /></span>
+            <span class="small-5 medium-6 columns name">{{ item.brand + " " + item.model + " " + item.size }}</span>
+            <span class="small-3 medium-1 large-2 columns text-center"><span class="item-price">{{ '%0.2f' % item.price|float }}</span></span>
+            <span class="small-2 medium-2 large-1 columns"><input name="{{ item.key.urlsafe() }}" class="item-count" min="1" type="number" step="1" value="1" required /></span>
             <span class="hide-for-small medium-2 columns text-right"><span class="item-sum"></span></span>
         </li>
         {% endfor %}

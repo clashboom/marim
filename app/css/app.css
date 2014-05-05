@@ -5120,18 +5120,6 @@ footer .mobile {
   height: 11px;
   display: inline-block; }
 
-.flag.gb {
-  background: url('../images/broprosprites.png') no-repeat -350px -145px; }
-
-.flag.lv {
-  background: url('../images/broprosprites.png') no-repeat -366px -145px; }
-
-.flag.ru {
-  background: url('../images/broprosprites.png') no-repeat -382px -145px; }
-
-.flag.de {
-  background: url('../images/broprosprites.png') no-repeat -398px -145px; }
-
 /* Brandband */
 .brandband {
   padding-top: 0.875rem;
@@ -5203,6 +5191,9 @@ li.product {
   li.product .brand-small {
     display: block;
     margin: 0 auto; }
+
+.brand.hidden {
+  display: none; }
 
 .product .productwrap {
   margin-top: 5%; }
@@ -5305,3 +5296,9 @@ footer .outer-wrap:last-child {
   background-color: #121213;
   color: #37373a;
   padding: 25px 0 15px 0; }
+
+.footersocial span {
+  color: #37373a;
+  font-size: 5em; }
+  .footersocial span:hover {
+    color: #ff6726; }
