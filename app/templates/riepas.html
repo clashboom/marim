@@ -29,10 +29,14 @@
 
         <div class="productwrap">
 
-            <div class="row name">
-              <span class="brand hidden" itemprop="manufacturer"> {{ tyre.brand }} </span>
-              <span class="model" itemprop="model"> {{ tyre.model }} </span>
-              <span class="size"> {{ tyre.size }} </span>
+            <a class="single_product_link" href="/riepa/{{ tyre.key.urlsafe() }}?ajax=true" data-reveal-id="{{ tyre.key.urlsafe() }}" data-reveal-ajax="true">
+                <div class="row name">
+                    <span class="brand hidden" itemprop="manufacturer"> {{ tyre.brand }} </span>
+                    <span class="size"> {{ tyre.size }} </span>
+                    <span class="model" itemprop="model"> {{ tyre.model }} </span>
+                </div>
+            </a>
+            <div id="{{ tyre.key.urlsafe() }}" class="reveal-modal tire-modal" data-reveal>
             </div>
 
           <div class="row">
@@ -44,7 +48,7 @@
               {% else %}
               <img src="images/tyre-th.jpg" alt="Riepa">
               {% endif %}
-              <img src="/images/{{ tyre.brand | lower }}.png"  alt="{{ tyre.brand }}"/>
+              <img class="product__brand" src="/images/{{ tyre.brand | lower }}.png"  alt="{{ tyre.brand }}"/>
 
             </div>
 

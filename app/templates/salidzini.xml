@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+{% if tyres %}
+{% for tyre in tyres %}
+  <item>
+    <name>{{ tyre.brand }} {{ tyre.model }} {{ tyre.size }}</name>
+    <link>http://www.bropro.lv/riepa/{{ tyre.key.urlsafe() }}</link>
+    <price>{{ '%0.2f' % tyre.price | float }}</price>
+    <image>http://www.bropro.lv/serve/{{ tyre.image }}</image>
+    <category_full>Lietotas un jaunas kravas un vieglo auto riepas</category_full>
+    <category_link>http://www.bropro.lv/riepas</category_link>
+    <manufacturer>{{ tyre.brand }}</manufacturer>
+    <model>{{ tyre.model }}</model>
+    {% if tyre.treadDepth %}
+    <used>1</used> 
+    {% endif %}
+  </item>
+{% endfor %}
+{% endif %}
+</root>

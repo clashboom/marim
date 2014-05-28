@@ -5072,7 +5072,8 @@ th.hide-for-touch {
 
 
 .main-section {
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  padding-bottom: 2em; }
 
 .example-orbit-content {
   max-height: 1500px; }
@@ -5189,11 +5190,29 @@ li.product {
   li.product .description {
     font-weight: normal; }
   li.product .brand-small {
+    display: block; }
+  li.product .product__brand {
+    margin-top: 0.5em;
     display: block;
-    margin: 0 auto; }
+    border: 5px solid #f7f7f7; }
 
 .brand.hidden {
   display: none; }
+
+.tire-modal table {
+  width: 100%; }
+
+.single-tire .button {
+  margin-top: 2em; }
+.single-tire table {
+  border: none; }
+.single-tire img {
+  max-width: 100%;
+  max-height: 100%; }
+
+.footersocial a {
+  display: inline-block;
+  margin-top: 2em 1em; }
 
 .product .productwrap {
   margin-top: 5%; }

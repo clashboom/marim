@@ -28,6 +28,49 @@ JINJA_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader(TEMPLATE_DIR), autoescape=True)
 
 
+def get_season(season):
+    if season == "ms":
+        return u"Vissezonas"
+    elif season == "summer":
+        return u"Vasaras"
+    elif season == "winter":
+        return u"Ziemas"
+    elif season == "studded":
+        return u"Ziemas, ar radzēm"
+    elif season == "studdable":
+        return u"Ziemas, radzējama"
+    else:
+        return
+
+
+def get_axle_position(position):
+    if position == "any":
+        return u"Universāla"
+    elif position == "front":
+        return u"Stūrējošā"
+    elif position == "drive":
+        return u"Velkošā"
+    elif position == "trailer":
+        return u"Piekabes"
+    else:
+        return
+
+
+def get_status(status):
+    if status == "new":
+        return u"Jauna"
+    elif status == "renewed":
+        return u"Atjaunota"
+    elif status == "used":
+        return u"Lietota"
+    else:
+        return
+
+JINJA_ENV.filters["get_season"] = get_season
+JINJA_ENV.filters["get_axle_position"] = get_axle_position
+JINJA_ENV.filters["get_status"] = get_status
+
+
 # Webapp2 Sessions config
 config = {}
 config['webapp2_extras.sessions'] = {
@@ -358,7 +401,11 @@ class SingleTyreHandler(Handler):
         key = ndb.Key(urlsafe=key_str)
         if key:
             tyre = key.get()
-        self.write(tyre)
+        ajax = self.request.get('ajax')
+        if ajax:
+            self.render('riepa_ajax.html', tyre=tyre)
+        else:
+            self.render('riepa.html', tyre=tyre)
 
 
 class EntriesHandler(Handler, blobstore_handlers.BlobstoreUploadHandler):
@@ -430,10 +477,12 @@ class ThumbnailHandler(blobstore_handlers.BlobstoreDownloadHandler):
     def get(self, resource):
         resource = str(urllib.unquote(resource))
         blob_info = blobstore.BlobInfo.get(resource)
+        dimensions = self.request.get('dimensions')
+        size = int(dimensions) if dimensions else 100
 
         if blob_info:
             img = images.Image(blob_key=resource)
-            img.resize(width=100, height=100)
+            img.resize(width=size, height=size)
             thumbnail = img.execute_transforms(
                 output_encoding=images.JPEG)
 
@@ -444,6 +493,15 @@ class ThumbnailHandler(blobstore_handlers.BlobstoreDownloadHandler):
         # Either blob_key wasnt provided or there was no value with that ID
         # in the Blobstore
         self.error(404)
+
+
+class SalidziniHandler(Handler):
+    def get(self):
+        tyres = list(CarTyre.queryTyres()) + list(UsedCarTyre.queryTyres()) + \
+            list(TruckTyre.queryTyres()) + list(UsedTruckTyre.queryTyres())
+
+        self.response.headers['Content-Type'] = "application/xml"
+        self.render('salidzini.xml', tyres=tyres)
 
 
 app = webapp2.WSGIApplication([
@@ -463,6 +521,7 @@ app = webapp2.WSGIApplication([
     ('/pirkt.*', AddToCartHandler),
     ('/grozs', ShowCartHandler),
     ('/grozs/dzest(?:/)?(.*)?', ClearCartHandler),
+    ('/salidzini', SalidziniHandler),
     ('/.*', MainHandler),
 ], config=config, debug=True)
 

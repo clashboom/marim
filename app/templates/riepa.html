@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="row single-tire">
+  <div class="row">
+    <h2 class="small-12 columns">{{ tyre.brand }} {{ tyre.model }}</h2>
+  </div>
+  <div class="small-12 medium-6 columns">
+
+    <div class="row">
+      <a href="/serve/{{ tyre.image }}" data-lightbox="{{ tyre.image }}"><img class="th" src="/serve/th/{{ tyre.image }}?dimensions=500" alt="Riepa"></a>
+    </div>
+
+  </div>
+  <table class="small-12 medium-6 columns">
+    <thead>
+    </thead>
+    <tbody>
+      <tr><td>Ražotājs</td><td>{{ tyre.brand }}</td></tr>
+      <tr><td>Modelis</td><td>{{ tyre.model }}</td></tr>
+      <tr><td>Platums</td><td>{{ tyre.width }}</td></tr>
+      <tr><td>Profils</td><td>{{ tyre.aspectRatio }}</td></tr>
+      <tr><td>Diametrs</td><td>{{ tyre.diameter }}</td></tr>
+      <tr><td>Sezona</td><td>{{ tyre.season | get_season  }}</td></tr>
+      <tr><td>Slodzes indekss</td><td>{{ tyre.loadIndex }}</td></tr>
+
+      {% if tyre.loadIndexPaired  %}
+      <tr><td>Slodzes indekss pārī</td><td>{{ tyre.loadIndexPaired }}</td></tr>
+      {% endif %}
+
+      <tr><td>Ātruma indekss</td><td>{{ tyre.speedIndex }}</td></tr>
+
+      {% if tyre.axlePosition  %}
+      <tr><td>Ass</td><td>{{ tyre.axlePosition | get_axle_position }}</td></tr>
+      {% endif %}
+
+      <tr><td>Stāvoklis</td><td>{{ tyre.condition | get_status }}</td></tr>
+
+      {% if tyre.treadDepth  %}
+      <tr><td>Protektora atlikums</td><td>{{ tyre.treadDepth }} mm</td></tr>
+      {% endif %}
+
+    </tbody>
+    <tr><td>Cena</td><td>{{ '%0.2f' % tyre.price|float }} &euro;</td></tr>
+    <!-- <tr><td>Atlikums noliktavā</td> -->
+      <!--   <td>{{ tyre.availability if tyre.availability else "<span class='fa fa-phone'> Noskaidrot </span>" | safe }} </td> -->
+      <!-- </tr> -->
+  </tbody>
+</table>
+
+<div class="row">
+  <form action="/pirkt" method="get">
+    <input type="hidden" name="key" value="{{ tyre.key.urlsafe() }}" />
+    <input type="submit" class="button right" value="Pirkt">
+  </form>
+</div>
+
+</div>
+{% endblock %}
