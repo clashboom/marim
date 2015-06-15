@@ -3,8 +3,6 @@
 {% block main %}
 
 <div class="row">
-  {% if Tyres %}
-  <div id= "tire-list" class="tyre-list">
 
     <div class="panel">
     <a class="button" href="/riepas/vieglo">Vieglo auto riepas</a>
@@ -12,6 +10,8 @@
     <a class="button" href="/riepas/vieglo/lietotas">Lietotas vieglo riepas</a>
     <a class="button" href="/riepas/kravas/lietotas">Lietotas kravas riepas</a>
     </div>
+  {% if Tyres %}
+  <div id= "tire-list" class="tyre-list">
 
     <div class="row collapse">
       <div class="small-10 large-11 columns">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="medium-6 columns purchase">
-              <span itemprop="price" class="price"> {{ '%0.2f' % tyre.price|float }} &euro; </span>
+              <span itemprop="price" class="price"> {{ '%0.2f' % tyre.price | float }} &euro; </span>
 
               <form action="/pirkt" method="get">
                 <input type="hidden" name="key" value="{{ tyre.key.urlsafe() }}" />
